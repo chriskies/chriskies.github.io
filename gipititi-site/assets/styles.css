@@ -45,10 +45,20 @@ footer{color:var(--muted);font-size:.92rem}
   border: 0;
 }
 
+/* Überschrift in Projekte-Block zentrieren + Linie direkt darunter */
 #projects h2 {
   text-align: center;                /* Überschrift mittig */
-  border-bottom: 3px solid #e9e1d7;  /* Linie drunter */
-  display: inline-block;             /* sorgt dafür, dass die LInie nur so breit wie der Text ist */
-  padding-bottom: .25rem;            /* kleiner Abstand zwischen Text und Linie */
-  margin: 0 auto 2rem auto;          /* zentriert und mit Abstand nach unten */
+  position: relative;
+  margin: 0 0 2rem 0;          
+}
+
+#projects h2::after {
+  content: "";
+  display: block;
+  width: 140px;                    /* Breite der Linie (anpassen nach Bedarf) */
+  max-width: 60%;                  /* auf kleinen Screens etwas flexibler */
+  height: 3px;
+  bakcground: varls(--line);
+  margin: .35rem auto 0;          /* zentriert unter den Text */
+  border-radius: 2px;
 }
