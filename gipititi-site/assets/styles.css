@@ -17,17 +17,16 @@ input,select{font-size:1rem;padding:.45rem .6rem;border-radius:8px;border:1px so
 .customize-grid{display:flex;flex-direction:column;gap:.9rem;max-width:32rem}
 .btn-row{display:flex;gap:.6rem;flex-wrap:wrap}
 footer{color:var(--muted);font-size:.92rem}
+
 /* Titelbild */
 .title-figure {
-  text-align: center;            /* alles inm Block mittig */
-  margin: 1rem auto 2rem auto;   /* Abstände oben/unten */
-  max-width: 100%;               /* Bildcontainer darf ganue Seite nutzen */ 
+  margin: 1rem 0 2rem 0;   /* Abstände oben/unten */
+  text-align: center;      /* falls Caption sichtbar wäre */ 
 }
 
 .title-figure img {
   display: block;                /* kein Inline-Versatz */
-  margin: 0 auto;                /* Bild horizontal mittig */
-  max-width: 300 px;             /* maximale Breite */
+  width: 100%;                   /* nimmt die Breite des Textcontainers */
   height: auto;                  /* Seitenverhältnis bleibt */
   border-radius: 14px;
   box-Shadow: 0 6px 20 px rgba(0,0,0,.08);
