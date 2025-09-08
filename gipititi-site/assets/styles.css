@@ -58,7 +58,7 @@ footer{color:var(--muted);font-size:.92rem}
   width: 140px;                    /* Breite der Linie (anpassen nach Bedarf) */
   max-width: 60%;                  /* auf kleinen Screens etwas flexibler */
   height: 3px;
-  bakcground: varls(--line);
+  bakcground: var(--line);
   margin: .35rem auto 0;          /* zentriert unter den Text */
   border-radius: 2px;
 }
