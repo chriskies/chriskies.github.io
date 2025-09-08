@@ -1,117 +1,330 @@
-<main>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Christine Kieslich – Kompetenz. Klarheit. Konsequenz.</title>
+  <meta name="description" content="Offizielle Seite von Christine Kieslich: Portfolio & Haltung. Kompetenz, Klarheit und Konsequenz – beruflich wie privat.">
+  <meta name="theme-color" content="#F7F5F0">
 
-  <!-- 1) Titelbild (kleiner) -->
-  <figure class="title-figure">
-    <img src="assets/images/titelbild.jpg" alt="Titelillustration: Gipititi und Noël mit der Kokosnuss">
-    <figcaption class="visually-hidden">Titelillustration zur Geschichte „Gipititi und die Kokosnuss“</figcaption>
-  </figure>
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Christine Kieslich – Kompetenz. Klarheit. Konsequenz.">
+  <meta property="og:description" content="Ich stehe für Respekt, Schutz und klare Grenzen. Offen für faire, stabile Zusammenarbeit.">
+  <meta property="og:image" content="assets/portrait.JPG">
+  <meta property="og:locale" content="de_CH">
 
-  <header class="page-header">
-    <h1>Gipititi und die Kokosnuss</h1>
-    <!-- 2) Zusammenfassende Einleitung -->
-    <p class="intro">
-      Noël möchte abends noch nicht schlafen – bis plötzlich aus seiner Kokosnuss ein kleines,
-      warmherziges Wesen hüpft: <strong>Gipititi</strong>. Gemeinsam zaubern sie Kokos-Bananen-Muffins,
-      verwandeln wuselnde Gedanken in kleine Wölkchen und finden einen liebevollen Weg in eine
-      ruhige, sichere Nacht.
-    </p>
+  <!-- Fonts (optional). Safe fallbacks included. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- 3) Hinweis: PDF + Namensanpassung -->
-    <p class="info-note">
-      Die <strong>gesamte Geschichte als PDF</strong> findest du weiter unten. Vor dem Vorlesen kannst du
-      auf Wunsch <strong>Namen individuell anpassen</strong> (z.&nbsp;B. Bezugsperson oder Kindername).
-    </p>
+  <style>
+    :root{
+      --bg: #F7F5F0;
+      --bg-alt: #EFE9E2;
+      --text: #111111;
+      --muted: #444444;
+      --accent: #8C6E52;
+      --accent-2: #7A6A5C;
+      --border: #E3DED6;
+      --shadow: rgba(17,17,17,0.06);
+      --radius: 14px;
+      --container: 920px;
+    }
+
+    html, body { 
+      min-height: 100%;
+      height: auto;
+    }
+    html { scroll-behavior: smooth; }
+    body{
+      margin:0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Merriweather", Georgia, serif;
+      line-height: 1.6;
+      font-size: 18px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Layout */
+    .container{
+      width: min(100% - 32px, var(--container));
+      margin-inline: auto;
+    }
+
+    header.site{
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: color-mix(in srgb, var(--bg) 90%, white 10%);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border);
+    }
+    .site-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 10px 0;
+    }
+    .brand{
+      display:flex; gap:12px; align-items:center;
+      text-decoration:none; color: inherit;
+    }
+    .brand img{
+      width:40px; height:40px; border-radius:50%;
+      object-fit: cover;
+      box-shadow: 0 2px 8px var(--shadow);
+      background:#fff;
+    }
+    .brand .title{
+      font-family:"Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-weight:700; letter-spacing:.2px;
+    }
+    nav a{
+      text-decoration:none; color:inherit; opacity:.85;
+      padding:8px 10px; border-radius:10px;
+      font-family:"Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-weight:600; font-size:14.5px;
+    }
+    nav a:hover, nav a:focus{
+      background: var(--bg-alt);
+      opacity:1;
+      outline:none;
+    }
+
+    /* Hero */
+    .hero{
+      padding: 72px 0 40px;
+    }
+    .hero .kicker{
+      display:inline-block;
+      font-family:"Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size:13px; letter-spacing:.18em; text-transform:uppercase;
+      color: var(--accent-2);
+      background: color-mix(in srgb, var(--bg-alt) 65%, white 35%);
+      padding:6px 10px; border-radius:999px;
+      border:1px solid var(--border);
+    }
+    h1{
+      font-family:"Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: clamp(28px, 6vw, 44px);
+      line-height:1.2;
+      margin:16px 0 6px;
+    }
+    .subtitle{
+      font-size: clamp(16px, 2.6vw, 20px);
+      color: var(--muted);
+      margin: 0 0 22px;
+    }
+    .hero .profile{
+      display:flex; gap:28px; align-items:center; flex-wrap:wrap;
+      margin-top: 24px;
+    }
+    .hero .profile img{
+      width:120px; height:120px; border-radius:16px; object-fit:cover;
+      box-shadow: 0 8px 24px var(--shadow);
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+    .hero .actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 10px; }
+
+    /* Buttons */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      text-decoration:none;
+      font-family:"Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-weight:600; letter-spacing:.2px;
+      border:1px solid var(--border);
+      color: var(--text);
+      background: #fff;
+      box-shadow: 0 4px 12px var(--shadow);
+      transition: transform .04s ease, background .2s ease, box-shadow .2s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); background: color-mix(in srgb, #fff 80%, var(--bg-alt) 20%); }
+    .btn-primary{
+      color: #fff; background: var(--accent); border-color: color-mix(in srgb, var(--accent) 70%, black 30%);
+    }
+    .btn-primary:hover{ background: color-mix(in srgb, var(--accent) 85%, black 15%); }
+
+    /* Sections */
+    section{ padding: 56px 0; }
+    section.alt{ background: var(--bg-alt); border-block:1px solid var(--border); }
+    h2{
+      font-family:"Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: clamp(22px, 4vw, 28px);
+      margin:0 0 12px;
+    }
+    p{ margin: 12px 0; }
+
+    .two-col{
+      display:grid; grid-template-columns: 1fr; gap: 18px;
+    }
+    @media (min-width: 820px){
+      .two-col{ grid-template-columns: 1.1fr .9fr; gap: 28px; }
+    }
+
+    blockquote{
+      margin: 0; padding: 22px 22px 22px 22px;
+      border-left: 6px solid var(--accent);
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: 0 6px 18px var(--shadow);
+      font-style: italic;
+    }
+
+    .card{
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 18px;
+      box-shadow: 0 8px 28px var(--shadow);
+    }
+
+    footer{
+      padding: 28px 0 56px; color: var(--muted);
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+    }
+    .footgrid{
+      display:flex; justify-content:space-between; gap:14px; align-items:center; flex-wrap:wrap;
+    }
+    .small{ font-size: 14px; color: var(--muted); }
+    a{ color: var(--accent); }
+    a:hover{ color: var(--accent-2); }
+
+    /* Utilities */
+    .hidden{ position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px, 1px, 1px, 1px); white-space:nowrap; }
+  </style>
+</head>
+<body>
+  <a class="hidden" href="#main">Zum Inhalt springen</a>
+
+  <header class="site" role="banner">
+    <div class="container site-inner">
+      <a href="#top" class="brand" aria-label="Startseite">
+        <img src="assets/portrait.JPG" alt="Portrait von Christine Kieslich">
+        <span class="title">Christine&nbsp;Kieslich</span>
+      </a>
+      <nav aria-label="Hauptnavigation">
+        <a href="#ueber-mich">Über mich</a>
+        <a href="#haltung">Haltung</a>
+        <a href="#perspektive">Perspektive</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- 4) Namensanpassung -->
-  <section class="card" aria-labelledby="customize">
-    <h2 id="customize">Namen anpassen (optional)</h2>
-    <p class="small">
-      Wähle eine Bezugsperson oder trage einen eigenen Begriff/Namen ein. Standardnamen sind
-      <em>Mama</em> und <em>Noël</em>.
-    </p>
+  <main id="main">
+    <section id="top" class="hero">
+      <div class="container">
+        <span class="kicker">Kompetenz · Klarheit · Konsequenz</span>
+        <h1>Ich weiß, was ich kann – und wofür ich einstehe.</h1>
+        <p class="subtitle">Meine Arbeit und mein Leben stehen für Verantwortung, Transparenz und den Mut, klare Grenzen zu ziehen.</p>
 
-    <div class="customize-grid">
-      <div>
-        <label for="rel-select">Bezugsperson (Vorschlag)</label><br>
-        <select id="rel-select">
-          <option value="Mama">Mama</option><option value="Papa">Papa</option>
-          <option value="Oma">Oma</option><option value="Opa">Opa</option>
-          <option value="Tante">Tante</option><option value="Onkel">Onkel</option>
-          <option value="Pflegemutter">Pflegemutter</option><option value="Pflegevater">Pflegevater</option>
-        </select>
+        <div class="profile">
+          <img src="assets/portrait.JPG" alt="Portrait von Christine Kieslich (aus dem Lebenslauf)">
+          <div>
+            <p>
+              Administrative Leitung mit Erfahrung in <strong>Administration</strong>, <strong>Personalwesen</strong>,
+              <strong>Lohnbuchhaltung</strong> und <strong>Projektorganisation</strong>.
+              Strategisch denkend, lösungsorientiert und belastbar.
+            </p>
+            <div class="actions">
+              <a class="btn btn-primary" href="mailto:deinname@mail.ch" aria-label="E-Mail an Christine senden">E‑Mail schreiben</a>
+              <a class="btn" href="#haltung">Meine Haltung</a>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div>
-        <label for="rel-custom">Eigener Begriff / Name (Bezugsperson)</label><br>
-        <input id="rel-custom" type="text" placeholder="z. B. Lea, Bonuspapa">
-      </div>
+    <section id="ueber-mich">
+      <div class="container two-col">
+        <div>
+          <h2>Über mich</h2>
+          <p>Ich habe fundierte Erfahrung in <strong>Administration</strong>, <strong>HR</strong>,
+          <strong>Lohnabrechnung</strong> und <strong>Projektkoordination</strong>. Ich strukturiere,
+          priorisiere und setze um – auch in herausfordernden Situationen.</p>
+          <p class="small">Auswahl: Kauffrau EFZ (Deutschland), fundierte Praxis im HR/Payroll, IT‑Grundstudium, aktuell in der Schweiz tätig.</p>
 
-      <div>
-        <label for="child-custom">Name des Kindes (Standard: Noël)</label><br>
-        <input id="child-custom" type="text" placeholder="z. B. Leon, Anna">
+          <div class="card" role="note" aria-label="Arbeitsweise">
+            <strong>Arbeitsweise</strong>
+            <p>Analytisch, verlässlich, diskret. Ich kommuniziere klar, dokumentiere sauber und entscheide konsequent – immer wertebasiert.</p>
+          </div>
+        </div>
+        <div>
+          <h2>Wofür ich stehe</h2>
+          <p>Verantwortung, Integrität und Schutz sind für mich nicht verhandelbar. Wer mit mir arbeitet,
+          bekommt Qualität – und klare, faire Zusammenarbeit auf Augenhöhe.</p>
+          <p>Ich bin es gewohnt, Verantwortung zu übernehmen. Und ich halte meine Werte hoch – auch wenn es unbequem wird.</p>
+        </div>
       </div>
+    </section>
 
-      <div class="btn-row">
-        <button id="apply" class="cta" type="button">Anwenden</button>
-        <button id="reset" class="cta" type="button">Zurücksetzen</button>
+    <section id="haltung" class="alt">
+      <div class="container">
+        <h2>Haltung</h2>
+        <blockquote>
+          „Respekt ist für mich keine Verhandlungssache. Ich setze klare Grenzen – beruflich wie privat.
+          Wer versucht, diese Grenzen zu überschreiten, wird feststellen: Ich lasse mich nicht einschüchtern.
+          Im Zweifel mache ich Vorgänge sichtbar.“
+        </blockquote>
+        <p class="small" style="margin-top:12px;">Diese Botschaft richtet sich an alle, die glauben, Grenzen ignorieren zu können: Das ist zwecklos.</p>
       </div>
+    </section>
+
+    <section id="perspektive">
+      <div class="container">
+        <h2>Berufliche Perspektive</h2>
+        <p>Ich suche eine Aufgabe, in der ich <strong>stabil und fair</strong> wirken kann – mit der ich
+        <strong>meinen Sohn und mich zuverlässig finanziere</strong>. Ich bringe Kompetenz und Einsatz – im Gegenzug erwarte ich Respekt, Transparenz und Verlässlichkeit.</p>
+        <p>Ich weiß, was ich kann. Und ich weiß, was ich brauche: eine Zukunft, die auf Verantwortung und Fairness basiert.</p>
+      </div>
+    </section>
+
+    <section id="kontakt" class="alt">
+      <div class="container">
+        <h2>Kontakt</h2>
+        <p>📧 <a href="mailto:christine.kieslich@protonmail.com">christine.kieslich@protonmail.com</a><br>
+           📍 Schönenbuch, Schweiz</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="mailto:christine.kieslich@protonmail.com">E‑Mail schreiben</a>
+          <a class="btn" href="#top">Nach oben</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section id="projects" class="alt">
+    <div class="container">
+    	<h2>Projekte & Arbeitsproben</h2>
+			<blockquote>
+      	<h3>"Gipititi und die Kokosnuss"</h3>
+      	<p>
+        	Dieses Projekt zeigt, wie KI als <strong>Partner</strong> wirken kann:
+        	Aus einem Grundvorschlag der KI, der Fantasie und den gestalterischen 
+        	Fähigkeiten eines Menschen und den ehrlichen Rückmeldungen eines dreijährigen
+        	Kindes entstand eine <strong>wundervolle, vollständige Geschichte</strong> 
+        	- durchdacht, gestaltet und umgesetzt in kurzer Zeit.
+      	</p>
+      </blockquote>
+      	<p>
+        	<a href="/gipititi-site/index.html">➡️ Zur Geschichte "Gipititi und die Kokosnuss"</a>
+      	</p>
+    	</section>
     </div>
   </section>
 
-  <!-- 5) PDFs -->
-  <section class="card" aria-labelledby="print-help">
-    <h2 id="print-help">📄 Geschichte als PDF</h2>
-    <ul class="pdf-list">
-      <li>
-        <a href="assets/pdfs/gipititi_geschichte_final.pdf?v=6" target="_blank" rel="noopener">
-          📖 Ganze Geschichte öffnen
-        </a>
-        &nbsp;|&nbsp;
-        <a href="assets/pdfs/gipititi_geschichte_final.pdf?v=6" download>⬇️ Download</a>
-      </li>
-      <li>
-        <a href="assets/pdfs/gipititi_A5_pages.pdf?v=6" target="_blank" rel="noopener">
-          A5-Seiten (einfach drucken)
-        </a>
-        &nbsp;|&nbsp;
-        <a href="assets/pdfs/gipititi_A5_pages.pdf?v=6" download>⬇️ Download</a>
-      </li>
-      <li>
-        <a href="assets/pdfs/gipititi_A4_spreads.pdf?v=6" target="_blank" rel="noopener">
-          A4-Broschüre (falten & heften)
-        </a>
-        &nbsp;|&nbsp;
-        <a href="assets/pdfs/gipititi_A4_spreads.pdf?v=6" download>⬇️ Download</a>
-      </li>
-    </ul>
-    <p class="small">iPad: PDF öffnen → Teilen → <strong>Drucken</strong>.</p>
-  </section>
-
-  <!-- (Optional) lokale Lesefassung, damit die Namensanpassung sichtbar wirkt -->
-  <section class="card" aria-labelledby="story">
-    <h2 id="story">Kurze Lesefassung</h2>
-    <p class="small">Die folgenden Absätze sind eine kurze Lesefassung auf der Webseite. Für die vollständige Geschichte nutze die PDF oben.</p>
-    <div id="geschichte">
-      <p>Noël wusste schon beim Abendessen, dass er eigentlich wieder einmal keine Lust hatte, ins Bett zu gehen …</p>
-      <p>… dann machte es plötzlich plopp und die Kokosnuss zersprang in zwei Hälften. Heraus kam ein kleines, rundes Wesen mit leuchtenden Augen: <strong>Gipititi</strong>.</p>
-      <p>Gemeinsam zaubern sie Muffins, verwandeln rasende Gedanken in kleine Wölkchen – und finden einen ruhigen Weg in die Nacht.</p>
+  <footer>
+    <div class="container footgrid">
+      <div>© 2025 Christine Kieslich</div>
+      <div class="small">Design: helles Beige · klare Typografie · minimalistisch</div>
     </div>
-  </section>
-
-  <!-- 6) Hintergrund / Erklärung (kompakt) -->
-  <section class="card" aria-labelledby="note">
-    <h2 id="note">Hintergrund</h2>
-    <p class="meta-note">
-      Diese Geschichte habe ich selbst entwickelt – basierend auf eigenen Ideen und wahren Erlebnissen.
-      Alle Arbeitsschritte stammen aus meiner Hand: Text, Bildaufbereitung und (später) Audio.
-      KI diente mir als Werkzeug und Partner: Meine Gedanken und Entscheidungen blieben der Kern –
-      die KI half beim Strukturieren, Verfeinern und Beschleunigen. Ziel ist ein frei zugängliches Angebot,
-      das Familien niedrigschwellig unterstützt.
-    </p>
-  </section>
-
-</main>
-
-<!-- Skript-Reihenfolge: zuerst customize.js -->
-<script src="assets/js/customize.js?v=2" defer></script>
+  </footer>
+</body>
+</html>
