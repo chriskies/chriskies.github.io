@@ -76,3 +76,14 @@ footer{color:var(--muted);font-size:.92rem}
   border-radius: 14px;
   box-shadow: 0 6px 20px rgba(0,0,0,.08);
 }
+
+/* --- TEST: sollte sofort wirken --- */
+.title-figure img {
+  max-width: 320px !important;
+  display: block;
+  margin: 0 auto;
+  border-radius: 14px;
+}
+h1, .sub {
+  text-align: center !important;
+}
