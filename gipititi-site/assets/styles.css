@@ -44,3 +44,11 @@ footer{color:var(--muted);font-size:.92rem}
   white-space: nowrap; 
   border: 0;
 }
+
+#projects h2 {
+  text-align: center;                /* Überschrift mittig */
+  border-bottom: 3px solid #e9e1d7;  /* Linie drunter */
+  display: inline-block;             /* sorgt dafür, dass die LInie nur so breit wie der Text ist */
+  padding-bottom: .25rem;            /* kleiner Abstand zwischen Text und Linie */
+  margin: 0 auto 2rem auto;          /* zentriert und mit Abstand nach unten */
+}
