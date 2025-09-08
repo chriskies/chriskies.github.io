@@ -17,23 +17,27 @@ input,select{font-size:1rem;padding:.45rem .6rem;border-radius:8px;border:1px so
 .customize-grid{display:flex;flex-direction:column;gap:.9rem;max-width:32rem}
 .btn-row{display:flex;gap:.6rem;flex-wrap:wrap}
 footer{color:var(--muted);font-size:.92rem}
+/* Titelbild */
 .title-figure {
-  display: flex;
-  flex-direction: colum;
-  align-items: center;
-  margin: 1rem auto 2rem;
+  text-align: center;            /* alles inm Block mittig */
+  margin: 1rem auto 2rem auto;   /* Abstände oben/unten */
+  max-width: 100%;               /* Bildcontainer darf ganue Seite nutzen */ 
 }
+
 .title-figure img {
-  max-width: 300px; /* bei Bedarf 350-480px */
-  width: 100%;
-  height: auto;
+  display: block;                /* kein Inline-Versatz */
+  margin: 0 auto;                /* Bild horizontal mittig */
+  max-width: 300 px;             /* maximale Breite */
+  height: auto;                  /* Seitenverhältnis bleibt */
   border-radius: 14px;
   box-Shadow: 0 6px 20 px rgba(0,0,0,.08);
 }
-/* nur für Screenhreader */
+
+/* Screenreader-only Caption */
 .visually-hidden {
   position: absolute !important;
   width: 1px; height: 1px;
   padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0,0,0,0);
   white-space: nowrap; border: 0;
+}
