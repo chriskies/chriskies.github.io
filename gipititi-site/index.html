@@ -1,1 +1,102 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gipititi und die Kokosnuss – kostenlose Lesefassung</title>
+  <meta name="description" content="Eine achtsame Gute-Nacht-Geschichte: Gipititi, Noël und die Kokosnuss.">
+  <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    /* Safari-Scroll-Fix */
+    html, body { min-height:100%; height:auto; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Gipititi und die Kokosnuss</h1>
+  <p class="sub">Kostenlose Lesefassung · Text: Christine · mit KI-Unterstützung erarbeitet, vollständig selbst umgesetzt</p>
+</header>
 
+<main>
+
+  <!-- Interaktive Anpassung -->
+  <section class="card" aria-labelledby="customize">
+    <h2 id="customize">Namen anpassen (optional)</h2>
+    <p class="small">
+      Du kannst „Mama“ und „Noël“ anpassen (z. B. Papa, Oma, Pflegemutter). Danach auf <em>Anwenden</em> klicken.
+      <span class="note">„Zurücksetzen“ stellt den Originaltext wieder her.</span>
+    </p>
+
+    <div class="customize-grid">
+      <div>
+        <label for="rel-select">Bezugsperson (Vorschlag)</label><br>
+        <select id="rel-select">
+          <option value="Mama">Mama</option><option value="Papa">Papa</option>
+          <option value="Oma">Oma</option><option value="Opa">Opa</option>
+          <option value="Tante">Tante</option><option value="Onkel">Onkel</option>
+          <option value="Pflegemutter">Pflegemutter</option><option value="Pflegevater">Pflegevater</option>
+        </select>
+        <span class="note">Oder unten einen eigenen Namen eintragen.</span>
+      </div>
+
+      <div>
+        <label for="rel-custom">Eigener Begriff / Name (Bezugsperson)</label><br>
+        <input id="rel-custom" type="text" placeholder="z. B. Lea, Bonuspapa">
+      </div>
+
+      <div>
+        <label for="child-custom">Name des Kindes (Standard: Noël)</label><br>
+        <input id="child-custom" type="text" placeholder="z. B. Leon, Anna">
+      </div>
+
+      <div class="btn-row">
+        <button id="apply" class="cta" type="button">Anwenden</button>
+        <button id="reset" class="cta" type="button">Zurücksetzen</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Geschichte -->
+  <section class="card" aria-labelledby="story">
+    <h2 id="story">Die Geschichte</h2>
+    <div id="geschichte">
+      <!-- 👉 Hier steht der komplette Text der Geschichte (den hast du schon in der PDF-Version).
+           Kopiere einfach den gesamten finalen Text hinein.
+           Ich kürze ihn hier, sonst wird es zu lang. -->
+      <p>Noël wusste schon beim Abendessen, dass er eigentlich wieder einmal keine Lust hatte, ins Bett zu gehen...</p>
+      <!-- usw. bis zum Ende der Geschichte -->
+    </div>
+  </section>
+
+  <!-- Nachsatz -->
+  <section class="card" aria-labelledby="note">
+    <h2 id="note">Anmerkung der Autorin</h2>
+    <p><em>Diese Geschichte habe ich selbst entwickelt, basierend auf eigenen Ideen und wahren Erlebnissen. Alle Arbeitsschritte stammen aus meiner Hand – vom Schreiben der Texte über die Bildgestaltung bis hin zu Audios, die die Geschichte ergänzen werden. ChatGPT diente als Werkzeug und Partner: Meine Gedanken und Entscheidungen blieben der Kern – die KI begleitete, strukturierte und ordnete sie.</em></p>
+  </section>
+
+  <!-- PDFs -->
+  <section class="card" aria-labelledby="print-help">
+    <h2 id="print-help">📄 Ausdrucken</h2>
+    <p class="small">Druckfreundliche Versionen:</p>
+    <ul>
+      <li><a href="assets/pdfs/gipititi_geschichte.pdf" download>Geschichte als PDF</a></li>
+      <li><a href="assets/pdfs/gipititi_A5_pages.pdf" download>A5-Seiten (einfach drucken)</a></li>
+      <li><a href="assets/pdfs/gipititi_A4_spreads.pdf" download>A4-Broschüre (falten & heften)</a></li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <p class="small">Text © 2025 Christine. Alle Rechte vorbehalten. Eltern prüfen bitte individuell, ob die Geschichte für ihr Kind geeignet ist.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div>© 2025 Christine · <a href="/">Zur Hauptseite</a></div>
+</footer>
+
+<script src="assets/js/customize.js"></script>
+</body>
+</html>
