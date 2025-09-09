@@ -6,7 +6,6 @@
   <title>Gipititi – Bilderbuch</title>
   <link rel="stylesheet" href="/gipititi-site/assets/styles.css?v=14" />
   <style>
-    /* --- Layout-Rahmen --- */
     body { background:#f7f7f7; }
     .wrap { max-width: 1024px; margin: 0 auto; padding: 1rem; }
 
@@ -19,67 +18,75 @@
       border-radius: 12px;
       box-shadow: 0 10px 30px rgba(0,0,0,.08);
       overflow:hidden;
-      /* Seitenverhältnis ca. A5 quer (Doppelseite) */
       aspect-ratio: 16 / 10;
       max-width: 100%;
     }
-
-    /* Innen: Bühne für Seiten (horizontales Band) */
     .pages {
-      display: flex;
-      height: 100%;
-      width: 100%;
-      transition: transform .35s ease;
-      will-change: transform;
-      touch-action: pan-y; /* lässt horizontales Wischen zu */
-      background:
-        linear-gradient(to right, rgba(0,0,0,.05), rgba(0,0,0,0) 12%, rgba(0,0,0,0) 88%, rgba(0,0,0,.05));
+      display: flex; height: 100%; width: 100%;
+      transition: transform .35s ease; will-change: transform;
+      touch-action: pan-y;
+      background: linear-gradient(to right, rgba(0,0,0,.05), rgba(0,0,0,0) 12%, rgba(0,0,0,0) 88%, rgba(0,0,0,.05));
     }
-
-    /* Einzel-Seite */
     .page {
       flex: 0 0 100%;
-      display: grid;
-      place-items: center;
+      position: relative;             /* für Hotspots */
+      display: grid; place-items: center;
       background:#fff;
-      position: relative;
     }
-
-    /* Bild füllt Seite, mit schmalem Rand */
     .page img {
-      width: 96%;
-      height: 96%;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 4px 16px rgba(0,0,0,.06);
-      background:#fff;
+      width: 96%; height: 96%; object-fit: contain;
+      border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,.06); background:#fff;
+      user-select: none; -webkit-user-drag: none;
     }
+    .num { position: absolute; bottom: .4rem; right:.8rem; font-size:.8rem; color:#777;
+           background: rgba(255,255,255,.7); padding:.1rem .4rem; border-radius:6px; }
 
-    /* Page-Nummern */
-    .num {
-      position: absolute; bottom: .4rem; right:.8rem;
-      font-size: .8rem; color:#777;
-      background: rgba(255,255,255,.7); padding:.1rem .4rem; border-radius:6px;
-    }
-
-    /* Steuerung */
-    .controls {
-      display:flex; justify-content:space-between; align-items:center;
-      gap:.5rem; margin:.75rem 0 0;
-    }
-    .btn {
-      user-select:none; -webkit-user-select:none;
-      background:#2369c4; color:#fff; border:0; border-radius:10px;
-      padding:.6rem .9rem; font-weight:600; cursor:pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,.08);
-    }
+    .controls { display:flex; justify-content:space-between; align-items:center; gap:.5rem; margin:.75rem 0 0; }
+    .btn { background:#2369c4; color:#fff; border:0; border-radius:10px; padding:.6rem .9rem; font-weight:600; cursor:pointer;
+           box-shadow: 0 4px 10px rgba(0,0,0,.08); }
     .btn[disabled]{ opacity:.4; cursor:default; }
     .indicator{ color:#444; font-weight:600; }
 
-    /* Vollbreite auf Handy */
+    /* --- Elternhinweis oben --- */
+    .notice {
+      display:flex; gap:.5rem; align-items:center; justify-content:center;
+      background:#fff4d6; border:1px solid #ffd26b; color:#6b4e00;
+      padding:.6rem .8rem; border-radius:10px; margin:0 0 .75rem;
+      box-shadow:0 2px 8px rgba(0,0,0,.05);
+      font-size:.95rem;
+    }
+    .notice button { background:transparent; border:0; color:#6b4e00; text-decoration:underline; cursor:pointer; }
+
+    /* --- Hotspots (unsichtbare Tippflächen in Prozent, responsive) --- */
+    .hotspot {
+      position:absolute; border:0; background:transparent; padding:0; margin:0;
+      /* für A11y sichtbar machen, wenn fokussiert: */
+      outline: none;
+    }
+    .hotspot:focus { box-shadow: 0 0 0 3px rgba(35,105,196,.35) inset; border-radius:12px; }
+
+    /* --- Effekte --- */
+    @keyframes shake { 0%,100% { transform: translateX(0) } 25%{ transform: translateX(-3px)} 75%{ transform: translateX(3px)} }
+    .eff-shake { animation: shake .45s ease; }
+
+    @keyframes twinkle {
+      0%,100% { filter: brightness(1); opacity: 1; }
+      50%     { filter: brightness(1.35); opacity: .85; }
+    }
+    .eff-twinkle { animation: twinkle 1.2s ease-in-out; }
+
+    /* optische kleine Sternchen-Überlagerung */
+    .sparkle {
+      position:absolute; pointer-events:none; inset:0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255,255,200,.8) 0 2px, transparent 3px),
+        radial-gradient(circle at 70% 40%, rgba(255,255,220,.7) 0 2px, transparent 3px),
+        radial-gradient(circle at 40% 70%, rgba(255,255,210,.6) 0 2px, transparent 3px);
+      opacity:0; transition: opacity .25s ease;
+    }
+    .sparkle.on { opacity:1; }
     @media (max-width: 640px) {
       .wrap { padding:.5rem; }
-      .book { border-radius: 10px; }
       .page img { width: 98%; height: 98%; }
     }
   </style>
@@ -87,9 +94,12 @@
 <body>
   <main class="wrap" aria-label="Bilderbuch">
     <h1 style="text-align:center;margin:.25rem 0 .5rem;">📖 Gipititi – Bilderbuch</h1>
-    <p class="small" style="text-align:center;margin:0 0 .75rem;">
-      Tipp: wischen oder Pfeiltasten nutzen · Tipp &amp; Halt für Kinderhände 😊
-    </p>
+
+    <!-- Eltern-Hinweis -->
+    <div class="notice" id="tipNotice">
+      Tipp: Auf manchen Seiten kann dein Kind <strong>tippen</strong>, z.&nbsp;B. auf die Kokosnuss oder den Stern.
+      <button type="button" id="dismiss">Hinweis ausblenden</button>
+    </div>
 
     <div class="book" id="book" aria-live="polite">
       <div class="pages" id="pages"></div>
@@ -108,41 +118,96 @@
   </main>
 
   <script>
-    // === Konfiguration: Dateinamen deiner Seitenbilder ===
-    // Wenn du 12 Seiten hast: setze TOTAL = 12 und stelle 01.jpg..12.jpg bereit.
-    const TOTAL = 12; // <- ANPASSEN
-    const PATH  = 'assets/book/'; // Ordner
-    const EXT   = '.jpg';
+    /* =================== KONFIGURATION =================== */
+    // 1) Anzahl der Seitenbilder (Dateien: assets/book/01.jpg ... TOTAL.jpg)
+    const TOTAL = 12; // <— HIER anpassen
 
-    // Hilfsfunktionen
-    const pad2 = n => String(n).padStart(2,'0');
-    const imgSrc = n => `${PATH}${pad2(n)}${EXT}`;
+    // 2) Hotspots pro Seite (Koordinaten in % relativ zur ganzen Seite)
+    //    x,y,w,h sind Prozentangaben (0–100). effect: 'shake' oder 'twinkle'.
+    //    hint: Screenreader-Text / Elternhinweis auf dieser Seite.
+    const HOTSPOTS = {
+      // Seite 2 – Kokosnuss wackeln lassen
+      2: [
+        { x: 38, y: 58, w: 24, h: 22, effect: 'shake', hint: 'Tippe auf die Kokosnuss, damit sie wackelt.' }
+      ],
+      // Seite 5 – Plopp-Moment (kleines Aufblitzen)
+      5: [
+        { x: 50, y: 45, w: 30, h: 30, effect: 'shake', hint: 'Tippe in die Mitte – Plopp!' }
+      ],
+      // Seite 9 – Stern glitzern lassen
+      9: [
+        { x: 62, y: 14, w: 20, h: 20, effect: 'twinkle', hint: 'Tippe auf den Stern, damit er glitzert.' }
+      ]
+    };
+    /* ===================================================== */
+
+    const PATH  = 'assets/book/';
+    const EXT   = '.jpg';
+    const pad2  = n => String(n).padStart(2,'0');
+    const imgSrc= n => `${PATH}${pad2(n)}${EXT}`;
 
     const pagesEl = document.getElementById('pages');
     const posEl   = document.getElementById('pos');
     const totalEl = document.getElementById('total');
     const prevBtn = document.getElementById('prev');
     const nextBtn = document.getElementById('next');
+    const notice  = document.getElementById('tipNotice');
+    const dismiss = document.getElementById('dismiss');
 
     let index = 1;
     totalEl.textContent = TOTAL;
 
-    // Seiten-Elemente erzeugen
+    // Seiten rendern
     for (let i=1;i<=TOTAL;i++){
       const wrap = document.createElement('div');
       wrap.className = 'page';
+
       const img = document.createElement('img');
       img.src = imgSrc(i);
       img.alt = `Bilderbuch – Seite ${i}`;
+      img.draggable = false;
       img.loading = i>2 ? 'lazy' : 'eager';
       wrap.appendChild(img);
 
+      // Funken-Overlay (für twinkle)
+      const fx = document.createElement('div');
+      fx.className = 'sparkle';
+      wrap.appendChild(fx);
+
+      // Seitenzahl
       const num = document.createElement('span');
       num.className = 'num';
       num.textContent = i;
       wrap.appendChild(num);
 
+      // Hotspots dieser Seite erzeugen
+      const spots = HOTSPOTS[i] || [];
+      spots.forEach((s, k) => {
+        const btn = document.createElement('button');
+        btn.className = 'hotspot';
+        btn.setAttribute('aria-label', s.hint || 'Tippen');
+        // Positionieren in % relativ zur Seite
+        btn.style.left = s.x + '%';
+        btn.style.top  = s.y + '%';
+        btn.style.width  = s.w + '%';
+        btn.style.height = s.h + '%';
+        btn.addEventListener('click', () => triggerEffect(wrap, img, fx, s.effect));
+        wrap.appendChild(btn);
+      });
+
       pagesEl.appendChild(wrap);
+    }
+
+    function triggerEffect(page, img, fx, effect){
+      if (effect === 'shake'){
+        img.classList.remove('eff-shake'); // reset, falls mehrfach
+        void img.offsetWidth;               // reflow, damit Animation wieder startet
+        img.classList.add('eff-shake');
+        setTimeout(() => img.classList.remove('eff-shake'), 480);
+      } else if (effect === 'twinkle'){
+        img.classList.remove('eff-twinkle'); void img.offsetWidth; img.classList.add('eff-twinkle');
+        fx.classList.add('on'); setTimeout(() => fx.classList.remove('on'), 700);
+      }
     }
 
     // Navigation
@@ -153,16 +218,9 @@
       prevBtn.disabled = index===1;
       nextBtn.disabled = index===TOTAL;
 
-      // Nachbarslides vorladen
-      [index-1,index+1].forEach(i=>{
-        const el = pagesEl.children[i-1];
-        if (el){
-          const img = el.querySelector('img');
-          if (img && img.loading==='lazy' && !img.dataset.preloaded){
-            const src = img.src; img.src = src; img.dataset.preloaded = '1';
-          }
-        }
-      });
+      // Elternhinweis: nur zeigen, wenn auf dieser Seite Hotspots existieren
+      const hasTip = !!HOTSPOTS[index];
+      notice.style.display = hasTip ? 'flex' : 'none';
     }
 
     prevBtn.addEventListener('click', () => { if(index>1){ index--; update(); } });
@@ -177,15 +235,17 @@
     // Touch (Wischgeste)
     let startX=null;
     pagesEl.addEventListener('touchstart', e=>{ startX = e.touches[0].clientX; }, {passive:true});
-    pagesEl.addEventListener('touchmove',  ()=>{}, {passive:true});
     pagesEl.addEventListener('touchend', e=>{
       if(startX===null) return;
       const dx = e.changedTouches[0].clientX - startX;
-      const TH = 40; // Schwelle
+      const TH = 40;
       if (dx < -TH) nextBtn.click();
       if (dx >  TH) prevBtn.click();
       startX = null;
-    });
+    }, {passive:true});
+
+    // Hinweis ausblenden
+    dismiss.addEventListener('click', ()=> notice.style.display='none');
 
     update();
   </script>
