@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gipititi – Bilderbuch</title>
+  <link rel="stylesheet" href="/gipititi-site/assets/styles.css?v=14" />
+  <style>
+    /* --- Layout-Rahmen --- */
+    body { background:#f7f7f7; }
+    .wrap { max-width: 1024px; margin: 0 auto; padding: 1rem; }
+
+    /* --- Buchfläche --- */
+    .book {
+      position: relative;
+      margin: 0 auto;
+      background:#fff;
+      border:1px solid #e9e9e9;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+      overflow:hidden;
+      /* Seitenverhältnis ca. A5 quer (Doppelseite) */
+      aspect-ratio: 16 / 10;
+      max-width: 100%;
+    }
+
+    /* Innen: Bühne für Seiten (horizontales Band) */
+    .pages {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      transition: transform .35s ease;
+      will-change: transform;
+      touch-action: pan-y; /* lässt horizontales Wischen zu */
+      background:
+        linear-gradient(to right, rgba(0,0,0,.05), rgba(0,0,0,0) 12%, rgba(0,0,0,0) 88%, rgba(0,0,0,.05));
+    }
+
+    /* Einzel-Seite */
+    .page {
+      flex: 0 0 100%;
+      display: grid;
+      place-items: center;
+      background:#fff;
+      position: relative;
+    }
+
+    /* Bild füllt Seite, mit schmalem Rand */
+    .page img {
+      width: 96%;
+      height: 96%;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.06);
+      background:#fff;
+    }
+
+    /* Page-Nummern */
+    .num {
+      position: absolute; bottom: .4rem; right:.8rem;
+      font-size: .8rem; color:#777;
+      background: rgba(255,255,255,.7); padding:.1rem .4rem; border-radius:6px;
+    }
+
+    /* Steuerung */
+    .controls {
+      display:flex; justify-content:space-between; align-items:center;
+      gap:.5rem; margin:.75rem 0 0;
+    }
+    .btn {
+      user-select:none; -webkit-user-select:none;
+      background:#2369c4; color:#fff; border:0; border-radius:10px;
+      padding:.6rem .9rem; font-weight:600; cursor:pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,.08);
+    }
+    .btn[disabled]{ opacity:.4; cursor:default; }
+    .indicator{ color:#444; font-weight:600; }
+
+    /* Vollbreite auf Handy */
+    @media (max-width: 640px) {
+      .wrap { padding:.5rem; }
+      .book { border-radius: 10px; }
+      .page img { width: 98%; height: 98%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap" aria-label="Bilderbuch">
+    <h1 style="text-align:center;margin:.25rem 0 .5rem;">📖 Gipititi – Bilderbuch</h1>
+    <p class="small" style="text-align:center;margin:0 0 .75rem;">
+      Tipp: wischen oder Pfeiltasten nutzen · Tipp &amp; Halt für Kinderhände 😊
+    </p>
+
+    <div class="book" id="book" aria-live="polite">
+      <div class="pages" id="pages"></div>
+    </div>
+
+    <div class="controls">
+      <button class="btn" id="prev" aria-label="Zurück (links)">⟵ Zurück</button>
+      <div class="indicator"><span id="pos">1</span>/<span id="total">–</span></div>
+      <button class="btn" id="next" aria-label="Weiter (rechts)">Weiter ⟶</button>
+    </div>
+
+    <p class="small" style="margin-top:.75rem;">
+      <a class="cta" href="assets/pdfs/gipititi_geschichte_final.pdf?v=6" target="_blank" rel="noopener">PDF öffnen</a>
+      <a class="cta" href="index.html">Zurück zur Geschichte</a>
+    </p>
+  </main>
+
+  <script>
+    // === Konfiguration: Dateinamen deiner Seitenbilder ===
+    // Wenn du 12 Seiten hast: setze TOTAL = 12 und stelle 01.jpg..12.jpg bereit.
+    const TOTAL = 12; // <- ANPASSEN
+    const PATH  = 'assets/book/'; // Ordner
+    const EXT   = '.jpg';
+
+    // Hilfsfunktionen
+    const pad2 = n => String(n).padStart(2,'0');
+    const imgSrc = n => `${PATH}${pad2(n)}${EXT}`;
+
+    const pagesEl = document.getElementById('pages');
+    const posEl   = document.getElementById('pos');
+    const totalEl = document.getElementById('total');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+
+    let index = 1;
+    totalEl.textContent = TOTAL;
+
+    // Seiten-Elemente erzeugen
+    for (let i=1;i<=TOTAL;i++){
+      const wrap = document.createElement('div');
+      wrap.className = 'page';
+      const img = document.createElement('img');
+      img.src = imgSrc(i);
+      img.alt = `Bilderbuch – Seite ${i}`;
+      img.loading = i>2 ? 'lazy' : 'eager';
+      wrap.appendChild(img);
+
+      const num = document.createElement('span');
+      num.className = 'num';
+      num.textContent = i;
+      wrap.appendChild(num);
+
+      pagesEl.appendChild(wrap);
+    }
+
+    // Navigation
+    function update(){
+      const x = -(index-1)*100;
+      pagesEl.style.transform = `translateX(${x}%)`;
+      posEl.textContent = index;
+      prevBtn.disabled = index===1;
+      nextBtn.disabled = index===TOTAL;
+
+      // Nachbarslides vorladen
+      [index-1,index+1].forEach(i=>{
+        const el = pagesEl.children[i-1];
+        if (el){
+          const img = el.querySelector('img');
+          if (img && img.loading==='lazy' && !img.dataset.preloaded){
+            const src = img.src; img.src = src; img.dataset.preloaded = '1';
+          }
+        }
+      });
+    }
+
+    prevBtn.addEventListener('click', () => { if(index>1){ index--; update(); } });
+    nextBtn.addEventListener('click', () => { if(index<TOTAL){ index++; update(); } });
+
+    // Keyboard
+    window.addEventListener('keydown', e=>{
+      if (e.key==='ArrowRight') nextBtn.click();
+      if (e.key==='ArrowLeft')  prevBtn.click();
+    });
+
+    // Touch (Wischgeste)
+    let startX=null;
+    pagesEl.addEventListener('touchstart', e=>{ startX = e.touches[0].clientX; }, {passive:true});
+    pagesEl.addEventListener('touchmove',  ()=>{}, {passive:true});
+    pagesEl.addEventListener('touchend', e=>{
+      if(startX===null) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      const TH = 40; // Schwelle
+      if (dx < -TH) nextBtn.click();
+      if (dx >  TH) prevBtn.click();
+      startX = null;
+    });
+
+    update();
+  </script>
+</body>
+</html>
