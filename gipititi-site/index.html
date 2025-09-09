@@ -1,242 +1,214 @@
 <!DOCTYPE html>
-  <html lang="de">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Gipititi und die Kokosnuss</title>
-      <link rel="stylesheet" href="/gipititi-site/assets/styles.css?v=12">
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gipititi und die Kokosnuss</title>
 
-      <!-- jsPDF für die persönliche PDF -->
-      <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js" defer></script>
+  <!-- Externe Styles -->
+  <link rel="stylesheet" href="/gipititi-site/assets/styles.css?v=13">
 
-      <!-- Skripte -->
-      <script src="assets/js/customize.js?v=2" defer></script>
-      <script src="assets/js/personalized_pdf.js?v=1" defer></script>
+  <!-- jsPDF für die persönliche PDF -->
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js" defer></script>
 
-     <style>
-      /* Container */
-      #gp { max-width: 820px; margin: 0 auto; padding: 1.25rem; }
+  <!-- Skripte -->
+  <script src="assets/js/customize.js?v=2" defer></script>
+  <script src="assets/js/personalized_pdf.js?v=1" defer></script>
 
-      /* Titelbild: rund, etwas größer, garantiert zentriert */
-      #gp .title-figure{ margin:0 auto 1rem; text-align:center; }
-      #gp .title-figure img{
-        display:block !important;
-        margin:0 auto !important;
-        width:100% !important;
-        max-width:380px !important;     /* etwas größer */
-        aspect-ratio:1/1 !important;     /* immer quadratisch */
-        object-fit:cover !important;     /* schön beschnitten */
-        border-radius:50% !important;    /* rund */
-        background:#fff !important;
-        padding:6px !important;
-        border:4px solid #f5f5f5 !important;
-        box-shadow:0 6px 20px rgba(0,0,0,.12) !important;
-        height:auto;                     /* falls Browser aspect-ratio nutzt, ok */
-      }
+  <!-- Schlankes Inline-CSS NUR fürs Titelbild + Haupt-Header -->
+  <style>
+    /* Seite */
+    #gp { max-width: 820px; margin: 0 auto; padding: 1.25rem; }
 
-      /* Überschrift & Untertitel zentrieren */
-      #gp h1{ text-align:center !important; margin:.25rem 0 .5rem; }
-      #gp .sub{ text-align:center !important; color:#666; margin:0 0 1rem; }
+    /* Titelbild */
+    #gp .title-figure { margin: 0 auto 1rem; text-align: center; }
+    #gp .title-figure img {
+      display: block; margin: 0 auto; width: 100%; max-width: 380px; height: auto;
+      aspect-ratio: 1/1; object-fit: cover; border-radius: 50%;
+      background: #fff; padding: 6px; border: 4px solid #f5f5f5;
+      box-shadow: 0 6px 20px rgba(0,0,0,.12);
+    }
 
-      /* Karten/Abstände/Buttons – Feinschliff */
-      #gp .card{
-        margin:1.5rem auto; padding:1.25rem 1.5rem;
-        border-radius:12px; background:#fafafa;
-        box-shadow:0 3px 12px rgba(0,0,0,.05);
-        border:1px solid #eee;
-      }
-      #gp .cta{
-      display:inline-block; padding:.6rem 1.4rem; margin:.3rem .5rem 0 0;
-        font-size:1rem; font-weight:600; color:#fff; text-decoration:none; cursor:pointer;
-        background:linear-gradient(135deg,#4f9ef8,#2369c4); border:none; border-radius:8px;
-        transition:all .25s ease;
-      }
-      #gp .cta:hover{ background:linear-gradient(135deg,#2369c4,#4f9ef8); box-shadow:0 4px 12px rgba(0,0,0,.15); }
-      #gp .cta:active{ transform:scale(.97); }
+    /* Nur der ERSTE große Seitenkopf (Titel der Geschichte) soll mittig sein */
+    .page-header.main h1, .page-header.main .sub { text-align: center; }
 
-      /* Hinweise/Intro dezenter & gut lesbar */
-      #gp .small, #gp .info-note{ color:#555; font-size:.9rem; line-height:1.4; }
-      #gp .intro{ font-size:1.1rem; line-height:1.6; color:#333; }
+    /* Screenreader-only */
+    .visually-hidden{
+      position:absolute !important; width:1px; height:1px; padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+    }
+  </style>
+</head>
+<body>
 
-      /* Screenreader-only (Caption unsichtbar) */
-      .visually-hidden{
-        position:absolute !important; width:1px; height:1px; padding:0; margin:-1px;
-        overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
-      }
-    </style>
-    </head>
-    <body>
+<main id="gp">
 
-    <main id="gp">
+  <!-- 1) Bild -->
+  <figure class="title-figure">
+    <img src="assets/images/titelbild.jpg" alt="Titelillustration: Gipititi und Noël mit der Kokosnuss">
+    <figcaption class="visually-hidden">Titelillustration zur Geschichte „Gipititi und die Kokosnuss“</figcaption>
+  </figure>
 
-      <!-- 1) Bild -->
-      <figure class="title-figure">
-        <img src="assets/images/titelbild.jpg" alt="Titelillustration: Gipititi und Noël mit der Kokosnuss">
-        <figcaption class="visually-hidden">
-          Titelillustration zur Geschichte „Gipititi und die Kokosnuss“
-        </figcaption>
-      </figure>
+  <!-- 2) Titel + Untertitel (nur dieser Header zentriert) -->
+  <header class="page-header main">
+    <h1>Gipititi und die Kokosnuss</h1>
+    <p class="sub">Eine achtsame Gute-Nacht-Geschichte zum Vorlesen</p>
+  </header>
 
-      <!-- 2) Titel + Untertitel -->
-      <header class="page-header">
-        <h1>Gipititi und die Kokosnuss</h1>
-        <p class="sub">Eine achtsame Gute-Nacht-Geschichte zum Vorlesen</p>
-      </header>
+  <!-- Warnhinweis -->
+  <section class="warning" role="note" aria-labelledby="warn-title">
+    <p class="warning-title" id="warn-title">⚠️ Wichtiger Hinweis</p>
+    <p>
+      Bitte prüfen Sie die Geschichte vor dem Vorlesen individuell, ob sie zu Ihrem Kind passt.
+      Falls Ihr Kind keine Angst im Dunkeln hat oder bestimmte Themen sensibel sind, wählen Sie bitte eine andere Geschichte.
+      Jede Familie ist unterschiedlich – passen Sie das Vorlesen an die Bedürfnisse Ihres Kindes an.
+    </p>
+  </section>
 
-      <section class="warning">
-        <p class="warning-title">⚠️ Wichtiger Hinweis</p>
-        <p> Bitte prüfen Sie die Geschichte vor dem Vorlesen individuell, 
-            ob sie zu Ihrem Kind passt. Falls Ihr Kind keine Angst im Dunkeln hat 
-            oder bestimmte Themen sensibel sind, wählen Sie bitte eine andere Geschichte. 
-            Jede Familie ist unterschiedlich – passen Sie das Vorlesen an die Bedürfnisse Ihres Kindes an.
-        </p>
-      </section>
+  <!-- 3) Zusammenfassung -->
+  <section class="card">
+    <p class="intro">
+      Noël möchte abends noch nicht schlafen – bis aus seiner Kokosnuss ein kleines, warmherziges
+      Wesen hüpft: <strong>Gipititi</strong>. Gemeinsam zaubern sie Kokos-Bananen-Muffins,
+      verwandeln wuselnde Gedanken in kleine Wölkchen und finden einen liebevollen Weg
+      in eine ruhige, sichere Nacht.
+    </p>
+    <p class="info-note">
+      Direkt darunter findest du die <strong>gesamte Geschichte als PDF</strong>.
+      Außerdem lassen sich Namen individuell anpassen (Bezugsperson & Kindername).
+    </p>
+  </section>
 
-      <!-- 3) Zusammenfassung + Hinweis -->
-      <section class="card">
-        <p class="intro">
-          Noël möchte abends noch nicht schlafen – bis aus seiner Kokosnuss ein kleines, warmherziges
-          Wesen hüpft: <strong>Gipititi</strong>. Gemeinsam zaubern sie Kokos-Bananen-Muffins,
-          verwandeln wuselnde Gedanken in kleine Wölkchen und finden einen liebevollen Weg
-          in eine ruhige, sichere Nacht.
-        </p>
-        <p class="info-note">
-          Direkt darunter findest du die <strong>gesamte Geschichte als PDF</strong>. Außerdem lassen sich Namen
-          individuell anpassen (Bezugsperson & Kindername).
-        </p>
-      </section>
+  <!-- 4) PDFs (wichtig: diese Section war zuvor NICHT geschlossen) -->
+  <section class="card" aria-labelledby="print-help-1">
+    <h2 id="print-help-1">📄 Geschichte als PDF</h2>
+    <ul class="pdf-list">
+      <li>
+        <a href="assets/pdfs/gipititi_geschichte_final.pdf?v=6" target="_blank" rel="noopener">📖 Ganze Geschichte öffnen</a>
+        &nbsp;|&nbsp; <a href="assets/pdfs/gipititi_geschichte_final.pdf?v=6" download>⬇️ Download</a>
+      </li>
+      <li>
+        <a href="assets/pdfs/gipititi_A5_pages.pdf?v=6" target="_blank" rel="noopener">A5-Seiten (einfach drucken)</a>
+        &nbsp;|&nbsp; <a href="assets/pdfs/gipititi_A5_pages.pdf?v=6" download>⬇️ Download</a>
+      </li>
+      <li>
+        <a href="assets/pdfs/gipititi_A4_spreads.pdf?v=6" target="_blank" rel="noopener">A4-Broschüre (falten & heften)</a>
+        &nbsp;|&nbsp; <a href="assets/pdfs/gipititi_A4_spreads.pdf?v=6" download>⬇️ Download</a>
+      </li>
+    </ul>
+    <p class="small">iPad: PDF öffnen → Teilen → <strong>Drucken</strong>.</p>
+  </section> <!-- ✅ Section sauber geschlossen -->
 
-      <!-- 4) PDFs (direkt unter der Zusammenfassung) -->
-      <section class="card" aria-labelledby="print-help-1">
-        <h2 id="print-help-1">📄 Geschichte als PDF</h2>
-        <ul class="pdf-list">
-          <li>
-            <a href="assets/pdfs/gipititi_geschichte_final.pdf?v=6" target="_blank" rel="noopener">📖 Ganze Geschichte öffnen</a>
-            &nbsp;|&nbsp;
-            <a href="assets/pdfs/gipititi_geschichte_final.pdf?v=6" download>⬇️ Download</a>
-          </li>
-          <li>
-            <a href="assets/pdfs/gipititi_A5_pages.pdf?v=6" target="_blank" rel="noopener">A5-Seiten (einfach drucken)</a>
-            &nbsp;|&nbsp;
-            <a href="assets/pdfs/gipititi_A5_pages.pdf?v=6" download>⬇️ Download</a>
-          </li>
-          <li>
-            <a href="assets/pdfs/gipititi_A4_spreads.pdf?v=6" target="_blank" rel="noopener">A4-Broschüre (falten & heften)</a>
-            &nbsp;|&nbsp;
-            <a href="assets/pdfs/gipititi_A4_spreads.pdf?v=6" download>⬇️ Download</a>
-          </li>
-        </ul>
-        <p class="small">iPad: PDF öffnen → Teilen → <strong>Drucken</strong>.</p>
-      
-      <section class="card" id="tips">
-        <header class="page-header">
-          <h1>📚 Vorlese-Tipps</h1>
-          <p class="sub">Praktische Hinweise für eine ruhige, sichere Gute-Nacht-Zeit</p>
-        </header>
-      
-        <h3>Vor dem Vorlesen</h3>
-        <ul>
-          <li>Atmosphäre schaffen: gedämpftes Licht, Handy weg, ruhige Haltung.</li>
-          <li>Kurz Bezug nehmen: 1–2 Sätze über den Tag reichen.</li>
-          <li>Bezugsperson-Name prüfen, wenn die Geschichte personalisiert ist.</li>
-        </ul>
-      
-        <h3>Während des Vorlesens</h3>
-        <ul>
-          <li><strong>Keine Flüsterstimme.</strong> Lesen Sie in einer angenehmen, ruhigen Lautstärke.</li>
-          <li>Langsam sprechen, kleine Pausen lassen, Blickkontakt halten.</li>
-          <li>Kind darf Bilder länger betrachten. Frage: „Möchtest du selbst umblättern, wenn du bereit bist?“</li>
-          <li>Geräusche nur am Text orientiert (z. B. „plopp“ der Kokosnuss, Klopfen des Kochlöffels).</li>
-        </ul>
-      
-        <h3>Wenn das Kind innehält</h3>
-        <ul>
-          <li>Warten lassen, ruhig atmen, nicht drängen.</li>
-          <li>Ritualfrage: „Sollen wir weiterblättern, wenn du bereit bist?“</li>
-        </ul>
-      
-        <h3>Nach dem Vorlesen</h3>
-        <ul>
-          <li>Satz zur Sicherheit: „Ich bin da. Jetzt wird’s ruhig.“</li>
-          <li>Optional 1–2 offene Fragen („Was hat dir gefallen?“) – keine Prüfungsfragen.</li>
-        </ul>
-      
-        <h3>Do’s & Don’ts (kurz)</h3>
-        <ul>
-          <li><strong>Do:</strong> ruhig sitzen/liegen, langsam sprechen, lächeln, Pausen lassen, Namen anpassen.</li>
-          <li><strong>Don’t:</strong> flüstern, hetzen, erschrecken, ablenken (Handy), „erklären statt erzählen“.</li>
-        </ul>
-      
-        <h3>Hinweis zur Eignung</h3>
-        <ul>
-          <li>Eltern prüfen vorab, ob die Geschichte fürs eigene Kind geeignet ist; bei sensiblen Themen ggf. pausieren oder eine andere Geschichte wählen.</li>
-        </ul>
-      </section>
-      
-      <!-- 5) Namensanpassung -->
-      <section class="card" aria-labelledby="customize">
-        <h2 id="customize">Namen anpassen (optional)</h2>
-        <div class="customize-grid">
-          <div>
-            <label for="rel-select">Bezugsperson (Vorschlag)</label><br>
-            <select id="rel-select">
-              <option value="Mama">Mama</option>
-              <option value="Papa">Papa</option>
-              <option value="Oma">Oma</option>
-              <option value="Opa">Opa</option>
-              <option value="Tante">Tante</option>
-              <option value="Onkel">Onkel</option>
-            </select>
-          </div>
+  <!-- 5) Vorlese-Tipps (links ausgerichtet, keine blauen Balken) -->
+  <section class="card" id="tips">
+    <header class="page-header">
+      <h1>📚 Vorlese-Tipps</h1>
+      <p class="sub">Praktische Hinweise für eine ruhige, sichere Gute-Nacht-Zeit</p>
+    </header>
 
-            <div>
-            <label for="rel-custom">Eigener Begriff / Name (Bezugsperson)</label><br>
-            <input id="rel-custom" type="text" placeholder="z. B. Lea, Markus">
-          </div>
+    <h3>Vor dem Vorlesen</h3>
+    <ul>
+      <li>Atmosphäre schaffen: gedämpftes Licht, Handy weg, ruhige Haltung.</li>
+      <li>Kurz Bezug nehmen: 1–2 Sätze über den Tag reichen.</li>
+      <li>Bezugsperson-Name prüfen, wenn die Geschichte personalisiert ist.</li>
+    </ul>
 
-          <div>
-            <label for="child-custom">Name des Kindes (Standard: Noël)</label><br>
-            <input id="child-custom" type="text" placeholder="z. B. Leon, Anna">
-          </div>
+    <h3>Während des Vorlesens</h3>
+    <ul>
+      <li><strong>Keine Flüsterstimme.</strong> Lesen Sie in einer angenehmen, ruhigen Lautstärke.</li>
+      <li>Langsam sprechen, kleine Pausen lassen, Blickkontakt halten.</li>
+      <li>Kind darf Bilder länger betrachten. Frage: „Möchtest du selbst umblättern, wenn du bereit bist?“</li>
+      <li>Geräusche nur am Text orientiert (z. B. „plopp“ der Kokosnuss, Klopfen des Kochlöffels).</li>
+    </ul>
 
-          <div class="btn-row">
-            <button id="apply" class="cta" type="button">Anwenden</button>
-            <button id="reset" class="cta" type="button">Zurücksetzen</button>
-            <div>
-          </div>
+    <h3>Wenn das Kind innehält</h3>
+    <ul>
+      <li>Warten lassen, ruhig atmen, nicht drängen.</li>
+      <li>Ritualfrage: „Sollen wir weiterblättern, wenn du bereit bist?“</li>
+    </ul>
 
-      <!-- Mini-Lesefassung (zeigt Namensanpassung) -->
-        <div id="geschichte" class="mini-story">
-          <p>Noël wusste schon beim Abendessen, dass er eigentlich keine Lust hatte, ins Bett zu gehen …</p>
-          <p>… dann machte es plopp und die Kokosnuss sprang auf. Heraus kam <strong>Gipititi</strong>,
-             das ihm hilft, Gedanken in kleine Wölkchen zu verwandeln.</p>
-        </div>
-      </section>
+    <h3>Nach dem Vorlesen</h3>
+    <ul>
+      <li>Satz zur Sicherheit: „Ich bin da. Jetzt wird’s ruhig.“</li>
+      <li>Optional 1–2 offene Fragen („Was hat dir gefallen?“) – keine Prüfungsfragen.</li>
+    </ul>
 
-      <!-- 6) Persönliche PDF (direkt unter der Anpassung) -->
-      <section class="card" aria-labelledby="personalized-1">
-        <h2 id="personalized-1">✨ Deine persönliche PDF</h2>
-        <p class="small">
-          Oben Namen (Bezugsperson & Kind) setzen und hier klicken – die Geschichte wird mit deinen Namen
-          als <strong>eigene PDF</strong> heruntergeladen.
-        </p>
-        <button id="download-custom" class="cta" type="button">📄 Individuelle PDF erstellen</button>
-        <p class="small" id="download-status" aria-live="polite"></p>
-      </section>
+    <h3>Do’s & Don’ts (kurz)</h3>
+    <ul>
+      <li><strong>Do:</strong> ruhig sitzen/liegen, langsam sprechen, lächeln, Pausen lassen, Namen anpassen.</li>
+      <li><strong>Don’t:</strong> flüstern, hetzen, erschrecken, ablenken (Handy), „erklären statt erzählen“.</li>
+    </ul>
 
-        <!--7) Hintergrund -->
-      <section class="card" aria-labelledby="note">
-        <h2 id="note">Hintergrund</h2>
-          <p class="meta-note">
-          Diese Geschichte habe ich selbst entwickelt – basierend auf eigenen Ideen und wahren Erlebnissen.
-          Alle Arbeitsschritte stammen aus meiner Hand: Text, Bildaufbereitung und (später) Audio.
-          KI diente als Werkzeug und Partner: Meine Gedanken und Entscheidungen blieben der Kern;
-          die KI half beim Strukturieren, Verfeinern und Beschleunigen. Ziel ist ein frei zugängliches
-          Angebot, das Familien niedrigschwellig unterstützt.
-        </p>
-      </section>
+    <h3>Hinweis zur Eignung</h3>
+    <ul>
+      <li>Eltern prüfen vorab, ob die Geschichte fürs eigene Kind geeignet ist; bei sensiblen Themen ggf. pausieren oder eine andere Geschichte wählen.</li>
+    </ul>
+  </section>
 
-    </main>
+  <!-- 6) Namensanpassung -->
+  <section class="card" aria-labelledby="customize">
+    <h2 id="customize">Namen anpassen (optional)</h2>
+    <div class="customize-grid">
+      <div>
+        <label for="rel-select">Bezugsperson (Vorschlag)</label><br>
+        <select id="rel-select">
+          <option value="Mama">Mama</option>
+          <option value="Papa">Papa</option>
+          <option value="Oma">Oma</option>
+          <option value="Opa">Opa</option>
+          <option value="Tante">Tante</option>
+          <option value="Onkel">Onkel</option>
+        </select>
+      </div>
 
-  <body>
+      <div>
+        <label for="rel-custom">Eigener Begriff / Name (Bezugsperson)</label><br>
+        <input id="rel-custom" type="text" placeholder="z. B. Lea, Markus">
+      </div>
+
+      <div>
+        <label for="child-custom">Name des Kindes (Standard: Noël)</label><br>
+        <input id="child-custom" type="text" placeholder="z. B. Leon, Anna">
+      </div>
+
+      <div class="btn-row">
+        <button id="apply" class="cta" type="button">Anwenden</button>
+        <button id="reset" class="cta" type="button">Zurücksetzen</button>
+      </div>
+    </div>
+
+    <!-- Mini-Lesefassung (zeigt Namensanpassung) -->
+    <div id="geschichte" class="mini-story">
+      <p>Noël wusste schon beim Abendessen, dass er eigentlich keine Lust hatte, ins Bett zu gehen …</p>
+      <p>… dann machte es plopp und die Kokosnuss sprang auf. Heraus kam <strong>Gipititi</strong>,
+         das ihm hilft, Gedanken in kleine Wölkchen zu verwandeln.</p>
+    </div>
+  </section>
+
+  <!-- 7) Persönliche PDF -->
+  <section class="card" aria-labelledby="personalized-1">
+    <h2 id="personalized-1">✨ Deine persönliche PDF</h2>
+    <p class="small">
+      Oben Namen (Bezugsperson & Kind) setzen und hier klicken – die Geschichte wird mit deinen Namen
+      als <strong>eigene PDF</strong> heruntergeladen.
+    </p>
+    <button id="download-custom" class="cta" type="button">📄 Individuelle PDF erstellen</button>
+    <p class="small" id="download-status" aria-live="polite"></p>
+  </section>
+
+  <!-- 8) Hintergrund -->
+  <section class="card" aria-labelledby="note">
+    <h2 id="note">Hintergrund</h2>
+    <p class="meta-note">
+      Diese Geschichte habe ich selbst entwickelt – basierend auf eigenen Ideen und wahren Erlebnissen.
+      Alle Arbeitsschritte stammen aus meiner Hand: Text, Bildaufbereitung und (später) Audio.
+      KI diente als Werkzeug und Partner: Meine Gedanken und Entscheidungen blieben der Kern;
+      die KI half beim Strukturieren, Verfeinern und Beschleunigen. Ziel ist ein frei zugängliches
+      Angebot, das Familien niedrigschwellig unterstützt.
+    </p>
+  </section>
+
+</main>
+
+</body>
 </html>
