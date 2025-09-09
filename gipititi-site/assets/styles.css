@@ -186,3 +186,4 @@ h1 {
 #tips li::marker {
   color: #444; /* neutrale Bullets */
 }
+#tips h2 { margin: 0 0 .25rem; }
