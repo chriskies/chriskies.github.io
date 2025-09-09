@@ -1,99 +1,39 @@
-/* =========================
-   Basis-Layout
-========================= */
-
+/* ========== Basislayout ========== */
 html, body {
   margin: 0;
   padding: 0;
-  background: var(--bg, #fff);
-  color: var(--ink, #111);
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  background: #fafafa;
+  color: #111;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   line-height: 1.6;
 }
 
-main, header, footer {
+#gp {
   max-width: 820px;
   margin: 0 auto;
   padding: 1.25rem;
 }
 
-/* =========================
-   Typografie
-========================= */
-
-h1 {
-  font-size: 2rem;
-  margin: 0 0 0.5rem;
+/* ========== Titelbild ========== */
+.title-figure {
+  max-width: 820px;
+  margin: 0 auto 1rem;
+  text-align: center;
 }
-
-h2 {
-  font-size: 1.5rem;
-  margin: 2rem 0 0.6rem;
-}
-
-.sub {
-  color: var(--muted, #666);
-  margin: 0 0 2rem;
-}
-
-p {
-  margin: 0 0 1rem;
-}
-
-/* =========================
-   Karten / Container
-========================= */
-
-.card {
-  background: var(--card-bg, #fff);
-  border: 1px solid var(--line, #ddd);
-  border-radius: 14px;
-  padding: 1rem 1.25rem;
-  margin: 1.5rem 0;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-}
-
-/* =========================
-   Labels & Formulare
-========================= */
-
-label {
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-input, select, button {
-  font: inherit;
-  padding: 0.45rem 0.6rem;
-  border: 1px solid var(--line, #ccc);
-  border-radius: 8px;
+.title-figure img {
+  display: block;
+  margin: 0 auto;
   width: 100%;
-  box-sizing: border-box;
+  max-width: 380px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 50%; /* rund */
+  background: #fff;
+  padding: 6px;
+  border: 4px solid #f5f5f5;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  height: auto;
 }
-
-.btn-row {
-  display: flex;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
-}
-
-/* =========================
-   PDFs / Listen
-========================= */
-
-.pdf-list {
-  padding-left: 1.1rem;
-}
-
-.pdf-list li {
-  margin-bottom: 0.5rem;
-}
-
-/* =========================
-   Utilities
-========================= */
-
 .visually-hidden {
   position: absolute !important;
   width: 1px;
@@ -101,260 +41,84 @@ input, select, button {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  clip: rect(0,0,0,0);
   white-space: nowrap;
   border: 0;
 }
 
-.small {
-  font-size: 0.85rem;
-  color: var(--muted, #666);
-}
-
-/* =========================
-   Gipititi Unterseite
-========================= */
-
-/* Bild-Block */
-.title-figure {
-  max-width: 820px;
-  margin: 0 auto 1rem;
+/* ========== Überschriften ========== */
+h1 {
   text-align: center;
+  margin: .25rem 0 .5rem;
 }
-
-.title-figure img {
-  display: block;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 320px;
-  height: auto;
-  border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-}
-
-/* Titel & Untertitel mittig */
-h1, .sub {
+.sub {
   text-align: center;
+  color: #666;
+  margin: 0 0 1rem;
 }
 
-/* Introtext */
-.intro {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  margin: 0.25rem 0 1rem 0;
-}
-
-.info-note {
-  background: #faf9f7;
-  border: 1px solid var(--line, #ddd);
-  border-radius: 10px;
-  padding: 0.75rem 1rem;
-}
-
-/* Anpassung Grid */
-.customize-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-  max-width: 32rem;
-}
-
-/* Mini-Story Vorschau */
-.mini-story {
-  margin-top: 0.75rem;
-  color: var(--muted, #666);
-}
-
-/* =========================
-   Debug / Cache-Killer
-========================= */
-
-/* Testanzeige – kannst du entfernen, wenn alles läuft */
-body::after {
-  content: "CSS geladen ✅";
-  position: fixed;
-  right: 8px;
-  bottom: 8px;
-  background: #222;
-  color: #fff;
-  padding: 4px 8px;
-  font: 12px/1.2 system-ui, sans-serif;
-  border-radius: 6px;
-  z-index: 9999;
-}:root { --bg:#fffaf4; --ink:#2b2723; --muted:#756a5e; --line:#e9e1d7; }
-html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.6}
-header,main,footer{max-width:820px;margin:auto;padding:1.25rem}
-header{padding-top:2rem}
-h1{margin:0 0 .25rem 0;font-size:2rem}
-.sub{color:var(--muted);margin:.25rem 0 1rem 0}
-.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.1rem 1rem;margin:1rem 0;box-shadow:0 4px 14px rgba(0,0,0,.04)}
-h2{font-size:1.2rem;margin:.2rem 0 .6rem 0}
-p{margin:.8rem 0}
-.small{font-size:.92rem;color:var(--muted)}
-.note{display:inline-block;font-style:italic;color:var(--muted);margin-top:.2rem}
-.divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:1.2rem 0}
-.cta{border:1px solid var(--line);background:#fff;border-radius:10px;padding:.45rem .8rem;cursor:pointer}
-label{font-weight:600;font-size:.95rem}
-input,select{font-size:1rem;padding:.45rem .6rem;border-radius:8px;border:1px solid var(--line);width:100%}
-.customize-grid{display:flex;flex-direction:column;gap:.9rem;max-width:32rem}
-.btn-row{display:flex;gap:.6rem;flex-wrap:wrap}
-footer{color:var(--muted);font-size:.92rem}
-
-/* Titelbild */
-.title-figure {
-  margin: 1rem 0 2rem 0;   /* Abstände oben/unten */
-  text-align: center;      /* falls Caption sichtbar wäre */ 
-}
-
-.title-figure img {
-  display: block;                /* kein Inline-Versatz */
-  width: 100%;                   /* nimmt die Breite des Textcontainers */
-  height: auto;                  /* Seitenverhältnis bleibt */
-  border-radius: 14px;
-  box-Shadow: 0 6px 20 px rgba(0,0,0,.08);
-}
-
-/* Screenreader-only Caption */
-.visually-hidden {
-  position: absolute !important;
-  width: 1px; 
-  height: 1px;
-  padding: 0; 
-  margin: -1px;
-  overflow: hidden; 
-  clip: rect(0,0,0,0);
-  white-space: nowrap; 
-  border: 0;
-}
-
-/* Überschrift in Projekte-Block zentrieren + Linie direkt darunter */
-#projects h2 {
-  text-align: center;                /* Überschrift mittig */
-  position: relative;
-  margin: 0 0 2rem 0;          
-}
-
-#projects h2::after {
-  content: "";
-  display: block;
-  width: 140px;                    /* Breite der Linie (anpassen nach Bedarf) */
-  max-width: 60%;                  /* auf kleinen Screens etwas flexibler */
-  height: 3px;
-  bakcground: var(--line);
-  margin: .35rem auto 0;          /* zentriert unter den Text */
-  border-radius: 2px;
-}
-
-/* Titelbild bündig mit Textcontainer, aber kleiner wirken lassen */
-.title-figure {
-  max-width: 820px;      /* wie dein Haupt-Content */
-  margin: 0 auto 1rem auto;
-  text-align: center;
-}
-.title-figure img {
-  width: 100%;
-  max-width: 320px;      /* Bild visuell kleiner */
-  height: auto;
-  border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(0,0,0,.08);
-}
-
-/* --- TEST: sollte sofort wirken --- */
-.title-figure img {
-  max-width: 320px !important;
-  display: block;
-  margin: 0 auto;
-  border-radius: 14px;
-}
-h1, .sub {
-  text-align: center !important;
-}
-
-/* ===========================
-   Feinschliff Gipititi-Seite
-   =========================== */
-
-/* Titelbild: etwas größer & mit rundem Rahmen */
-.title-figure img {
-  display: block;
-  margin: 0 auto;
-  max-width: 380px;   /* etwas größer */
-  height: auto;
-  border-radius: 50%; /* macht es rund */
-  border: 4px solid #f5f5f5; /* heller Rahmen */
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-  background: #fff;   /* für gleichmäßigen Rand */
-  padding: 6px;       /* Luft zwischen Bild und Rahmen */
-}
-
-/* Kartenabstand einheitlich */
+/* ========== Karten ========== */
 .card {
   margin: 1.5rem auto;
   padding: 1.25rem 1.5rem;
   border-radius: 12px;
-  background: #fafafa;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.05);
-  max-width: 820px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(0,0,0,.05);
+  border: 1px solid #eee;
 }
 
-/* Buttons (Call to Action) */
+/* ========== Buttons ========== */
 .cta {
   display: inline-block;
-  padding: 0.6rem 1.4rem;
-  margin: 0.3rem 0.5rem 0 0;
+  padding: .6rem 1.4rem;
+  margin: .3rem .5rem 0 0;
   font-size: 1rem;
   font-weight: 600;
   color: #fff;
-  background: linear-gradient(135deg, #4f9ef8, #2369c4);
+  text-decoration: none;
+  cursor: pointer;
+  background: linear-gradient(135deg,#4f9ef8,#2369c4);
   border: none;
   border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  text-decoration: none;
+  transition: all .25s ease;
 }
 .cta:hover {
-  background: linear-gradient(135deg, #2369c4, #4f9ef8);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  background: linear-gradient(135deg,#2369c4,#4f9ef8);
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
 }
 .cta:active {
-  transform: scale(0.97);
+  transform: scale(.97);
 }
 
-/* Kleine Hinweise dezenter */
-.small, .info-note {
-  color: #555;
-  font-size: 0.9rem;
-  line-height: 1.4;
+/* ========== Hinweisblock (rot) ========== */
+.warning {
+  background: #ffecec !important;       /* hellrot Hintergrund */
+  border: 3px solid #f44336 !important; /* kräftig rote Umrandung */
+  color: #b71c1c !important;            /* dunkler Rotton */
+  padding: 1rem 1.25rem !important;
+  margin: 1.5rem auto !important;
+  border-radius: 10px !important;
+  max-width: 820px !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+  text-align: center !important;
 }
+.warning-title {
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.5rem !important;
+  color: #d32f2f !important;
+  text-align: center !important;
+}
+
+/* ========== Zusatztexte ========== */
 .intro {
   font-size: 1.1rem;
   line-height: 1.6;
   color: #333;
 }
-.warning {
-  background: #ffecec;
-  border: 2px solid #f44336;
-  color: #b71c1c;
-  padding: 1rem 1.25rem;
-  margin: 1.5rem auto;
-  border-radius: 8px;
-  max-width: 820px;
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-.warning strong {
-  color: #d32f2f;
-}
-.warning p {
-  margin: 0;
-  text-align: center;
-  line-height: 1.5;
-}
-.warning-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: #d32f2f;
-  text-align: center;
+.info-note,
+.small {
+  color: #555;
+  font-size: .9rem;
+  line-height: 1.4;
 }
