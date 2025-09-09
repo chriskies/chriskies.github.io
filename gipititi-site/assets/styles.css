@@ -151,3 +151,37 @@ h1 {
   line-height: 1.5;
   color: #222;
 }
+/* Nur die großen Titel (h1 in page-header) zentrieren */
+.page-header h1,
+.page-header .sub {
+  text-align: center;
+}
+
+/* Alles andere (normale Abschnitte, h2, h3, Listen) links */
+#gp .card {
+  text-align: left;
+}
+
+#tips h2,
+#tips h3 {
+  text-align: left;
+  margin-top: 1rem;
+  margin-bottom: .35rem;
+  color: #444;
+  font-weight: 600;
+}
+
+/* Listenpunkte normal (keine blauen Marker) */
+#tips ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin-left: 0;
+}
+#tips li {
+  margin: .3rem 0;
+  line-height: 1.5;
+  color: #222;
+}
+#tips li::marker {
+  color: #222; /* neutrale Markerfarbe */
+}
