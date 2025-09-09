@@ -125,7 +125,8 @@ h1 {
 #tips ul { padding-left: 1.1rem; }
 #tips li { margin: .35rem 0; }
 
-/* ===== Vorlese-Tipps Styling ===== *//* ========== Vorlese-Tipps (bereinigt) ========== */
+/* ===== Vorlese-Tipps Styling ===== */
+/* ========== Vorlese-Tipps (bereinigt) ========== */
 #tips .page-header h1,
 #tips .page-header .sub {
   text-align: left;   /* Überschrift + Untertitel links */
