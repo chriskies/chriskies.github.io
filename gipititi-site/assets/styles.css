@@ -351,4 +351,10 @@ h1, .sub {
   text-align: center;
   line-height: 1.5;
 }
-
+.warning-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #d32f2f;
+  text-align: center;
+}
