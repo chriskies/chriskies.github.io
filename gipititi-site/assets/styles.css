@@ -185,3 +185,39 @@ h1 {
 #tips li::marker {
   color: #222; /* neutrale Markerfarbe */
 }
+/* --- Vorlese-Tipps --- */
+#tips h1 {
+  text-align: center;        /* Titel mittig */
+  margin-bottom: .25rem;
+}
+
+#tips .sub {
+  text-align: center;        /* Untertitel mittig */
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+#tips h3 {
+  text-align: left;          /* Unterüberschriften links */
+  font-size: 1.05rem;
+  margin: 1rem 0 .35rem;
+  font-weight: 600;
+  color: #333;
+}
+
+#tips ul {
+  list-style: disc;          /* Normale Bullets */
+  padding-left: 1.25rem;     
+  margin: 0 0 1rem;
+}
+
+#tips li {
+  text-align: left;
+  margin: .3rem 0;
+  line-height: 1.5;
+  color: #222;
+}
+
+#tips li::marker {
+  color: #444;               /* neutrale Bullet-Farbe */
+}
