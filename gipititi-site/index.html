@@ -9,7 +9,8 @@
   <!-- jsPDF für die persönliche PDF -->
   <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js" defer></script>
 
-  <!-- Unser Skript für die persönliche PDF -->
+  <!-- Skripte -->
+  <script src="assets/js/customize.js?v=2" defer></script>
   <script src="assets/js/personalized_pdf.js?v=1" defer></script>
 
   <!-- Sofort-Fix für Bild & Titel -->
@@ -58,33 +59,27 @@
       in eine ruhige, sichere Nacht.
     </p>
     <p class="info-note">
-      Unten kannst du die <strong>gesamte Geschichte als PDF</strong> öffnen oder herunterladen.
-      Außerdem lassen sich Namen individuell anpassen.
+      Direkt darunter findest du die <strong>gesamte Geschichte als PDF</strong>. Außerdem lassen sich Namen
+      individuell anpassen (Bezugsperson & Kindername).
     </p>
   </section>
 
-  <!-- 4) PDFs (jetzt direkt unter der Zusammenfassung) -->
-  <section class="card" aria-labelledby="print-help">
-    <h2 id="print-help">📄 Geschichte als PDF</h2>
+  <!-- 4) PDFs (direkt unter der Zusammenfassung) -->
+  <section class="card" aria-labelledby="print-help-1">
+    <h2 id="print-help-1">📄 Geschichte als PDF</h2>
     <ul class="pdf-list">
       <li>
-        <a href="assets/pdfs/gipititi_geschichte_final.pdf?v=6" target="_blank" rel="noopener">
-          📖 Ganze Geschichte öffnen
-        </a>
+        <a href="assets/pdfs/gipititi_geschichte_final.pdf?v=6" target="_blank" rel="noopener">📖 Ganze Geschichte öffnen</a>
         &nbsp;|&nbsp;
         <a href="assets/pdfs/gipititi_geschichte_final.pdf?v=6" download>⬇️ Download</a>
       </li>
       <li>
-        <a href="assets/pdfs/gipititi_A5_pages.pdf?v=6" target="_blank" rel="noopener">
-          A5-Seiten (einfach drucken)
-        </a>
+        <a href="assets/pdfs/gipititi_A5_pages.pdf?v=6" target="_blank" rel="noopener">A5-Seiten (einfach drucken)</a>
         &nbsp;|&nbsp;
         <a href="assets/pdfs/gipititi_A5_pages.pdf?v=6" download>⬇️ Download</a>
       </li>
       <li>
-        <a href="assets/pdfs/gipititi_A4_spreads.pdf?v=6" target="_blank" rel="noopener">
-          A4-Broschüre (falten & heften)
-        </a>
+        <a href="assets/pdfs/gipititi_A4_spreads.pdf?v=6" target="_blank" rel="noopener">A4-Broschüre (falten & heften)</a>
         &nbsp;|&nbsp;
         <a href="assets/pdfs/gipititi_A4_spreads.pdf?v=6" download>⬇️ Download</a>
       </li>
@@ -131,10 +126,10 @@
          das ihm hilft, Gedanken in kleine Wölkchen zu verwandeln.</p>
     </div>
   </section>
-  
+
   <!-- 6) Persönliche PDF (direkt unter der Anpassung) -->
-  <section class="card" aria-labelledby="personalized">
-    <h2 id="personalized">✨ Deine persönliche PDF</h2>
+  <section class="card" aria-labelledby="personalized-1">
+    <h2 id="personalized-1">✨ Deine persönliche PDF</h2>
     <p class="small">
       Oben Namen (Bezugsperson & Kind) setzen und hier klicken – die Geschichte wird mit deinen Namen
       als <strong>eigene PDF</strong> heruntergeladen.
@@ -143,46 +138,7 @@
     <p class="small" id="download-status" aria-live="polite"></p>
   </section>
 
-  <!-- 7) PDFs -->
-  <section class="card" aria-labelledby="print-help">
-    <h2 id="print-help">📄 Geschichte als PDF</h2>
-    <ul class="pdf-list">
-      <li>
-        <a href="assets/pdfs/gipititi_geschichte_final.pdf?v=6" target="_blank" rel="noopener">
-          📖 Ganze Geschichte öffnen
-        </a>
-        &nbsp;|&nbsp;
-        <a href="assets/pdfs/gipititi_geschichte_final.pdf?v=6" download>⬇️ Download</a>
-      </li>
-      <li>
-        <a href="assets/pdfs/gipititi_A5_pages.pdf?v=6" target="_blank" rel="noopener">
-          A5-Seiten (einfach drucken)
-        </a>
-        &nbsp;|&nbsp;
-        <a href="assets/pdfs/gipititi_A5_pages.pdf?v=6" download>⬇️ Download</a>
-      </li>
-      <li>
-        <a href="assets/pdfs/gipititi_A4_spreads.pdf?v=6" target="_blank" rel="noopener">
-          A4-Broschüre (falten & heften)
-        </a>
-        &nbsp;|&nbsp;
-        <a href="assets/pdfs/gipititi_A4_spreads.pdf?v=6" download>⬇️ Download</a>
-      </li>
-    </ul>
-    <p class="small">iPad: PDF öffnen → Teilen → <strong>Drucken</strong>.</p>
-  </section>
-
-  <section class="card" aria-labelledby="personalized">
-    <h2 id="personalized">✨ Deine persönliche PDF</h2>
-    <p class="small">
-      Oben kannst du <strong>Name des Kindes</strong> und <strong>Bezugsperson</strong> setzen.
-      Klicke dann hier, um eine <strong>individuelle PDF</strong> mit diesen Namen zu erstellen.
-    </p>
-      <button id="download-custom" class="cta" type="button">📄 Individuelle PDF erstellen</button>
-    <p class="small" id="download-status" aria-live="polite"></p>
-  </section>
-
-  <!-- 8) Hintergrund -->
+  <!-- 7) Hintergrund -->
   <section class="card" aria-labelledby="note">
     <h2 id="note">Hintergrund</h2>
     <p class="meta-note">
@@ -195,9 +151,6 @@
   </section>
 
 </main>
-
-<!-- JS für Namensanpassung -->
-<script src="assets/js/customize.js?v=2" defer></script>
 
 </body>
 </html>
