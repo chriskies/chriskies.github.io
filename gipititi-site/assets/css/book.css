@@ -115,3 +115,11 @@ html,body{
 @media (max-width: 520px){
   .nav{ width:42px; height:42px; font-size:24px; }
 }
+/* --- echtes Ziehen/Schieben --- */
+.stage { touch-action: pan-y; }      /* vertikales Scrollen der Seite bleibt möglich */
+#pageimg {
+  will-change: transform, opacity;
+  transition: transform .25s ease, opacity .25s ease;
+}
+.stage.grabbing { cursor: grabbing; }
+.stage.grabbing #pageimg { transition: none; }  /* während Ziehen keine Ease */
