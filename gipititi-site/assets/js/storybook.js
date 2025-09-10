@@ -1,3 +1,4 @@
+const dbg = (msg)=>{ const el = document.getElementById('dbg'); if(el) el.textContent = 'debug: ' + msg; };
 /* ==================== Storybook – Interaktive Bilderbuch-Logik ==================== */
 /* Konfiguration ------------------------------------------------------------------- */
 const TOTAL = 7;                 // Anzahl der Seiten
