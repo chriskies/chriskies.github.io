@@ -74,23 +74,21 @@ function preload(){
 }
 
 /* Seite zeigen ------------------------------------------------------------------- */
-function show(n){
-  page = Math.max(1, Math.min(TOTAL, n));
+function show(n) {
+  if (n < 1) n = TOTAL;
+  if (n > TOTAL) n = 1;
+  page = n;
 
-  // sanfte Animation
-  img.classList.remove('fade');
-  img.src = srcFor(page);
-  img.onload = () => img.classList.add('fade');
+  const src = `${PATH}${String(page).padStart(2, '0')}.${EXT}`;
+  dbg('zeige Seite ' + page + ' → ' + src);
 
-  // Caption
-  cap.innerText = CAPTIONS[page-1] || '';
+  const img = document.getElementById('pageimg');
+  img.src = src;
+  img.onerror = () => dbg('Bild fehlt: ' + img.src);
 
-  // UI-Status
-  setDots();
-  prevBt.disabled = (page === 1);
-  nextBt.disabled = (page === TOTAL);
+  const cap = document.getElementById('caption');
+  cap.textContent = CAPTIONS[page - 1] || '';
 }
-
 dbg('JS geladen');
 …
 function show(n){
