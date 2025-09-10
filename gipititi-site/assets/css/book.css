@@ -1,0 +1,117 @@
+:root{
+  --bg:#0d0f12;        /* dunkler Rand für Fokus aufs Bild */
+  --panel:#ffffff;
+  --ink:#111;
+  --muted:#667085;
+  --accent:#2369c4;
+}
+
+*{ box-sizing:border-box; }
+
+html,body{
+  margin:0; padding:0; height:100%;
+  background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+}
+
+#book{
+  position:relative;
+  height:100dvh; width:100%;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+}
+
+.page{
+  margin:0; padding:1rem;
+  width:min(100%, 1200px);
+  height:min(90dvh, 820px);
+  display:flex; flex-direction:column;
+  justify-content:space-between;
+  background:var(--panel);
+  border-radius:16px;
+  box-shadow:0 12px 40px rgba(0,0,0,.35);
+}
+
+.page img{
+  width:100%;
+  height:100%;
+  max-height:calc(100% - 88px); /* Platz für Caption */
+  object-fit:contain;
+  border-radius:12px;
+  background:#fff;
+}
+
+.caption{
+  margin-top:.5rem;
+  padding:.75rem 1rem;
+  min-height:72px;
+  color:#1a1a1a;
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:10px;
+  line-height:1.5;
+  font-size:clamp(14px, 2.2vw, 18px);
+}
+
+.nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:48px; height:48px;
+  border-radius:50%;
+  border:0; cursor:pointer;
+  background:rgba(255,255,255,.9);
+  color:#111; font-size:28px; font-weight:700;
+  display:grid; place-items:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
+  transition:transform .15s ease, background .15s ease;
+}
+.nav:hover{ transform:translateY(-50%) scale(1.06); }
+.nav:active{ transform:translateY(-50%) scale(.98); }
+.prev{ left:16px; }
+.next{ right:16px; }
+
+.dots{
+  position:absolute; bottom:12px; left:50%;
+  transform:translateX(-50%);
+  display:flex; gap:8px;
+}
+.dots .dot{
+  width:9px; height:9px; border-radius:50%;
+  background:rgba(255,255,255,.45);
+}
+.dots .dot.active{
+  background:#fff; box-shadow:0 0 0 3px rgba(255,255,255,.25);
+}
+
+.hint{
+  position:absolute; top:12px; left:50%;
+  transform:translateX(-50%);
+  padding:.35rem .6rem;
+  font-size:.9rem; color:#fff;
+  background:rgba(0,0,0,.35);
+  border-radius:999px;
+  opacity:.9;
+  user-select:none;
+}
+
+/* sanfter Seitenwechsel */
+.fade{
+  animation:fade .28s ease forwards;
+}
+@keyframes fade{
+  from{ opacity:.25; transform:translateY(4px); }
+  to{   opacity:1;    transform:none; }
+}
+
+/* Bewegungs-Reduktion respektieren */
+@media (prefers-reduced-motion: reduce){
+  .nav{ transition:none; }
+  .fade{ animation:none; }
+}
+
+/* kleine Geräte */
+@media (max-width: 520px){
+  .nav{ width:42px; height:42px; font-size:24px; }
+}
