@@ -42,6 +42,8 @@ const hint   = $('#hint');
 let page = 1;
 let startX = 0, startY = 0;
 
+const pageFigure = document.querySelector('.page');
+
 /* Dots bauen & aktualisieren ------------------------------------------------------ */
 function buildDots(){
   dotsEl.innerHTML = '';
