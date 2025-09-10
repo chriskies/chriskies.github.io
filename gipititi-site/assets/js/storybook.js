@@ -103,22 +103,67 @@ window.addEventListener('keydown', (e)=>{
   if(e.key === 'ArrowLeft')  prev();
 });
 
-// Wischen (Touch)
-img.addEventListener('touchstart', (e)=>{
-  const t = e.changedTouches[0];
-  startX = t.clientX;
-  startY = t.clientY;
-}, {passive:true});
+/* ----- Drag/Swipe: echtes Ziehen und „Umblättern“ ----- */
+let dragging = false;
+let startX = 0;
+let currentX = 0;
 
-img.addEventListener('touchend', (e)=>{
-  const t = e.changedTouches[0];
-  const dx = t.clientX - startX;
-  const dy = t.clientY - startY;
-  // nur horizontale, kurze Wischgesten akzeptieren
-  if(Math.abs(dx) > 40 && Math.abs(dy) < 60){
-    if(dx < 0) next(); else prev();
+function onPointerDown(e){
+  dragging = true;
+  const p = e.touches ? e.touches[0] : e;
+  startX = p.clientX;
+  currentX = startX;
+  document.querySelector('.stage').classList.add('grabbing');
+  img.style.transition = 'none';
+}
+
+function onPointerMove(e){
+  if(!dragging) return;
+  const p = e.touches ? e.touches[0] : e;
+  currentX = p.clientX;
+  const dx = currentX - startX;
+  // leicht dämpfen, damit es sich „schwerer“ anfühlt
+  img.style.transform = `translateX(${dx * 0.9}px)`;
+  // verhindert Scrollen während der Geste
+  if(e.cancelable) e.preventDefault();
+}
+
+function onPointerUp(e){
+  if(!dragging) return;
+  dragging = false;
+
+  const dx = currentX - startX;
+  const W = img.clientWidth || 1;
+
+  // Schwelle: mindestens 55% der Breite wischen
+  const TH = 0.55 * W;
+
+  // Rückkehr-Transition wieder aktivieren
+  img.style.transition = 'transform .25s ease, opacity .25s ease';
+
+  if(dx <= -TH && page < TOTAL){
+    // nach links weit genug -> nächste Seite
+    img.style.transform = `translateX(${-W}px)`;
+    setTimeout(()=>{ img.style.transform = ''; next(); }, 180);
+  } else if(dx >= TH && page > 1){
+    // nach rechts weit genug -> vorige Seite
+    img.style.transform = `translateX(${W}px)`;
+    setTimeout(()=>{ img.style.transform = ''; prev(); }, 180);
+  } else {
+    // nicht weit genug -> zurückschnappen
+    img.style.transform = '';
   }
-}, {passive:true});
+  document.querySelector('.stage').classList.remove('grabbing');
+}
+
+/* Events registrieren – Touch und Maus/Pointer */
+img.addEventListener('touchstart', onPointerDown, {passive:false});
+img.addEventListener('touchmove',  onPointerMove, {passive:false});
+img.addEventListener('touchend',   onPointerUp,   {passive:true});
+
+img.addEventListener('pointerdown', onPointerDown);
+window.addEventListener('pointermove', onPointerMove);
+window.addEventListener('pointerup', onPointerUp);
 
 // Tipp-Hinweis ausblenden
 setTimeout(()=> { if(hint) hint.style.display = 'none'; }, 2500);
