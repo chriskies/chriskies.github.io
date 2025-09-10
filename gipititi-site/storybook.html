@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gipititi – Bilderbuch</title>
-  <link rel="stylesheet" href="assets/css/book.css?v=3"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bilderbuch – Gipititi und die Kokosnuss</title>
+  <link rel="stylesheet" href="assets/styles.css?v=1">
 </head>
 <body>
+  <main id="storybook">
+    <div class="book-container">
+      <div id="book">
+        <!-- Seiten werden per JS geladen -->
+      </div>
+    </div>
 
-<main id="book" aria-label="Interaktives Bilderbuch">
-  <!-- Bild -->
-  <figure class="page">
-    <img id="pageimg" alt="Bilderbuch-Seite" decoding="async" />
-    <figcaption id="caption" class="caption" aria-live="polite"></figcaption>
-  </figure>
+    <!-- Navigation -->
+    <div class="controls">
+      <button id="prev" class="cta">⬅️ Zurück</button>
+      <button id="next" class="cta">Weiter ➡️</button>
+    </div>
+  </main>
 
-  <!-- Navigation -->
-  <button class="nav prev" id="prev" aria-label="Vorherige Seite">‹</button>
-  <button class="nav next" id="next" aria-label="Nächste Seite">›</button>
-
-  <!-- Dots -->
-  <div id="dots" class="dots" aria-hidden="true"></div>
-
-  <!-- Tipp-Hinweis -->
-  <div class="hint" id="hint">Tipp: Wischen oder Pfeile tippen</div>
-</main>
-
-<script src="assets/js/storxbook.js?v=1" defer></script>
+  <!-- Scripts -->
+  <!-- Alte Version deaktiviert -->
+  <!-- <script src="assets/js/book.js" defer></script> -->
+  <script src="assets/js/storybook.js?v=1" defer></script>
 </body>
 </html>
