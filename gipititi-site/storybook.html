@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bilderbuch – Gipititi und die Kokosnuss</title>
-  <link rel="stylesheet" href="assets/styles.css?v=1">
+
+  <!-- nur fürs Bilderbuch -->
+  <link rel="stylesheet" href="assets/css/book.css?v=4" />
 </head>
 <body>
-  <main id="storybook">
-    <div class="book-container">
-      <div id="book">
-        <!-- Seiten werden per JS geladen -->
-      </div>
+  <main id="gp-book">
+    <div class="stage">
+      <figure class="page">
+        <img id="pageimg" alt="Bilderbuch-Seite" />
+        <figcaption id="caption"></figcaption>
+      </figure>
+
+      <!-- Tipp-Bubble -->
+      <div id="hint" class="hint">Tipp: Wischen oder Pfeile tippen</div>
+
+      <!-- Navigation -->
+      <button id="prev" class="nav btn-left" aria-label="Zurück">‹</button>
+      <button id="next" class="nav btn-right" aria-label="Weiter">›</button>
     </div>
 
-    <!-- Navigation -->
-    <div class="controls">
-      <button id="prev" class="cta">⬅️ Zurück</button>
-      <button id="next" class="cta">Weiter ➡️</button>
-    </div>
+    <!-- Seitenpunkte -->
+    <div id="dots" class="dots" aria-hidden="true"></div>
   </main>
 
-  <!-- Scripts -->
-  <!-- Alte Version deaktiviert -->
+  <!-- nur DIESE Datei laden -->
   <!-- <script src="assets/js/book.js" defer></script> -->
-  <script src="assets/js/storybook.js?v=1" defer></script>
+  <script src="assets/js/storybook.js?v=2" defer></script>
 </body>
 </html>
