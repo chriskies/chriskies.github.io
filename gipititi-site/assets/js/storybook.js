@@ -91,6 +91,15 @@ function show(n){
   nextBt.disabled = (page === TOTAL);
 }
 
+dbg('JS geladen');
+…
+function show(n){
+  …
+  dbg('zeige Seite ' + page + ' → ' + srcFor(page));
+  img.onerror = ()=> dbg('Bild fehlt: ' + img.src);
+  …
+}
+
 /* Navigation --------------------------------------------------------------------- */
 function next(){ show(page + 1); }
 function prev(){ show(page - 1); }
