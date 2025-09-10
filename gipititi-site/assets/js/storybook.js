@@ -106,9 +106,34 @@ window.addEventListener('keydown', (e)=>{
 });
 
 /* ----- Drag/Swipe: echtes Ziehen und „Umblättern“ ----- */
+/* ----- Drag/Swipe mit „Umblätter“-Optik ----- */
 let dragging = false;
 let startX = 0;
 let currentX = 0;
+
+function setTurnVisual(dx) {
+  const W = img.clientWidth || 1;
+  const ratio = Math.min(1, Math.abs(dx) / (W * 0.9)); // 0..1
+  const dirLeft = dx < 0;
+
+  // 3D-Kippwinkel (max ~14°)
+  const angle = (dx / W) * 14;
+
+  // Kippung + Verschiebung
+  img.style.transform = `translateX(${dx * 0.9}px) rotateY(${angle}deg)`;
+  // Schattenkante ausrichten und Intensität setzen
+  pageFigure.classList.toggle('turn-left',  dirLeft);
+  pageFigure.classList.toggle('turn-right', !dirLeft);
+  pageFigure.style.setProperty('--turn', ratio.toString());
+  img.classList.add('gloss');
+}
+
+function clearTurnVisual() {
+  img.style.transform = '';
+  pageFigure.classList.remove('turn-left','turn-right');
+  pageFigure.style.removeProperty('--turn');
+  img.classList.remove('gloss');
+}
 
 function onPointerDown(e){
   dragging = true;
@@ -124,18 +149,43 @@ function onPointerMove(e){
   const p = e.touches ? e.touches[0] : e;
   currentX = p.clientX;
   const dx = currentX - startX;
-  // leicht dämpfen, damit es sich „schwerer“ anfühlt
-  img.style.transform = `translateX(${dx * 0.9}px)`;
-  // verhindert Scrollen während der Geste
+  setTurnVisual(dx);
   if(e.cancelable) e.preventDefault();
 }
 
-function onPointerUp(e){
+function onPointerUp(){
   if(!dragging) return;
   dragging = false;
 
   const dx = currentX - startX;
   const W = img.clientWidth || 1;
+  const TH = 0.55 * W;
+
+  img.style.transition = 'transform .25s ease, opacity .25s ease';
+
+  if(dx <= -TH && page < TOTAL){
+    // nach links blättern
+    img.style.transform = `translateX(${-W}px) rotateY(-12deg)`;
+    setTimeout(()=>{ clearTurnVisual(); next(); }, 180);
+  } else if(dx >= TH && page > 1){
+    // nach rechts blättern
+    img.style.transform = `translateX(${W}px) rotateY(12deg)`;
+    setTimeout(()=>{ clearTurnVisual(); prev(); }, 180);
+  } else {
+    // zurückschnappen
+    img.style.transform = '';
+    setTimeout(clearTurnVisual, 200);
+  }
+  document.querySelector('.stage').classList.remove('grabbing');
+}
+
+/* Events */
+img.addEventListener('touchstart', onPointerDown, {passive:false});
+img.addEventListener('touchmove',  onPointerMove, {passive:false});
+img.addEventListener('touchend',   onPointerUp,   {passive:true});
+img.addEventListener('pointerdown', onPointerDown);
+window.addEventListener('pointermove', onPointerMove);
+window.addEventListener('pointerup', onPointerUp);
 
   // Schwelle: mindestens 55% der Breite wischen
   const TH = 0.55 * W;
