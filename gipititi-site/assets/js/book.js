@@ -1,7 +1,7 @@
 // === Konfiguration =========================================================
 const TOTAL = 7;                 // Anzahl deiner Seiten
 const PATH  = 'assets/book/';    // Ordner mit den Bildern
-const EXT   = 'jpeg';            // 'jpeg' oder 'jpg'
+const EXT   = 'jpg';            // 'jpeg' oder 'jpg'
 
 // Bildtexte (kurz & kindgerecht)
 const CAPTIONS = [
