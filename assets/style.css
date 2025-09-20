@@ -180,6 +180,12 @@ a:hover{ color: var(--accent-2); }
 /* Utilities */
 .hidden{ position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px, 1px, 1px, 1px); white-space:nowrap; }
 
+.brand-container {
+  display: flex;
+  align-items: center; /* vertikal zentriert */
+  gap: 12px; /* Abstand zwischen Logo und Name */
+}
+
 .brand img {
   width: 40px;
   height: 40px;
@@ -189,13 +195,9 @@ a:hover{ color: var(--accent-2); }
   background: #fff;
 }
 
-/* Name neben dem Logo als reiner Text */
 .title {
   font-family:"Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight:700;
   letter-spacing:.2px;
-  margin-left: 12px;
-  color: var(--text); /* gleiche Farbe wie vorher */
-  text-decoration: none; /* entfernt Link-Effekt */
+  color: var(--text);
 }
-
