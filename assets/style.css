@@ -1,0 +1,48 @@
+:root{
+  --bg: #F7F5F0;
+  --bg-alt: #EFE9E2;
+  --text: #111111;
+  --muted: #444444;
+  --accent: #8C6E52;
+  --accent-2: #7A6A5C;
+  --border: #E3DED6;
+  --shadow: rgba(17,17,17,0.06);
+  --radius: 14px;
+  --container: 920px;
+}
+
+html, body { min-height: 100%; height: auto; }
+html { scroll-behavior: smooth; }
+body{
+  margin:0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Merriweather", Georgia, serif;
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+.container{ width: min(100% - 32px, var(--container)); margin-inline: auto; }
+
+header.site{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: color-mix(in srgb, var(--bg) 90%, white 10%);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+}
+
+.site-inner{ display:flex; align-items:center; justify-content:space-between; padding:10px 0; }
+.brand{ display:flex; gap:12px; align-items:center; text-decoration:none; color:inherit; }
+.brand img{ width:40px; height:40px; border-radius:50%; object-fit:cover; box-shadow:0 2px 8px var(--shadow); background:#fff; transition: transform 0.5s ease; }
+.brand img.nft-logo{ animation: rotate 6s linear infinite; }
+
+@keyframes rotate{
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.brand .title{ font-family:"Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight:700; letter-spacing:.2px; }
+
+nav a{ text-decoration:none; color:inherit; opacity:.85; padding:8px 10px; border
