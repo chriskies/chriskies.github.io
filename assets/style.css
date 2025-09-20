@@ -12,8 +12,6 @@
 }
 
 /* Grundlayout */
-html, body { min-height: 100%; height: auto; }
-html { scroll-behavior: smooth; }
 body{
   margin:0;
   background: var(--bg);
@@ -23,7 +21,11 @@ body{
   font-size: 18px;
 }
 
-/* Header */
+.container{
+  width: min(100% - 32px, var(--container));
+  margin-inline: auto;
+}
+
 header.site{
   position: sticky;
   top: 0;
@@ -32,40 +34,41 @@ header.site{
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--border);
 }
+
 .site-inner{
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding: 10px 0;
 }
+
 .brand{
   display:flex; gap:12px; align-items:center;
   text-decoration:none; color: inherit;
 }
-.brand .title{
-  font-family:"Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-weight:700; letter-spacing:.2px;
-}
 
-/* NFT Logo klein & animiert */
-.nft-logo{
+.brand img{
   width:40px;
   height:40px;
   border-radius:50%;
-  object-fit:cover;
+  object-fit: cover;
   box-shadow: 0 2px 8px var(--shadow);
   background:#fff;
+}
+
+/* 3D-Drehung für Logo */
+.logo-3d{
+  animation: spin 4s linear infinite;
   transform-style: preserve-3d;
-  animation: rotateNFT 4s linear infinite;
 }
 
-/* 3D-Drehung */
-@keyframes rotateNFT {
-  0% { transform: rotateY(0deg); }
-  100% { transform: rotateY(360deg); }
+/* Keyframes 3D */
+@keyframes spin{
+  0%{ transform: rotateY(0deg); }
+  100%{ transform: rotateY(360deg); }
 }
 
-/* Navigation */
+/* Nav */
 nav a{
   text-decoration:none; color:inherit; opacity:.85;
   padding:8px 10px; border-radius:10px;
@@ -78,57 +81,4 @@ nav a:hover, nav a:focus{
   outline:none;
 }
 
-/* Hero */
-.hero{
-  padding: 72px 0 40px;
-}
-.hero .kicker{
-  display:inline-block;
-  font-family:"Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size:13px; letter-spacing:.18em; text-transform:uppercase;
-  color: var(--accent-2);
-  background: color-mix(in srgb, var(--bg-alt) 65%, white 35%);
-  padding:6px 10px; border-radius:999px;
-  border:1px solid var(--border);
-}
-h1{
-  font-family:"Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(28px, 6vw, 44px);
-  line-height:1.2;
-  margin:16px 0 6px;
-}
-.subtitle{
-  font-size: clamp(16px, 2.6vw, 20px);
-  color: var(--muted);
-  margin: 0 0 22px;
-}
-.hero .profile{
-  display:flex; gap:28px; align-items:center; flex-wrap:wrap;
-  margin-top: 24px;
-}
-.hero .profile img{
-  width:120px; height:120px; border-radius:16px; object-fit:cover;
-  box-shadow: 0 8px 24px var(--shadow);
-  border: 1px solid var(--border);
-  background: #fff;
-}
-
-/* Buttons */
-.btn{
-  display:inline-flex; align-items:center; justify-content:center; gap:8px;
-  padding: 12px 16px;
-  border-radius: 12px;
-  text-decoration:none;
-  font-family:"Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-weight:600; letter-spacing:.2px;
-  border:1px solid var(--border);
-  color: var(--text);
-  background: #fff;
-  box-shadow: 0 4px 12px var(--shadow);
-  transition: transform .04s ease, background .2s ease, box-shadow .2s ease;
-}
-.btn:hover{ transform: translateY(-1px); background: color-mix(in srgb, #fff 80%, var(--bg-alt) 20%); }
-.btn-primary{
-  color: #fff; background: var(--accent); border-color: color-mix(in srgb, var(--accent) 70%, black 30%);
-}
-.btn-primary:hover{ background: color-mix(in srgb, var(--accent) 85%, black 15%); }
+/* Hero, Buttons etc. kannst du so übernehmen wie vorher */
