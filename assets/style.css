@@ -51,8 +51,15 @@ header.site{
   display: flex;
   align-items: center;
   gap: 12px; /* Abstand zwischen Logo und Name */
-  text-decoration: none; /* Keine Link-Optik für den Text */
-  color: var(--text); /* Name bleibt normal gefärbt */
+  text-decoration: none;
+  color: var(--text);
+  flex-wrap: nowrap; /* verhindert, dass Name unter Logo rutscht */
+}
+.brand .title {
+  font-family:"Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight:700;
+  letter-spacing:.2px;
+  pointer-events: none; /* Name nicht klickbar */
 }
 
 .brand img {
@@ -64,11 +71,6 @@ header.site{
   background: #fff;
 }
 
-.title {
-  font-family:"Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-weight:700;
-  letter-spacing:.2px;
-}
 nav a{
   text-decoration:none; color:inherit; opacity:.85;
   padding:8px 10px; border-radius:10px;
@@ -109,6 +111,9 @@ h1{
   display:flex; gap:28px; align-items:center; flex-wrap:wrap;
   margin-top: 24px;
 }
+@media(min-width: 820px){
+  .hero .profile{ flex-wrap: nowrap; } /* Hero-Bild + Text nebeneinander */
+}
 .hero .profile img{
   width:120px; height:120px; border-radius:16px; object-fit:cover;
   box-shadow: 0 8px 24px var(--shadow);
@@ -129,7 +134,7 @@ h1{
   color: var(--text);
   background: #fff;
   box-shadow: 0 4px 12px var(--shadow);
-  transition: transform .04s ease, background .2s ease, box-shadow .2s ease;
+  transition: transform .1s ease, background .2s ease, box-shadow .2s ease;
 }
 .btn:hover{ transform: translateY(-1px); background: color-mix(in srgb, #fff 80%, var(--bg-alt) 20%); }
 .btn-primary{
@@ -185,4 +190,3 @@ a:hover{ color: var(--accent-2); }
 
 /* Utilities */
 .hidden{ position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px, 1px, 1px, 1px); white-space:nowrap; }
-
