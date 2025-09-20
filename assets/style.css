@@ -179,3 +179,9 @@ a:hover{ color: var(--accent-2); }
 
 /* Utilities */
 .hidden{ position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px, 1px, 1px, 1px); white-space:nowrap; }
+
+.brand img:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
