@@ -4,7 +4,8 @@ function dbg(msg) {
   const hint = document.getElementById("hint");
   if (hint) {
     hint.textContent = "👉 " + msg;
-    setTimeout(() => (hint.textContent = "Tipp: Wischen oder Pfeile tippen"), 2000);
+    clearTimeout(hint._t);
+    hint._t = setTimeout(() => (hint.textContent = "Tipp: Wischen oder Pfeile tippen"), 2000);
   }
 }
 
@@ -36,11 +37,19 @@ function show(n) {
   document.querySelectorAll(".dots span").forEach((d, i) => {
     d.classList.toggle("active", i === n);
   });
+
+  // Reset Page-Turn Styles
+  const pg = document.querySelector(".page");
+  pg.style.setProperty("--turn", 0);
+  pg.classList.remove("turn-left", "turn-right");
 }
 
 /* ========== Start ========== */
 document.addEventListener("DOMContentLoaded", () => {
   dbg("Seitenbuch geladen");
+
+  const pg = document.querySelector(".page");
+  const img = document.getElementById("pageimg");
 
   // Navigation Buttons
   document.getElementById("next").addEventListener("click", () => {
@@ -63,20 +72,56 @@ document.addEventListener("DOMContentLoaded", () => {
     dots.appendChild(dot);
   });
 
-  // Wischgesten (Touch)
+  // Wischgesten mit echtem Ziehen
   let startX = 0;
-  document.addEventListener("touchstart", (e) => {
+  let dragging = false;
+
+  pg.addEventListener("touchstart", (e) => {
     startX = e.touches[0].clientX;
+    dragging = true;
+    pg.classList.add("grabbing");
   });
-  document.addEventListener("touchend", (e) => {
-    let endX = e.changedTouches[0].clientX;
-    if (endX < startX - 50) {
-      dbg("Wisch nach links erkannt");
-      show(page + 1);
+
+  pg.addEventListener("touchmove", (e) => {
+    if (!dragging) return;
+    const deltaX = e.touches[0].clientX - startX;
+    const width = pg.offsetWidth;
+    const turn = Math.min(1, Math.max(-1, deltaX / width)); // -1 bis 1
+
+    // Setze CSS-Variable für Schattenbreite
+    pg.style.setProperty("--turn", Math.abs(turn).toFixed(3));
+
+    if (turn < 0) {
+      pg.classList.add("turn-left");
+      pg.classList.remove("turn-right");
+      img.style.transform = `rotateY(${turn * 25}deg)`;
+    } else if (turn > 0) {
+      pg.classList.add("turn-right");
+      pg.classList.remove("turn-left");
+      img.style.transform = `rotateY(${turn * 25}deg)`;
     }
-    if (endX > startX + 50) {
-      dbg("Wisch nach rechts erkannt");
+  });
+
+  pg.addEventListener("touchend", (e) => {
+    if (!dragging) return;
+    dragging = false;
+    pg.classList.remove("grabbing");
+
+    const endX = e.changedTouches[0].clientX;
+    const diff = endX - startX;
+
+    // Schwellwert zum Umblättern
+    if (diff < -60) {
+      dbg("Umblättern nach links");
+      show(page + 1);
+    } else if (diff > 60) {
+      dbg("Umblättern nach rechts");
       show(page - 1);
+    } else {
+      dbg("Zug zu klein – zurückspringen");
+      img.style.transform = "";
+      pg.style.setProperty("--turn", 0);
+      pg.classList.remove("turn-left", "turn-right");
     }
   });
 
