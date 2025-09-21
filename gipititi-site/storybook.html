@@ -1,41 +1,61 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bilderbuch – Gipititi und die Kokosnuss</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bilderbuch – Gipititi und die Kokosnuss</title>
 
-  <!-- Turn.js Styles -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.css" />
+<!-- Turn.js Styles -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.css">
 
-  <!-- Eigene Styles -->
-  <link rel="stylesheet" href="assets/css/book.css?v=10">
+<!-- Eigene Styles -->
+<link rel="stylesheet" href="assets/css/book.css?v=12">
 
-  <!-- jQuery + Turn.js -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
+<!-- jQuery + Turn.js -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
 
-  <!-- Eigene Storybook-Logik -->
-  <script src="assets/js/storybook_turn.js?v=1" defer></script>
+<!-- Storybook JS -->
+<script src="assets/js/storybook.js" defer></script>
 
-  <style>
-    body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; background:#0d0f12; color:#fff; }
-    #flipbook { margin: 2rem auto; }
-    #flipbook .page img { width: 100%; height: auto; display:block; border-radius:12px; }
-  </style>
+<style>
+  body {
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    background:#0d0f12;
+    color:#fff;
+    overflow:hidden; /* Scroll verhindern */
+  }
+  #flipbook {
+    margin: 2rem auto;
+  }
+  #flipbook .page {
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    box-shadow:0 12px 40px rgba(0,0,0,.35);
+  }
+  #flipbook .page img {
+    width:100%;
+    height:auto;
+    display:block;
+  }
+  #flipbook .page p {
+    margin:0;
+    padding:0.75rem 1rem;
+    font-size:clamp(14px,2vw,18px);
+    color:#111;
+    background:#fff;
+  }
+</style>
 </head>
 <body>
 
 <main>
-  <div id="flipbook">
-    <div class="page"><img src="assets/book/01.jpg" alt="Seite 1"><p>Noël sitzt am Tisch, müde, vor sich die Kokosnuss.</p></div>
-    <div class="page"><img src="assets/book/02.jpg" alt="Seite 2"><p>Die Kokosnuss wippt hin und her. Noël staunt.</p></div>
-    <div class="page"><img src="assets/book/03.jpg" alt="Seite 3"><p>Plopp – die Kokosnuss springt auf. Gipititi erscheint!</p></div>
-    <div class="page"><img src="assets/book/04.jpg" alt="Seite 4"><p>Gemeinsam zaubern sie Muffins voller Sternenstaub.</p></div>
-    <div class="page"><img src="assets/book/05.jpg" alt="Seite 5"><p>Noël probiert einen Muffin. Er schmeckt nach Abenteuer.</p></div>
-    <div class="page"><img src="assets/book/06.jpg" alt="Seite 6"><p>Sanft beginnt er zu schweben – Gedankenwölkchen ziehen.</p></div>
-    <div class="page"><img src="assets/book/07.jpg" alt="Seite 7"><p>Gipititi wird zu einem Stern, der ihn beschützt.</p></div>
-  </div>
+  <div id="flipbook"></div>
 </main>
 
 </body>
