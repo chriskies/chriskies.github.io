@@ -2,7 +2,7 @@ function dbg(msg){
   console.log("[STORYBOOK]", msg);
   const hint=document.getElementById("hint");
   if(hint){ clearTimeout(hint._t); hint.textContent="👉 "+msg;
-    hint._t=setTimeout(()=>hint.textContent="Tipp: Wischen oder Pfeile tippen",2000); }
+    hint._t=setTimeout(()=>hint.textContent="Tipp: Tippe oder wische zum Umblättern",2000); }
 }
 
 const pages=[
@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   const flipbook=document.getElementById("flipbook");
   const dots=document.getElementById("dots");
 
+  // Seiten hinzufügen
   pages.forEach((p,i)=>{
     const page=document.createElement("div");
     page.classList.add("page");
@@ -30,6 +31,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     dots.appendChild(dot);
   });
 
+  // Turn.js initialisieren
   $('#flipbook').turn({
     width: Math.min(window.innerWidth-40,800),
     height: Math.min(window.innerHeight-80,600),
@@ -39,6 +41,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     acceleration:true
   });
 
+  // Punkte updaten
   $('#flipbook').bind('turned',(e,pageNum)=>{
     dbg("Seite "+pageNum);
     document.querySelectorAll('#dots span').forEach((d,i)=>d.classList.toggle('active',i===pageNum-1));
