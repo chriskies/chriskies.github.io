@@ -7,30 +7,35 @@
 
   <!-- Stylesheet fürs Bilderbuch -->
   <link rel="stylesheet" href="assets/css/book.css?v=7">
-<script src="assets/js/storybook.js?v=8" defer></script>
+
+  <!-- jQuery & Turn.js -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/blasten/turn.js@4.1.0/turn.min.js"></script>
 </head>
 <body>
-  <main id="gp-book">
+  <main id="gp-book-container">
     <div id="dbg" style="position:fixed;bottom:8px;left:8px;background:#000;color:#fff;padding:.3rem .5rem;border-radius:6px;font:12px/1.2 -apple-system,Arial;">debug: …</div>
-    <div class="stage">
-      <figure class="page">
-        <img id="pageimg" alt="Bilderbuch-Seite" />
-        <figcaption id="caption"></figcaption>
-      </figure>
 
-      <!-- Tipp-Bubble -->
-      <div id="hint" class="hint">Tipp: Wischen oder Pfeile tippen</div>
-
-      <!-- Navigation -->
-      <button id="prev" class="nav btn-left" aria-label="Zurück">‹</button>
-      <button id="next" class="nav btn-right" aria-label="Weiter">›</button>
+    <!-- Turn.js Container -->
+    <div id="gp-book" class="turnbook">
+      <div class="page"><img src="assets/img/page1.jpg" alt="Seite 1"></div>
+      <div class="page"><img src="assets/img/page2.jpg" alt="Seite 2"></div>
+      <div class="page"><img src="assets/img/page3.jpg" alt="Seite 3"></div>
+      <!-- Weitere Seiten -->
     </div>
+
+    <!-- Tipp-Bubble -->
+    <div id="hint" class="hint">Tipp: Wischen oder Pfeile tippen</div>
+
+    <!-- Navigation -->
+    <button id="prev" class="nav btn-left" aria-label="Zurück">‹</button>
+    <button id="next" class="nav btn-right" aria-label="Weiter">›</button>
 
     <!-- Seitenpunkte -->
     <div id="dots" class="dots" aria-hidden="true"></div>
   </main>
 
   <!-- JavaScript fürs Bilderbuch -->
-  <script src="assets/js/storybook.js?v=6" defer></script>
+  <script src="assets/js/storybook.js?v=8" defer></script>
 </body>
 </html>
