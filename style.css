@@ -1,3 +1,4 @@
+/* === Grundlayout === */
 body {
   font-family: "Helvetica Neue", Arial, sans-serif;
   margin: 0;
@@ -7,7 +8,7 @@ body {
   color: #333;
 }
 
-/* Navigation */
+/* === Navigation === */
 nav {
   background: #2f3e46;
   color: #fff;
@@ -27,7 +28,7 @@ nav a:hover {
   color: #ffd166;
 }
 
-/* === Landingpage Hero === */
+/* === Landingpage Hero (Startseite) === */
 .hero {
   background: #e9ecef;
   padding: 4rem 2rem;
@@ -49,8 +50,11 @@ nav a:hover {
   transform: translateX(-1cm);
 }
 .hero-text { max-width: 620px; }
+.hero-text h1 { margin: 0; font-size: 2.2rem; color: #2f3e46; }
+.hero-text .subtitle { font-style: italic; color: #666; margin: 0.5rem 0 1rem; }
+.hero-text .intro { font-size: 1rem; line-height: 1.6; }
 
-/* === About Header (zentriert, kleiner) === */
+/* === About Header === */
 .about-header {
   text-align: center;
   padding: 4rem 2rem;
@@ -62,7 +66,7 @@ nav a:hover {
   margin-bottom: 1rem;
 }
 
-/* === Projects Header (zentriert, Bild größer) === */
+/* === Projects Header === */
 .projects-header {
   text-align: center;
   padding: 4rem 2rem;
@@ -74,7 +78,7 @@ nav a:hover {
   margin-bottom: 1rem;
 }
 
-/* === Contact Header (schlicht) === */
+/* === Contact Header === */
 .contact-header {
   text-align: center;
   padding: 3rem 2rem;
@@ -86,13 +90,17 @@ nav a:hover {
   margin-bottom: 0.5rem;
 }
 
-/* Responsiv: Landingpage Hero untereinander */
+/* === Responsiv: Landingpage Hero untereinander === */
 @media (max-width: 768px) {
-  .hero-inner { flex-direction: column; align-items: center; text-align: center; }
+  .hero-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
   .hero-image img { transform: none; }
 }
 
-/* Statements */
+/* === Statements === */
 .statements {
   display: flex;
   justify-content: center;
@@ -100,7 +108,6 @@ nav a:hover {
   gap: 1.5rem;
   padding: 2rem;
 }
-
 .statement {
   flex: 1 1 250px;
   background: #fff;
@@ -110,17 +117,13 @@ nav a:hover {
   text-align: center;
 }
 
-/* timeline mit Platzhaltern in Spalten, sodass textversatz gegeben */
+/* === Timeline (Schachbrett mit Platzhaltern) === */
 .timeline {
   display: table;
   width: 100%;
   position: relative;
 }
-
-.row {
-  display: table-row;
-}
-
+.row { display: table-row; }
 .col {
   display: table-cell;
   width: 50%;
@@ -128,7 +131,6 @@ nav a:hover {
   padding: 1rem;
   position: relative;
 }
-
 /* Mittellinie */
 .timeline::before {
   content: "";
@@ -140,7 +142,6 @@ nav a:hover {
   background: #2f3e46;
   transform: translateX(-50%);
 }
-
 /* Boxen */
 .box {
   background: #fff;
@@ -149,7 +150,6 @@ nav a:hover {
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   position: relative;
 }
-
 /* Punkte */
 .box::before {
   content: "";
@@ -162,38 +162,25 @@ nav a:hover {
   border: 3px solid #2f3e46;
   transform: translateY(-50%);
 }
-
 .col.left .box::before { right: -30px; }
 .col.right .box::before { left: -30px; }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 2rem;
-  background: #2f3e46;
-  color: #fff;
-  margin-top: 2rem;
-}
-
-/* Personality Section */
+/* === Personality Section === */
 .personality {
   background: #f8f9fa;
   padding: 3rem 2rem;
   text-align: center;
 }
-
 .personality h2 {
   margin-bottom: 2rem;
   color: #2f3e46;
 }
-
 .traits {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
 }
-
 .trait {
   background: #fff;
   border-radius: 8px;
@@ -202,49 +189,43 @@ footer {
   font-weight: 500;
 }
 
-/* Galerie Section */
+/* === Galerie Section === */
 .gallery {
   padding: 3rem 2rem;
   text-align: center;
   background: #fff;
 }
-
 .gallery h2 {
   margin-bottom: 2rem;
   color: #2f3e46;
 }
-
 .gallery-grid {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
   flex-wrap: wrap;
 }
-
 .gallery-grid img {
   max-width: 250px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .gallery-grid img:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
-/* Kontaktbereich */
+/* === Kontaktbereich === */
 .contact {
   text-align: center;
   padding: 3rem 2rem;
   background: #f8f9fa;
 }
-
 .contact h2 {
   margin-bottom: 2rem;
   color: #2f3e46;
 }
-
 .contact-links {
   display: flex;
   flex-wrap: wrap;
@@ -254,7 +235,6 @@ footer {
   max-width: 700px;
   margin: 0 auto;
 }
-
 .contact-links a {
   display: flex;
   align-items: center;
@@ -270,13 +250,20 @@ footer {
   transition: all 0.3s ease;
   min-width: 150px;
 }
-
 .contact-links a:hover {
   background: #2f3e46;
   color: #fff;
   transform: translateY(-3px);
 }
-
 .contact-links i {
   font-size: 1.2rem;
+}
+
+/* === Footer === */
+footer {
+  text-align: center;
+  padding: 2rem;
+  background: #2f3e46;
+  color: #fff;
+  margin-top: 2rem;
 }
