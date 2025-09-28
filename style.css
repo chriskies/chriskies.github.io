@@ -66,87 +66,61 @@ header p {
   text-align: center;
 }
 
-/* === TIMELINE: gestapelt, alternierend, Punkte auf Linie === */
+/* timeline mit Platzhaltern in Spalten, sodass textversatz gegeben */
 .timeline {
+  display: table;
+  width: 100%;
   position: relative;
-  max-width: 900px;
-  margin: 2.5rem auto;
-  padding: 1rem 0;
+}
+
+.row {
+  display: table-row;
+}
+
+.col {
+  display: table-cell;
+  width: 50%;
+  vertical-align: middle;
+  padding: 1rem;
+  position: relative;
 }
 
 /* Mittellinie */
 .timeline::before {
   content: "";
   position: absolute;
-  left: 50%;
   top: 0;
   bottom: 0;
+  left: 50%;
   width: 4px;
   background: #2f3e46;
   transform: translateX(-50%);
-  z-index: 0;
 }
 
-/* JEDES Item ist ein Block und nimmt 50% Breite ein -> stapelt sich automatisch */
-.timeline-item {
-  position: relative;
-  display: block;
-  width: 50%;
-  margin: 1.25rem 0;          /* vertikaler Abstand zwischen den Boxen */
-  padding: 1rem 1.5rem;
+/* Boxen */
+.box {
   background: #fff;
+  padding: 1rem 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  z-index: 1;                 /* über der Linie */
+  position: relative;
 }
 
-/* Linke Items: linksbündig in der linken Hälfte, Text rechtsbündig, Abstand zur Linie rechts */
-.timeline-item.left {
-  margin-right: auto;         /* schiebt die Box in die linke Hälfte */
-  text-align: right;
-  padding-right: 2.5rem;      /* Platz für den Punkt */
-}
-
-/* Rechte Items: rechtsbündig in der rechten Hälfte, Text linksbündig, Abstand zur Linie links */
-.timeline-item.right {
-  margin-left: auto;          /* schiebt die Box in die rechte Hälfte */
-  text-align: left;
-  padding-left: 2.5rem;       /* Platz für den Punkt */
-}
-
-/* Die Punkte exakt auf die Mittellinie setzen */
-.timeline-item::before {
+/* Punkte */
+.box::before {
   content: "";
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   width: 18px;
   height: 18px;
   border-radius: 50%;
   background: #fff;
   border: 3px solid #2f3e46;
+  transform: translateY(-50%);
 }
 
-.timeline-item.left::before  { right: -9px; }  /* rechte Kante der Box = Mittellinie */
-.timeline-item.right::before { left:  -9px; }  /* linke Kante der Box = Mittellinie */
-
-/* Responsiv: eine Spalte, Linie links */
-@media (max-width: 700px) {
-  .timeline::before {
-    left: 24px;               /* Linie nach links */
-    transform: none;
-  }
-  .timeline-item {
-    width: 100%;
-    text-align: left;
-    margin: 1rem 0;
-    padding: 1rem 1rem 1rem 3rem;
-  }
-  .timeline-item::before {
-    left: 16px;
-    right: auto;
-  }
-}
+.col.left .box::before { right: -30px; }
+.col.right .box::before { left: -30px; }
 
 /* Footer */
 footer {
