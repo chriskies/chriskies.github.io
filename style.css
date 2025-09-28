@@ -66,72 +66,76 @@ header p {
   text-align: center;
 }
 
-/* === TIMELINE (fix: zentrierte Punkte + saubere Ausrichtung) === */
+/* Timeline in Spalten, Text versetzt links und rechts */
 .timeline {
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 40px 1fr; /* links | Linie | rechts */
+  gap: 2rem;
   max-width: 900px;
   margin: 2.5rem auto;
-  padding: 1rem 0;
+  position: relative;
 }
+
 .timeline::before {
   content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
+  grid-column: 2;
+  grid-row: 1 / -1;
   width: 4px;
   background: #2f3e46;
-  transform: translateX(-50%);
+  margin: 0 auto;
 }
 
 .timeline-item {
   position: relative;
-  width: 50%;
-  padding: 1rem 2rem;
-  box-sizing: border-box;
-  min-height: 60px; /* etwas Luft für den Punkt */
+  padding: 1rem 1.5rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-.timeline-item.left {
-  float: left;
-  text-align: right;      /* links stehende Box: rechtsbündig */
-  padding-right: 3rem;    /* Abstand zur Mittellinie */
-}
-.timeline-item.right {
-  float: right;
-  text-align: left;       /* rechts stehende Box: linksbündig */
-  padding-left: 3rem;     /* Abstand zur Mittellinie */
-}
-
-/* Punkte immer mittig auf der Linie */
 .timeline-item::before {
   content: "";
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 18px; height: 18px;
-  border-radius: 50%;
+  top: 1.2rem;
+  width: 16px;
+  height: 16px;
   background: #fff;
   border: 3px solid #2f3e46;
-  z-index: 2;
+  border-radius: 50%;
+  z-index: 1;
 }
-.timeline-item.left::before  { right: -9px; } /* punkt sitzt an der Linie */
-.timeline-item.right::before { left:  -9px; }
 
-.timeline::after { content: ""; display: block; clear: both; }
+.timeline-item.left {
+  grid-column: 1;
+  text-align: right;
+}
+.timeline-item.left::before {
+  right: -31px; /* punkt sitzt an der Linie */
+}
 
-/* Responsiv: einspaltig, Linie links */
+.timeline-item.right {
+  grid-column: 3;
+  text-align: left;
+}
+.timeline-item.right::before {
+  left: -31px;
+}
+
+/* Responsive: einspaltig */
 @media (max-width: 700px) {
-  .timeline::before { left: 28px; transform: none; }
-  .timeline-item,
+  .timeline {
+    grid-template-columns: 40px 1fr;
+  }
   .timeline-item.left,
   .timeline-item.right {
-    float: none;
-    width: 100%;
+    grid-column: 2;
     text-align: left;
-    padding: 1rem 1rem 1rem 3.5rem;
   }
-  .timeline-item::before { left: 20px; right: auto; }
+  .timeline-item.left::before,
+  .timeline-item.right::before {
+    left: -31px;
+    right: auto;
+  }
 }
 
 /* Footer */
