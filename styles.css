@@ -1,1 +1,189 @@
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background: #fdfdfd;
+  color: #333;
+}
 
+/* Navigation */
+nav {
+  background: #2f3e46;
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #ffd166;
+}
+
+/* Header / Hero */
+header {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: #e9ecef;
+}
+
+header img {
+  max-width: 180px;
+  border-radius: 50%;
+}
+
+header h1 {
+  margin: 1rem 0 0.5rem;
+}
+
+header p {
+  font-style: italic;
+  color: #666;
+}
+
+/* Statements */
+.statements {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.statement {
+  flex: 1 1 250px;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  margin: 2rem auto;
+  padding: 2rem 0;
+  max-width: 700px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background: #2f3e46;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+}
+
+.timeline-item {
+  padding: 1rem 2rem;
+  position: relative;
+  width: 50%;
+}
+
+.timeline-item.left {
+  left: 0;
+}
+
+.timeline-item.right {
+  left: 50%;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: -10px;
+  background: #fff;
+  border: 3px solid #2f3e46;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timeline-item.right::before {
+  left: -10px;
+}
+
+.timeline-item h3 {
+  margin-top: 0;
+  color: #2f3e46;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  background: #2f3e46;
+  color: #fff;
+  margin-top: 2rem;
+}
+
+/* Personality Section */
+.personality {
+  background: #f8f9fa;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.personality h2 {
+  margin-bottom: 2rem;
+  color: #2f3e46;
+}
+
+.traits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.trait {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  font-weight: 500;
+}
+
+/* Galerie Section */
+.gallery {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: #fff;
+}
+
+.gallery h2 {
+  margin-bottom: 2rem;
+  color: #2f3e46;
+}
+
+.gallery-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.gallery-grid img {
+  max-width: 250px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
