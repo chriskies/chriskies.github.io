@@ -54,6 +54,30 @@ nav a:hover {
 .hero-text .subtitle { font-style: italic; color: #666; margin: 0.5rem 0 1rem; }
 .hero-text .intro { font-size: 1rem; line-height: 1.6; }
 
+.hero-text {
+  flex: 1 1 auto;
+  max-width: 620px;
+  text-align: left;
+}
+
+.hero-text h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  color: #2f3e46;
+}
+
+.hero-text .subtitle {
+  font-style: italic;
+  color: #666;
+  margin: 0.5rem 0 1rem;
+}
+
+.hero-text .intro {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
 /* === About Header === */
 .about-header {
   text-align: center;
