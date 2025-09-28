@@ -129,3 +129,30 @@ footer {
   color: #fff;
   margin-top: 2rem;
 }
+
+/* Personality Section */
+.personality {
+  background: #f8f9fa;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.personality h2 {
+  margin-bottom: 2rem;
+  color: #2f3e46;
+}
+
+.traits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.trait {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  font-weight: 500;
+}
