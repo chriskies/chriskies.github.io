@@ -42,6 +42,7 @@ nav a:hover {
   max-width: 220px;
   border-radius: 50%;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-left: -1cm; /* Bild um ca. 1 cm weiter nach links verschieben */
 }
 
 .hero-text {
