@@ -74,15 +74,25 @@ header p {
   max-width: 700px;
 }
 
-.timeline::before {
+.timeline-item::before {
   content: '';
   position: absolute;
-  width: 4px;
-  background: #2f3e46;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  margin-left: -2px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border: 3px solid #2f3e46;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timeline-item.right::before {
+  left: -10px;
+}
+
+.timeline-item.left::before {
+  right: -10px;
 }
 
 .timeline-item {
