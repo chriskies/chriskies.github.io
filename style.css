@@ -173,79 +173,20 @@ nav a:hover {
   text-align: center;
 }
 
-/* === Timeline (Schachbrett mit Platzhaltern) === */
-.timeline {
-  display: table;
-  width: 100%;
-  position: relative;
-}
-.row { display: table-row; }
-.col {
-  display: table-cell;
-  width: 50%;
-  vertical-align: middle;
-  padding: 1rem;
-  position: relative;
-}
-/* Mittellinie */
-.timeline::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 4px;
-  background: #2f3e46;
-  transform: translateX(-50%);
-}
-/* Boxen */
-.box {
+.timeline .box {
   background: #fff;
   padding: 1rem 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  position: relative;
-}
-/* Punkte */
-.box::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #fff;
-  border: 3px solid #2f3e46;
-  transform: translateY(-50%);
-}
-.col.left .box::before { right: -30px; }
-.col.right .box::before { left: -30px; }
-
-/* === Personality Section === */
-.personality {
-  background: #f8f9fa;
-  padding: 3rem 2rem;
-  text-align: center;
-}
-.personality h2 {
-  margin-bottom: 2rem;
-  color: #2f3e46;
-}
-.traits {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-}
-.trait {
-  background: #fff;
-  border-radius: 8px;
-  padding: 1rem 1.5rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  font-weight: 500;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* === Galerie Section === */
+.timeline .box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* === Galerie Section === 
 .gallery {
   padding: 3rem 2rem;
   text-align: center;
@@ -270,7 +211,7 @@ nav a:hover {
 .gallery-grid img:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
+} */
 
 /* === Kontaktbereich === */
 .contact {
