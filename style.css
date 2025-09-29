@@ -86,11 +86,12 @@ nav a:hover {
 }
 
 .about-header img {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 50%;   /* macht es rund */
-  margin-bottom: 1rem;
+  width: 200px;         /* gleiche Breite */
+  height: 200px;        /* gleiche Höhe */
+  object-fit: cover;    /* Bild füllt den Rahmen, kein Verzerren */
+  border-radius: 50%;   /* 50% macht es kreisrund */
+  display: block;       /* entfernt mögliche Inline-Spacing-Bugs */
+  margin: 0 auto 1rem;  /* zentriert das Bild */
 }
 
 .about-dual {
