@@ -306,14 +306,11 @@ nav a:hover {
 }
 
 /* Projekte: Bild rechts bewusst tiefer setzen */
-.projects-image img {
-  width: 280px !important;
-  height: 360px !important;
-  object-fit: cover !important;
-  object-position: 50% 30% !important; /* verschiebt Fokus etwas nach unten */
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transform: translateY(2rem);
+.projects-image {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 2.5rem; /* Feinjustierung – anpassen bis es passt */
 }
 
 /* Grid für die Projekt-Boxen */
