@@ -305,24 +305,6 @@ nav a:hover {
   color: #444;
 }
 
-/* Projekte: Bild rechts bewusst tiefer setzen */
-/* >>> Fix: Projekte-Bild sauber ausrichten <<< */
-.projects-image {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: flex-start !important;
-  margin-top: 2.5rem !important; /* nach Bedarf anpassen */
-}
-
-.projects-image img {
-  max-width: 280px !important;
-  height: auto !important;      /* behält Seitenverhältnis */
-  border-radius: 12px;
-  object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-
 /* Grid für die Projekt-Boxen */
 .projects-grid {
   display: flex;
@@ -376,6 +358,21 @@ nav a:hover {
     flex: 1 1 100%;
   }
 
+   /* >>> Fix: Projekte-Bild sauber ausrichten <<< */
+   .projects-image {
+     display: flex !important;
+     justify-content: center !important;
+     align-items: flex-start !important;
+     margin-top: 2.5rem !important; /* nach Bedarf anpassen */
+   }
+
+   .projects-image img {
+     max-width: 280px !important;
+     height: auto !important;      /* behält Seitenverhältnis */
+     border-radius: 12px;
+     object-fit: cover;
+     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+   }
 /* =====================
    Contact
 ===================== */
