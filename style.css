@@ -305,11 +305,12 @@ nav a:hover {
   color: #444;
 }
 
+/* Projekte: Bild rechts bewusst tiefer setzen */
 .projects-image {
   flex: 1;
   display: flex;
   justify-content: center;
-  margin-top: 10rem; /* <- hier anpassen: 2rem, 3rem, 5rem ... */
+  align-self: center;          /* Bild-Container vertikal mittig zur linken Spalte */
 }
 
 .projects-image img {
@@ -317,6 +318,7 @@ nav a:hover {
   height: auto;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(2.5rem);  /* <-- hier tiefer! 2.5rem anpassen (z.B. 3–5rem) */
 }
 
 /* Grid für die Projekt-Boxen */
