@@ -78,6 +78,7 @@ nav a:hover {
   color: #333;
 }
 
+/* === About me (CV mit Timeline) === */
 .about-header {
   text-align: center;
   padding: 4rem 2rem;
@@ -120,6 +121,39 @@ nav a:hover {
     flex-direction: column;
     gap: 2rem;
   }
+}
+
+/* Titel mittig auf der Timeline */
+.timeline-title {
+  text-align: center;
+  margin: 3rem 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-title h2 {
+  display: inline-block;
+  background: #2f3e46;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 1.4rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Hover Grow Effekt für Boxen */
+.timeline .box {
+  background: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline .box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
 /* === Projects Header === */
