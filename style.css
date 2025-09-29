@@ -101,6 +101,7 @@ nav a:hover {
   text-align: center;
   padding: 4rem 2rem;
   background: #f8f9fa;
+  margin-bottom: 3rem; /* extra Abstand zur Timeline */
 }
 
 .about-dual-images {
