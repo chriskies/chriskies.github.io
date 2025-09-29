@@ -78,21 +78,20 @@ nav a:hover {
   color: #333;
 }
 
-/* === About Header (Überschrift + Bilder nebeneinander) === */
+/* === About Header mit zwei Portraits === */
 .about-header {
   text-align: center;
   padding: 4rem 2rem;
   background: #f8f9fa;
 }
 
-/* Container für die zwei Portraits */
 .about-dual-images {
   display: flex;
   justify-content: center;
   gap: 2rem;
   max-width: 1000px;
   margin: 2rem auto;
-  flex-wrap: wrap; /* damit sie mobil umbrechen */
+  flex-wrap: wrap;
 }
 
 .about-dual-images .col {
@@ -105,24 +104,22 @@ nav a:hover {
   text-align: center;
 }
 
-/* Portraits rund + positioniert */
 .about-dual-images img {
   width: 200px;
   height: 200px;
-  object-fit: cover;         /* füllt Kreis */
-  object-position: 50% 25%;  /* Fokus leicht nach unten */
+  object-fit: cover;
+  object-position: 50% 25%; /* verschiebt Fokus leicht nach unten */
   border-radius: 50%;
   margin-bottom: 1rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Überschrift unter dem Bild */
 .about-dual-images h3 {
   margin-top: 0.5rem;
   color: #2f3e46;
 }
 
-/* Mobil: untereinander */
+/* Mobil */
 @media (max-width: 768px) {
   .about-dual-images {
     flex-direction: column;
