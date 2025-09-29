@@ -309,7 +309,7 @@ nav a:hover {
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center; /* Bild mittig in der Höhe der Boxen */
+  align-items: center; /* sorgt für mittige Ausrichtung */
 }
 
 .projects-image img {
@@ -374,7 +374,7 @@ nav a:hover {
 
   .projects-image img {
     width: 200px;
-    margin-top: 5rem;
+    margin-top: 2rem;
   }
 }
 
