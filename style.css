@@ -78,33 +78,26 @@ nav a:hover {
   color: #333;
 }
 
-/* === About Header === */
+/* === About Header (Überschrift + Bilder nebeneinander) === */
 .about-header {
   text-align: center;
   padding: 4rem 2rem;
   background: #f8f9fa;
 }
 
-.about-header img {
-  width: 200px;         /* gleiche Breite */
-  height: 200px;        /* gleiche Höhe */
-  object-fit: cover;    /* Bild füllt den Rahmen, kein Verzerren */
-  border-radius: 50%;   /* 50% macht es kreisrund */
-  display: block;       /* entfernt mögliche Inline-Spacing-Bugs */
-  margin: 0 auto 1rem;  /* zentriert das Bild */
-}
-
-.about-dual {
+/* Container für die zwei Portraits */
+.about-dual-images {
   display: flex;
   justify-content: center;
   gap: 2rem;
   max-width: 1000px;
   margin: 2rem auto;
-  padding: 1rem;
+  flex-wrap: wrap; /* damit sie mobil umbrechen */
 }
 
-.about-dual .col {
+.about-dual-images .col {
   flex: 1;
+  min-width: 280px;
   background: #fff;
   padding: 1.5rem;
   border-radius: 8px;
@@ -112,57 +105,26 @@ nav a:hover {
   text-align: center;
 }
 
-.about-header {
-  background: #f8f9fa;
-  padding: 4rem 2rem;
-}
-
-.about-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.about-wrapper .col {
-  flex: 1;
-  text-align: center;
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-}
-
-.about-wrapper .portrait {
-  text-align: center;
-}
-
-.about-wrapper .portrait img {
+/* Portraits rund + positioniert */
+.about-dual-images img {
   width: 200px;
   height: 200px;
-  object-fit: cover;
+  object-fit: cover;         /* füllt Kreis */
+  object-position: 50% 25%;  /* Fokus leicht nach unten */
   border-radius: 50%;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.about-wrapper .portrait h1 {
-  margin: 0;
+/* Überschrift unter dem Bild */
+.about-dual-images h3 {
+  margin-top: 0.5rem;
   color: #2f3e46;
 }
 
-/* Mobil: alles untereinander */
-@media (max-width: 768px) {
-  .about-wrapper {
-    flex-direction: column;
-  }
-}
-
-
 /* Mobil: untereinander */
 @media (max-width: 768px) {
-  .about-dual {
+  .about-dual-images {
     flex-direction: column;
     gap: 1.5rem;
   }
