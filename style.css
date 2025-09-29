@@ -1,4 +1,6 @@
-/* === Grundlayout === */
+/* =====================
+   Grundlayout
+===================== */
 body {
   font-family: "Helvetica Neue", Arial, sans-serif;
   margin: 0;
@@ -8,7 +10,9 @@ body {
   color: #333;
 }
 
-/* === Navigation === */
+/* =====================
+   Navigation
+===================== */
 nav {
   background: #2f3e46;
   color: #fff;
@@ -28,11 +32,14 @@ nav a:hover {
   color: #ffd166;
 }
 
-/* === Landingpage Hero (Startseite) === */
+/* =====================
+   Landingpage Hero
+===================== */
 .hero {
   background: #e9ecef;
   padding: 4rem 2rem;
 }
+
 .hero-inner {
   display: flex;
   flex-direction: row;
@@ -43,16 +50,13 @@ nav a:hover {
   max-width: 1100px;
   margin: 0 auto;
 }
+
 .hero-image img {
   max-width: 220px;
   border-radius: 50%;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transform: translateX(-1cm);
 }
-.hero-text { max-width: 620px; }
-.hero-text h1 { margin: 0; font-size: 2.2rem; color: #2f3e46; }
-.hero-text .subtitle { font-style: italic; color: #666; margin: 0.5rem 0 1rem; }
-.hero-text .intro { font-size: 1rem; line-height: 1.6; }
 
 .hero-text {
   flex: 1 1 auto;
@@ -78,7 +82,21 @@ nav a:hover {
   color: #333;
 }
 
-/* === About me (CV mit Timeline) === */
+/* Responsive Hero */
+@media (max-width: 768px) {
+  .hero-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .hero-image img {
+    transform: none;
+  }
+}
+
+/* =====================
+   About Section
+===================== */
 .about-header {
   text-align: center;
   padding: 4rem 2rem;
@@ -115,14 +133,22 @@ nav a:hover {
   color: #2f3e46;
 }
 
-/* Mobil: untereinander */
+/* Mobile: About untereinander */
 @media (max-width: 768px) {
   .about-dual-images {
     flex-direction: column;
     gap: 2rem;
   }
 }
-/* =====Timeline===== */
+
+/* =====================
+   Timeline
+===================== */
+.timeline {
+  position: relative;
+  margin: 3rem 0;
+}
+
 /* Mittellinie */
 .timeline::before {
   content: "";
@@ -133,47 +159,13 @@ nav a:hover {
   width: 4px;
   background: #2f3e46;
   transform: translateX(-50%);
-  z-index: 1; /* Linie bleibt hinter den Boxen */
+  z-index: 1;
 }
 
-/* Titel mittig über der Linie */
+/* Titel mittig */
 .timeline-title {
   text-align: center;
   margin: 2rem 0;
-  position: relative;
-  z-index: 2; /* Titel bleibt über der Linie */
-}
-
-.timeline-title h2 {
-  display: inline-block;
-  background: #2f3e46;
-  color: #fff;
-  padding: 0.6rem 1.2rem;
-  border-radius: 6px;
-  font-size: 1.4rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-
-/* Hover Grow Effekt für Boxen */
-.timeline .box {
-  background: #fff;
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  z-index: 3; /* Boxen liegen über Linie */
-}
-
-.timeline .box:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
-
-/* Titel mittig auf der Timeline */
-.timeline-title {
-  text-align: center;
-  margin: 3rem 0 2rem;
   position: relative;
   z-index: 2;
 }
@@ -188,122 +180,143 @@ nav a:hover {
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
-/* Hover Grow Effekt für Boxen */
-.timeline .box {
+/* Reihen */
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.col {
+  width: 45%;
+}
+
+/* Boxen */
+.box {
   background: #fff;
   padding: 1rem 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   position: relative;
+  z-index: 3;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.timeline .box:hover {
+.box:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
-/* === Projects Header === */
+/* Punkte */
+.box::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #2f3e46;
+  transform: translateY(-50%);
+  z-index: 4;
+}
+
+.col.left .box::before {
+  right: -36px;
+}
+
+.col.right .box::before {
+  left: -36px;
+}
+
+/* Mobile Timeline */
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 20px;
+  }
+  .row {
+    flex-direction: column;
+  }
+  .col {
+    width: 100%;
+  }
+  .box::before {
+    left: -30px !important;
+    right: auto;
+  }
+}
+
+/* =====================
+   Personality
+===================== */
+.personality {
+  background: #f8f9fa;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.personality h2 {
+  margin-bottom: 2rem;
+  color: #2f3e46;
+}
+
+.traits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.trait {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  font-weight: 500;
+}
+
+/* =====================
+   Projects
+===================== */
 .projects-header {
   text-align: center;
   padding: 4rem 2rem;
   background: #fff3e6;
 }
+
 .projects-header img {
   max-width: 200px;
   border-radius: 12px;
   margin-bottom: 1rem;
 }
 
-/* === Contact Header === */
+/* =====================
+   Contact
+===================== */
 .contact-header {
   text-align: center;
   padding: 3rem 2rem;
   background: #e9ecef;
 }
+
 .contact-header img {
   max-width: 160px;
   border-radius: 50%;
   margin-bottom: 0.5rem;
 }
 
-/* === Responsiv: Landingpage Hero untereinander === */
-@media (max-width: 768px) {
-  .hero-inner {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .hero-image img { transform: none; }
-}
-
-/* === Statements === */
-.statements {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  padding: 2rem;
-}
-.statement {
-  flex: 1 1 250px;
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  text-align: center;
-}
-
-.timeline .box {
-  background: #fff;
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.timeline .box:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
-
-/* === Galerie Section === 
-.gallery {
-  padding: 3rem 2rem;
-  text-align: center;
-  background: #fff;
-}
-.gallery h2 {
-  margin-bottom: 2rem;
-  color: #2f3e46;
-}
-.gallery-grid {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-.gallery-grid img {
-  max-width: 250px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.gallery-grid img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-} */
-
-/* === Kontaktbereich === */
 .contact {
   text-align: center;
   padding: 3rem 2rem;
   background: #f8f9fa;
 }
+
 .contact h2 {
   margin-bottom: 2rem;
   color: #2f3e46;
 }
+
 .contact-links {
   display: flex;
   flex-wrap: wrap;
@@ -313,6 +326,7 @@ nav a:hover {
   max-width: 700px;
   margin: 0 auto;
 }
+
 .contact-links a {
   display: flex;
   align-items: center;
@@ -328,16 +342,20 @@ nav a:hover {
   transition: all 0.3s ease;
   min-width: 150px;
 }
+
 .contact-links a:hover {
   background: #2f3e46;
   color: #fff;
   transform: translateY(-3px);
 }
+
 .contact-links i {
   font-size: 1.2rem;
 }
 
-/* === Footer === */
+/* =====================
+   Footer
+===================== */
 footer {
   text-align: center;
   padding: 2rem;
