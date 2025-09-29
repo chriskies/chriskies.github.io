@@ -280,9 +280,6 @@ nav a:hover {
 /* =====================
    Projects
 ===================== */
-/* =====================
-   Projects
-===================== */
 
 /* Layout: Boxen links, Bild rechts */
 .projects-layout {
@@ -313,6 +310,8 @@ nav a:hover {
   flex: 1;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
+  margin-top: 4rem; /* Bild etwas nach unten versetzen */
 }
 
 .projects-image img {
