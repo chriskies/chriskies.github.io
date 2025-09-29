@@ -309,7 +309,7 @@ nav a:hover {
   flex: 1;
   display: flex;
   justify-content: center;
-  margin-top: 4rem; /* <- hier anpassen: 2rem, 3rem, 5rem ... */
+  margin-top: 10rem; /* <- hier anpassen: 2rem, 3rem, 5rem ... */
 }
 
 .projects-image img {
