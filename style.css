@@ -153,8 +153,8 @@ nav a:hover {
 .timeline::before {
   content: "";
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 3rem;        /* Abstand nach oben: Linie startet unterhalb des Titels */
+  bottom: 3rem;     /* Abstand nach unten */
   left: 50%;
   width: 4px;
   background: #2f3e46;
