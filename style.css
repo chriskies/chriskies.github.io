@@ -277,6 +277,60 @@ nav a:hover {
   font-weight: 500;
 }
 
+/* =====================
+   Projects
+===================== */
+.projects-header {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: #fff3e6;
+}
+
+.projects-header img {
+  max-width: 200px;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+/* === Projekte: Bild links, Content rechts === */
+.projects-layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+.projects-image img {
+  width: 280px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.projects-content {
+  flex: 1;
+}
+
+.projects-content h1 {
+  margin-top: 0;
+  color: #2f3e46;
+}
+
+@media (max-width: 900px) {
+  .projects-layout {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .projects-image img {
+    width: 200px;
+    margin-bottom: 2rem;
+  }
+}
+
 /* === Projects: stabiles Grid + Karten === */
 .projects-grid {
   display: flex;
@@ -311,21 +365,6 @@ nav a:hover {
 
 .project-card a:hover {
   color: #ffd166;
-}
-
-/* =====================
-   Projects
-===================== */
-.projects-header {
-  text-align: center;
-  padding: 4rem 2rem;
-  background: #fff3e6;
-}
-
-.projects-header img {
-  max-width: 200px;
-  border-radius: 12px;
-  margin-bottom: 1rem;
 }
 
 /* =====================
