@@ -84,17 +84,6 @@ nav a:hover {
   padding: 4rem 2rem;
   background: #f8f9fa;
 }
-.about-header img {
-  max-width: 180px;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-}
-
-.about-header {
-  text-align: center;
-  padding: 4rem 2rem;
-  background: #f8f9fa;
-}
 
 .about-header img {
   width: 180px;
