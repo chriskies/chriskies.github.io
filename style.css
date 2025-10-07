@@ -1,18 +1,31 @@
-/* =====================
-   Grundlayout
-===================== */
+/* ========================================
+   0) Base / Reset
+======================================== */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+img { display: block; max-width: 100%; height: auto; }
+
 body {
   font-family: "Helvetica Neue", Arial, sans-serif;
-  margin: 0;
-  padding: 0;
   line-height: 1.6;
   background: #fdfdfd;
   color: #333;
 }
 
-/* =====================
-   Navigation
-===================== */
+/* Layout helpers */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+/* Links */
+a { color: #2f3e46; text-decoration: none; }
+a:hover { color: #ffd166; }
+
+/* ========================================
+   1) Navigation
+======================================== */
 nav {
   background: #2f3e46;
   color: #fff;
@@ -21,428 +34,150 @@ nav {
   justify-content: center;
   gap: 2rem;
 }
+nav a { color: #fff; font-weight: 600; }
 
-nav a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
+/* ========================================
+   2) Hero (Startseite)
+======================================== */
+.hero { background: #e9ecef; padding: 4rem 2rem; }
+.hero-inner { display: flex; gap: 2rem; align-items: center; }
+.hero-image img { width: 220px; aspect-ratio: 1 / 1; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,.1); }
+.hero-text { max-width: 620px; }
+.hero-text h1 { margin: 0; font-size: 2.2rem; color: #2f3e46; }
+.hero-text .subtitle { font-style: italic; color: #666; margin: .5rem 0 1rem; }
+.hero { margin-bottom: 2rem; } /* Luft nach unten, verhindert Überlappungen */
+
+/* ========================================
+   3) Header-Bausteine pro Seite
+   (klare, getrennte Klassen -> keine Kollisionen)
+======================================== */
+.header--about,
+.header--projects,
+.header--contact { text-align: center; padding: 4rem 2rem; }
+
+.header--about   { background: #f8f9fa; }
+.header--projects{ background: #fff3e6; }
+.header--contact { background: #e9ecef; padding: 3rem 2rem; }
+
+/* Avatar/Portrait Varianten */
+.avatar--round {
+  width: 200px; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 50%;
+  margin: 0 auto 1rem; box-shadow: 0 4px 12px rgba(0,0,0,.1);
+}
+.avatar--rect {
+  width: 280px; aspect-ratio: 3 / 4; object-fit: cover;
+  border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,.1);
 }
 
-nav a:hover {
-  color: #ffd166;
-}
-
-/* =====================
-   Landingpage Hero
-===================== */
-.hero {
-  background: #e9ecef;
-  padding: 4rem 2rem;
-}
-
-.hero-inner {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 2rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.hero-image img {
-  max-width: 220px;
-  border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transform: translateX(-1cm);
-}
-
-.hero-text {
-  flex: 1 1 auto;
-  max-width: 620px;
-  text-align: left;
-}
-
-.hero-text h1 {
-  margin: 0;
-  font-size: 2.2rem;
-  color: #2f3e46;
-}
-
-.hero-text .subtitle {
-  font-style: italic;
-  color: #666;
-  margin: 0.5rem 0 1rem;
-}
-
-.hero-text .intro {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #333;
-}
-
-/* Responsive Hero */
-@media (max-width: 768px) {
-  .hero-inner {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .hero-image img {
-    transform: none;
-  }
-}
-
-/* =====================
-   About Section
-===================== */
-.about-header {
-  text-align: center;
-  padding: 4rem 2rem;
-  background: #f8f9fa;
-  margin-bottom: 3rem; /* extra Abstand zur Timeline */
-}
-
-.about-dual-images {
-  display: flex;
-  justify-content: center;
+/* ========================================
+   4) About: Dual Portrait + Text
+======================================== */
+.about-dual {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
   gap: 4rem;
-  max-width: 1000px;
+  align-items: start;
   margin: 2rem auto;
-  flex-wrap: wrap;
 }
+.about-card h3 { margin-top: .5rem; color: #2f3e46; }
+.about-card p  { margin: .5rem 0 0; }
 
-.about-dual-images .col {
-  flex: 1;
-  min-width: 280px;
-  text-align: center;
-}
-
-.about-dual-images img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  object-position: 50% 50%; /* Fokus mittig, kein abgeschnittener Kopf */
-  border-radius: 50%;
-  margin-bottom: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.about-dual-images h3 {
-  margin-top: 0.5rem;
-  color: #2f3e46;
-}
-
-/* Mobile: About untereinander */
-@media (max-width: 768px) {
-  .about-dual-images {
-    flex-direction: column;
-    gap: 2rem;
-  }
-}
-
-/* =====================
-   Timeline
-===================== */
-.timeline {
-  position: relative;
-  margin: 3rem 0;
-}
-
-/* Mittellinie */
+/* ========================================
+   5) Timeline (robust & simpel)
+======================================== */
+.timeline { position: relative; margin: 3rem 0; }
 .timeline::before {
-  content: "";
-  position: absolute;
-  top: 3rem;        /* Abstand nach oben: Linie startet unterhalb des Titels */
-  bottom: 3rem;     /* Abstand nach unten */
-  left: 50%;
-  width: 4px;
-  background: #2f3e46;
-  transform: translateX(-50%);
-  z-index: 1;
+  content: ""; position: absolute; left: 50%; top: 3rem; bottom: 3rem;
+  width: 4px; background: #2f3e46; transform: translateX(-50%);
 }
-
-/* Titel mittig */
-.timeline-title {
-  text-align: center;
-  margin: 2rem 0;
-  position: relative;
-  z-index: 2;
-}
-
+.timeline-title { text-align: center; margin: 1rem 0 2rem; }
 .timeline-title h2 {
-  display: inline-block;
-  background: #2f3e46;
-  color: #fff;
-  padding: 0.6rem 1.2rem;
-  border-radius: 6px;
-  font-size: 1.4rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  display: inline-block; background: #2f3e46; color: #fff;
+  padding: .6rem 1.2rem; border-radius: 6px; font-size: 1.4rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
 }
 
-/* Reihen */
-.row {
-  display: flex;
-  justify-content: space-between;
-  margin: 2rem 0;
-  position: relative;
+.timeline-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; margin: 2rem 0; }
+.timeline-col { position: relative; }
+.timeline-box {
+  background: #fff; padding: 1rem 1.5rem; border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  transition: transform .3s ease, box-shadow .3s ease;
 }
+.timeline-box:hover { transform: scale(1.03); box-shadow: 0 6px 16px rgba(0,0,0,.15); }
 
-.col {
-  width: 45%;
+/* Punkte an der Mittellinie */
+.timeline-dot {
+  position: absolute; top: 50%; width: 18px; height: 18px;
+  margin-top: -9px; border-radius: 50%; background: #fff; border: 3px solid #2f3e46; z-index: 2;
 }
+.timeline-col--left  .timeline-dot { right: -35px; }
+.timeline-col--right .timeline-dot { left:  -35px; }
 
-/* Boxen */
-.box {
-  background: #fff;
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  position: relative;
-  z-index: 3;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* ========================================
+   6) Personality
+======================================== */
+.personality { background: #f8f9fa; padding: 3rem 2rem; text-align: center; }
+.personality h2 { margin-bottom: 2rem; color: #2f3e46; }
+.traits { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+.trait  { background: #fff; border-radius: 8px; padding: 1rem 1.5rem; box-shadow: 0 2px 6px rgba(0,0,0,.08); font-weight: 500; }
+
+/* ========================================
+   7) Projects – Boxen links, Bild rechts (stabil)
+======================================== */
+.projects {
+  display: grid;
+  grid-template-columns: 1fr 320px; /* links Inhalte, rechts Bild */
+  gap: 3rem; align-items: start; margin: 3rem 0;
 }
+.projects h1 { margin: 0 0 .5rem; color: #2f3e46; }
 
-.box:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
-
-/* Punkte */
-.box::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #fff;
-  border: 3px solid #2f3e46;
-  transform: translateY(-50%);
-  z-index: 4;
-}
-
-.col.left .box::before {
-  right: -36px;
-}
-
-.col.right .box::before {
-  left: -36px;
-}
-
-/* Mobile Timeline */
-@media (max-width: 768px) {
-  .timeline::before {
-    left: 20px;
-  }
-  .row {
-    flex-direction: column;
-  }
-  .col {
-    width: 100%;
-  }
-  .box::before {
-    left: -30px !important;
-    right: auto;
-  }
-}
-
-/* =====================
-   Personality
-===================== */
-.personality {
-  background: #f8f9fa;
-  padding: 3rem 2rem;
-  text-align: center;
-}
-
-.personality h2 {
-  margin-bottom: 2rem;
-  color: #2f3e46;
-}
-
-.traits {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.trait {
-  background: #fff;
-  border-radius: 8px;
-  padding: 1rem 1.5rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  font-weight: 500;
-}
-
-/* =====================
-   Projects
-===================== */
-/* Layout: Boxen links, Bild rechts */
-.projects-layout {
-  display: flex;
-  align-items: stretch; /* Bild wird in der Mitte ausgerichtet */
-  justify-content: center;
-  gap: 3rem;
-  max-width: 1200px;
-  margin: 3rem auto;
-  padding: 0 2rem;
-}
-
-.projects-content {
-  flex: 2;
-}
-
-.projects-content h1 {
-  margin-top: 0;
-  color: #2f3e46;
-}
-
-.projects-content p {
-  margin-bottom: 1.5rem;
-  color: #444;
-}
-
-/* Grid für die Projekt-Boxen */
-.projects-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
+.projects-grid { display: grid; grid-template-columns: repeat(2, minmax(230px,1fr)); gap: 1.5rem; }
 .project-card {
-  flex: 1 1 calc(50% - 1.5rem); /* zwei Spalten */
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  text-align: center;
+  background: #fff; padding: 1.5rem; border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05); text-align: center;
   transition: transform .25s ease, box-shadow .25s ease;
 }
-
-.project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+.project-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,.12); }
+.project-image { display: flex; justify-content: center; }
+.project-image .avatar--rect { /* Bild bewusst etwas tiefer */
+  margin-top: 2.5rem; /* feinjustieren, damit Oberkante auf erste Card passt */
 }
 
-.project-card h3 {
-  margin-top: 0;
-  color: #2f3e46;
-}
-
-.project-card a {
-  font-weight: 600;
-  text-decoration: none;
-  color: #2f3e46;
-}
-
-.project-card a:hover {
-  color: #ffd166;
-}
-
-/* >>> Fix: Projekte-Bild sauber ausrichten <<< */
-.projects-image {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  margin-top: 2.5rem; /* anpassen */
-}
-
-.projects-image img {
-  max-width: 280px;
-  height: auto;
-  border-radius: 12px;
-  object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-/* Responsiv: unter 900px Bild unterhalb der Boxen, Grid 1-spaltig */
-@media (max-width: 900px) {
-  .projects-layout {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .projects-grid {
-    flex-direction: column;
-  }
-
-  .project-card {
-    flex: 1 1 100%;
-  }
-   
-/* =====================
-   Contact
-===================== */
-.contact-header {
-  text-align: center;
-  padding: 3rem 2rem;
-  background: #e9ecef;
-}
-
-.contact-header img {
-  max-width: 160px;
-  border-radius: 50%;
-  margin-bottom: 0.5rem;
-}
-
-.contact {
-  text-align: center;
-  padding: 3rem 2rem;
-  background: #f8f9fa;
-}
-
-.contact h2 {
-  margin-bottom: 2rem;
-  color: #2f3e46;
-}
-
+/* ========================================
+   8) Contact
+======================================== */
+.contact-lead { max-width: 700px; margin: 0 auto; }
 .contact-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-  max-width: 700px;
-  margin: 0 auto;
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+  gap: 1.5rem; max-width: 700px; margin: 0 auto;
 }
-
 .contact-links a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  text-decoration: none;
-  background: #fff;
-  padding: 0.8rem 1.4rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  color: #2f3e46;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  min-width: 150px;
+  display: flex; align-items: center; justify-content: center; gap: .5rem;
+  background: #fff; padding: .8rem 1.4rem; border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08); color: #2f3e46; font-weight: 500;
+  transition: all .3s ease; min-width: 150px;
+}
+.contact-links a:hover { background: #2f3e46; color: #fff; transform: translateY(-3px); }
+
+/* ========================================
+   9) Footer
+======================================== */
+footer { text-align: center; padding: 2rem; background: #2f3e46; color: #fff; margin-top: 2rem; }
+
+/* ========================================
+   10) Responsive
+======================================== */
+@media (max-width: 900px) {
+  .hero-inner { flex-direction: column; text-align: center; }
+  .projects { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-image .avatar--rect { margin-top: 1.5rem; width: 200px; margin-left: auto; margin-right: auto; }
 }
 
-.contact-links a:hover {
-  background: #2f3e46;
-  color: #fff;
-  transform: translateY(-3px);
-}
-
-.contact-links i {
-  font-size: 1.2rem;
-}
-
-/* =====================
-   Footer
-===================== */
-footer {
-  text-align: center;
-  padding: 2rem;
-  background: #2f3e46;
-  color: #fff;
-  margin-top: 2rem;
+@media (max-width: 768px) {
+  .about-dual { grid-template-columns: 1fr; gap: 2rem; }
+  .timeline-row { grid-template-columns: 1fr; }
+  .timeline::before { left: 20px; }             /* Linie leicht nach links */
+  .timeline-dot { left: -30px; right: auto; }   /* Punkte auf Mobil links */
 }
