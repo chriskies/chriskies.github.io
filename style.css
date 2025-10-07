@@ -147,6 +147,9 @@ nav a { color: #fff; font-weight: 600; }
 /* ========================================
    8) Contact
 ======================================== */
+.contact { text-align: center; padding: 3rem 2rem; background: #f8f9fa; }
+
+.contact h2 { margin: 0 0 1.5rem; color: #2f3e46; font-weight: 700; }
 .contact-lead { max-width: 700px; margin: 0 auto; }
 .contact-links {
   display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
