@@ -144,6 +144,22 @@ nav a { color: #fff; font-weight: 600; }
   margin-top: 2.5rem; /* feinjustieren, damit Oberkante auf erste Card passt */
 }
 
+.projects-gallery {
+  text-align: center; padding: 5rem 2rem;
+  background: url("assets/images/backgrounds/federkiel.jpg") center/cover no-repeat;
+  position: relative; overflow: hidden;
+}
+
+.projects-gallery::before {
+  content: ""; position: absolute; inset: 0;
+  background: rgba(255,255,255,0.75); /* halbtransparent für Textlesbarkeit */
+  backdrop-filter: blur(2px); z-index: 0;
+}
+
+.projects-gallery h1,
+.projects-gallery p,
+.project-circles { position: relative; z-index: 1; }
+
 /* ========================================
    7b) Projects – Kreis-Buttons + Hintergrundbild
 ======================================== */
