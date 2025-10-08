@@ -205,11 +205,11 @@ nav a { color: #fff; font-weight: 600; }
 }
 
 /* 5 gleichmäßige Winkel (360/5 = 72°) */
-.orbit .circle:nth-of-type(1){ --angle:   0deg; }
-.orbit .circle:nth-of-type(2){ --angle:  72deg; }
-.orbit .circle:nth-of-type(3){ --angle: 144deg; }
-.orbit .circle:nth-of-type(4){ --angle: 216deg; }
-.orbit .circle:nth-of-type(5){ --angle: 288deg; }
+.orbit .circle:nth-of-type(1){ --angle:  -90deg; } /* oben */
+.orbit .circle:nth-of-type(2){ --angle:  -18deg; } /* rechts oben */
+.orbit .circle:nth-of-type(3){ --angle: 54deg; } /* rechts unten */
+.orbit .circle:nth-of-type(4){ --angle: 126deg; } /* links unten */
+.orbit .circle:nth-of-type(5){ --angle: 198deg; } /* links oben */
 
 /* Mobil kleiner */
 @media (max-width: 768px){
