@@ -41,7 +41,14 @@ nav a { color: #fff; font-weight: 600; }
 ======================================== */
 .hero { background: #e9ecef; padding: 4rem 2rem; }
 .hero-inner { display: flex; gap: 2rem; align-items: center; }
-.hero-image img { width: 220px; aspect-ratio: 1 / 1; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,.1); }
+.hero-image img {
+  width: 220px;          /* fix statt max-width */
+  aspect-ratio: 1 / 1;   /* quadratisch */
+  object-fit: cover;     /* nicht strecken, sauber beschneiden */
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,.1);
+  transform: translateX(-1cm);
+}
 .hero-text { max-width: 620px; }
 .hero-text h1 { margin: 0; font-size: 2.2rem; color: #2f3e46; }
 .hero-text .subtitle { font-style: italic; color: #666; margin: .5rem 0 1rem; }
