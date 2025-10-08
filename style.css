@@ -16,7 +16,7 @@ body {
   color: #333;
 }
 
-/* Layout helpers */
+/* Layout helper */
 .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
 /* Links */
@@ -37,14 +37,14 @@ nav {
 nav a { color: #fff; font-weight: 600; }
 
 /* ========================================
-   2) Hero (Startseite)
+   2) Hero (Landingpage)
+   -> Portrait global top-aligned
 ======================================== */
-.hero { background: #e9ecef; padding: 4rem 2rem; }
+.hero { background: #e9ecef; padding: 4rem 2rem; margin-bottom: 2rem; }
 .hero-inner { display: flex; gap: 2rem; align-items: center; }
 .hero-image img {
-  width: 220px;          /* fix statt max-width */
-  aspect-ratio: 1 / 1;   /* quadratisch */
-  object-fit: cover;     /* nicht strecken, sauber beschneiden */
+  width: 220px; height: 220px;           /* fix & sauber */
+  object-fit: cover; object-position: 50% 10%; /* TOP-AUSRICHTUNG */
   border-radius: 50%;
   box-shadow: 0 4px 12px rgba(0,0,0,.1);
   transform: translateX(-1cm);
@@ -52,11 +52,9 @@ nav a { color: #fff; font-weight: 600; }
 .hero-text { max-width: 620px; }
 .hero-text h1 { margin: 0; font-size: 2.2rem; color: #2f3e46; }
 .hero-text .subtitle { font-style: italic; color: #666; margin: .5rem 0 1rem; }
-.hero { margin-bottom: 2rem; } /* Luft nach unten, verhindert Überlappungen */
 
 /* ========================================
-   3) Header-Bausteine pro Seite
-   (klare, getrennte Klassen -> keine Kollisionen)
+   3) Seiten-Header (modular)
 ======================================== */
 .header--about,
 .header--projects,
@@ -66,14 +64,19 @@ nav a { color: #fff; font-weight: 600; }
 .header--projects{ background: #fff3e6; }
 .header--contact { background: #e9ecef; padding: 3rem 2rem; }
 
-/* Avatar/Portrait Varianten */
+/* Portrait-Komponenten – GLOBAL TOP-AUSRICHTUNG */
 .avatar--round {
-  width: 200px; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 50%;
-  margin: 0 auto 1rem; box-shadow: 0 4px 12px rgba(0,0,0,.1);
+  width: 200px; height: 200px;
+  object-fit: cover; object-position: 50% 10%; /* TOP */
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,.1);
 }
 .avatar--rect {
-  width: 280px; aspect-ratio: 3 / 4; object-fit: cover;
-  border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,.1);
+  width: 280px; aspect-ratio: 3 / 4;    /* definierte Höhe ohne Verzerren */
+  object-fit: cover; object-position: 50% 10%; /* TOP */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.1);
 }
 
 /* ========================================
@@ -103,8 +106,10 @@ nav a { color: #fff; font-weight: 600; }
   padding: .6rem 1.2rem; border-radius: 6px; font-size: 1.4rem;
   box-shadow: 0 2px 8px rgba(0,0,0,.15);
 }
-
-.timeline-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; margin: 2rem 0; }
+.timeline-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 2rem; align-items: center; margin: 2rem 0;
+}
 .timeline-col { position: relative; }
 .timeline-box {
   background: #fff; padding: 1rem 1.5rem; border-radius: 8px;
@@ -113,10 +118,11 @@ nav a { color: #fff; font-weight: 600; }
 }
 .timeline-box:hover { transform: scale(1.03); box-shadow: 0 6px 16px rgba(0,0,0,.15); }
 
-/* Punkte an der Mittellinie */
+/* Punkte */
 .timeline-dot {
   position: absolute; top: 50%; width: 18px; height: 18px;
-  margin-top: -9px; border-radius: 50%; background: #fff; border: 3px solid #2f3e46; z-index: 2;
+  margin-top: -9px; border-radius: 50%; background: #fff;
+  border: 3px solid #2f3e46; z-index: 2;
 }
 .timeline-col--left  .timeline-dot { right: -35px; }
 .timeline-col--right .timeline-dot { left:  -35px; }
@@ -129,97 +135,64 @@ nav a { color: #fff; font-weight: 600; }
 .traits { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
 .trait  { background: #fff; border-radius: 8px; padding: 1rem 1.5rem; box-shadow: 0 2px 6px rgba(0,0,0,.08); font-weight: 500; }
 
-/* ==================================================== 
-	 7) Projects – Orbit-Layout (Kreise auf großem Kreis) 
-==================================================== */
+/* ========================================
+   7) Projects – Orbit-Galerie (Kreise im Kreis)
+======================================== */
 .projects-gallery {
   text-align: center;
   padding: 6rem 2rem;
-  background: url("assets/images/backgrounds/federkiel.jpg") center/cover no-repeat; /* Pfad anpassen falls nötig */
-  position: relative;
-  overflow: hidden;
+  /* Pfad anpassen, falls du keinen backgrounds-Ordner hast: assets/images/federkiel.jpg */
+  background: url("assets/images/backgrounds/federkiel.jpg") center/cover no-repeat;
+  position: relative; overflow: hidden;
 }
 .projects-gallery::before{
   content:""; position:absolute; inset:0;
-  background: rgba(255,255,255,.75);
-  backdrop-filter: blur(2px);
-  z-index:0;
+  background: rgba(255,255,255,.75); backdrop-filter: blur(2px); z-index:0;
 }
 .projects-gallery h1,
 .projects-gallery p,
-.project-circles{ position:relative; z-index:1; }
+.project-circles { position: relative; z-index: 1; }
 
-/* Bühne / Orbit mit Variablen: Container, Ring, Kreis, Radius korrekt berechnet */
 .project-circles.orbit{
-  /* Desktop-Werte */
-  --container: 420px;       /* Durchmesser des großen Kreises */
-  --ring: 2px;              /* Linienbreite der Orbit-Linie */
-  --circle: 120px;          /* Durchmesser der kleinen Projekt-Kreise */
-  --tweak: 0px;             /* Feinkorrektur bei Bedarf (+/- 1px) */
-
-  width: var(--container);
-  height: var(--container);
-  margin: 4rem auto 0;
   position: relative;
+  width: 420px; height: 420px;
+  margin: 4rem auto 0;
   border-radius: 50%;
-
-  /* Radius so, dass die Außenkante der Kreise GENAU auf der Orbit-Linie liegt: 
-     (Container/2) - (Circle/2) - (Ring/2) (+/- tweak) */
-  --radius: calc((var(--container) / 2) - (var(--circle) / 2) - (var(--ring) / 2) + var(--tweak));
+  --radius: 180px; /* Orbit-Radius */
 }
-
-/* Orbit-Linie benutzt die gleiche Ringstärke */
 .orbit-line{
-  position: absolute;
-  inset: 0;
-  border: var(--ring) solid rgba(47,62,70,0.3);
-  border-radius: 50%;
-  z-index: 0;
+  position:absolute; inset:0;
+  border: 2px solid rgba(47,62,70,.3);
+  border-radius:50%; z-index:0;
 }
-
-/* Kreise übernehmen die definierte Größe + berechneten Radius */
 .orbit .circle{
   position: absolute;
-  top: 50%; left: 50%;
-  width: var(--circle);
-  height: var(--circle);
-  border-radius: 50%;
-  background: rgba(47,62,70,0.85);
-  color: #fff;
-  display: flex; align-items: center; justify-content: center;
-  text-align: center; font-weight: 600; line-height: 1.3;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  transition: background .25s ease, color .25s ease;
-  /* Basiszentrierung + Orbit-Positionierung */
+  top:50%; left:50%;
   transform: translate(-50%, -50%) rotate(var(--angle)) translate(var(--radius)) rotate(calc(var(--angle) * -1));
+  transform-origin: center;
+  width:120px; height:120px; border-radius:50%;
+  background: rgba(47,62,70,.85); color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center; font-weight:600; line-height:1.3;
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  transition: background .25s ease, color .25s ease;
 }
-
-.orbit .circle > span{ display: block; transition: transform .25s ease; }
+.orbit .circle > span{ display:block; transition: transform .25s ease; }
 .orbit .circle:hover{ background:#ffd166; color:#2f3e46; }
 .orbit .circle:hover > span{ transform: scale(1.08); }
 
-/* Winkelverteilung (4 Kreise) */
+/* vier gleichmäßig verteilte Kreise */
 .orbit .circle:nth-of-type(1){ --angle:   0deg; }
 .orbit .circle:nth-of-type(2){ --angle:  90deg; }
 .orbit .circle:nth-of-type(3){ --angle: 180deg; }
 .orbit .circle:nth-of-type(4){ --angle: 270deg; }
 
-/* Mobil: alles kleiner – Berechnung passt sich automatisch an */
-@media (max-width: 768px){
-  .project-circles.orbit{
-    --container: 300px;
-    --ring: 2px;
-    --circle: 90px;
-    --tweak: 0px; /* bei Bedarf auf 0.5px/1px anpassen */
-  }
-}
-
 /* ========================================
    8) Contact
 ======================================== */
 .contact { text-align: center; padding: 3rem 2rem; background: #f8f9fa; }
-
 .contact h2 { margin: 0 0 1.5rem; color: #2f3e46; font-weight: 700; }
+
 .contact-lead { max-width: 700px; margin: 0 auto; }
 .contact-links {
   display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
@@ -243,14 +216,13 @@ footer { text-align: center; padding: 2rem; background: #2f3e46; color: #fff; ma
 ======================================== */
 @media (max-width: 900px) {
   .hero-inner { flex-direction: column; text-align: center; }
-  .projects { grid-template-columns: 1fr; }
-  .projects-grid { grid-template-columns: 1fr; }
-  .project-image .avatar--rect { margin-top: 1.5rem; width: 200px; margin-left: auto; margin-right: auto; }
 }
-
 @media (max-width: 768px) {
   .about-dual { grid-template-columns: 1fr; gap: 2rem; }
   .timeline-row { grid-template-columns: 1fr; }
   .timeline::before { left: 20px; }             /* Linie leicht nach links */
   .timeline-dot { left: -30px; right: auto; }   /* Punkte auf Mobil links */
+
+  .project-circles.orbit{ width:300px; height:300px; --radius:130px; }
+  .orbit .circle{ width:90px; height:90px; font-size:.9rem; }
 }
