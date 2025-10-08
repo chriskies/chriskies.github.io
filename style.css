@@ -138,54 +138,88 @@ nav a { color: #fff; font-weight: 600; }
 /* ========================================
    7) Projects – Orbit-Galerie (Kreise im Kreis)
 ======================================== */
+/* === Projects – Orbit mit 5 Kreisen, Text-sicher, tangential zur Kreislinie === */
 .projects-gallery {
   text-align: center;
   padding: 6rem 2rem;
-  /* Pfad anpassen, falls du keinen backgrounds-Ordner hast: assets/images/federkiel.jpg */
-  background: url("assets/images/backgrounds/federkiel.jpg") center/cover no-repeat;
+  background: url("assets/images/backgrounds/federkiel.jpg") center/cover no-repeat; /* Pfad ggf. anpassen */
   position: relative; overflow: hidden;
 }
 .projects-gallery::before{
   content:""; position:absolute; inset:0;
-  background: rgba(255,255,255,.75); backdrop-filter: blur(2px); z-index:0;
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(2px); z-index:0;
 }
 .projects-gallery h1,
 .projects-gallery p,
-.project-circles { position: relative; z-index: 1; }
+.project-circles{ position:relative; z-index:1; }
 
 .project-circles.orbit{
   position: relative;
-  width: 420px; height: 420px;
+  width: 420px; height: 420px;           /* Bühne */
   margin: 4rem auto 0;
   border-radius: 50%;
-  --radius: 180px; /* Orbit-Radius */
+  --orbit: 210px;                        /* Orbit-Radius (Bühnen-Halbmesser) */
+  --circle: 120px;                       /* Button-Durchmesser */
+  --circleR: calc(var(--circle) / 2);    /* Button-Radius */
+  /* Tangential: Button-Außenkante liegt auf der Orbit-Linie */
+  --radius: calc(var(--orbit) - var(--circleR));
 }
 .orbit-line{
   position:absolute; inset:0;
   border: 2px solid rgba(47,62,70,.3);
   border-radius:50%; z-index:0;
 }
+
+/* Kreise */
 .orbit .circle{
   position: absolute;
   top:50%; left:50%;
   transform: translate(-50%, -50%) rotate(var(--angle)) translate(var(--radius)) rotate(calc(var(--angle) * -1));
   transform-origin: center;
-  width:120px; height:120px; border-radius:50%;
+  width: var(--circle); height: var(--circle);
+  border-radius: 50%;
   background: rgba(47,62,70,.85); color:#fff;
   display:flex; align-items:center; justify-content:center;
-  text-align:center; font-weight:600; line-height:1.3;
+  text-align:center; font-weight:600;
   box-shadow:0 4px 10px rgba(0,0,0,0.15);
-  transition: background .25s ease, color .25s ease;
+  overflow: hidden;                      /* Text bleibt im Kreis */
+  padding: .6rem;                        /* Innenabstand für Text */
 }
-.orbit .circle > span{ display:block; transition: transform .25s ease; }
-.orbit .circle:hover{ background:#ffd166; color:#2f3e46; }
-.orbit .circle:hover > span{ transform: scale(1.08); }
 
-/* vier gleichmäßig verteilte Kreise */
+/* Text im Kreis – kompakter, kein Überlaufen */
+.orbit .circle > span{
+  display:block;
+  line-height: 1.2;
+  font-size: 0.95rem;
+  word-break: break-word;
+  hyphens: auto;
+  transition: transform .25s ease;
+}
+
+.orbit .circle:hover{
+  background:#ffd166; color:#2f3e46;
+}
+.orbit .circle:hover > span{
+  transform: scale(1.06);
+}
+
+/* 5 gleichmäßige Winkel (360/5 = 72°) */
 .orbit .circle:nth-of-type(1){ --angle:   0deg; }
-.orbit .circle:nth-of-type(2){ --angle:  90deg; }
-.orbit .circle:nth-of-type(3){ --angle: 180deg; }
-.orbit .circle:nth-of-type(4){ --angle: 270deg; }
+.orbit .circle:nth-of-type(2){ --angle:  72deg; }
+.orbit .circle:nth-of-type(3){ --angle: 144deg; }
+.orbit .circle:nth-of-type(4){ --angle: 216deg; }
+.orbit .circle:nth-of-type(5){ --angle: 288deg; }
+
+/* Mobil kleiner */
+@media (max-width: 768px){
+  .project-circles.orbit{
+    width: 300px; height: 300px;
+    --orbit: 150px;            /* Bühne Halbmesser */
+    --circle: 90px;            /* Button kleiner */
+  }
+  .orbit .circle > span{ font-size: 0.85rem; }
+}
 
 /* ========================================
    8) Contact
