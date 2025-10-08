@@ -287,7 +287,6 @@ footer { text-align: center; padding: 2rem; background: #2f3e46; color: #fff; ma
   .timeline::before { left: 20px; }             /* Linie leicht nach links */
   .timeline-dot { left: -30px; right: auto; }   /* Punkte auf Mobil links */
 
-  .project-circles.orbit{ width:300px; height:300px; --radius:130px; }
   .orbit .circle{ width:90px; height:90px; font-size:.9rem; }
 }
 
