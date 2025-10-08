@@ -126,7 +126,7 @@ nav a { color: #fff; font-weight: 600; }
 .projects-gallery {
   text-align: center;
   padding: 6rem 2rem;
-  background: url("assets/images/federkiel.jpg") center/cover no-repeat; /* Pfad anpassen falls nötig */
+  background: url("assets/images/backgrounds/federkiel.jpg") center/cover no-repeat; /* Pfad anpassen falls nötig */
   position: relative;
   overflow: hidden;
 }
