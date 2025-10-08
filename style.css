@@ -122,86 +122,76 @@ nav a { color: #fff; font-weight: 600; }
 .traits { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
 .trait  { background: #fff; border-radius: 8px; padding: 1rem 1.5rem; box-shadow: 0 2px 6px rgba(0,0,0,.08); font-weight: 500; }
 
-/* ========================================
-   7) Projects – Boxen links, Bild rechts (stabil)
-======================================== */
-/* ========================================
-   Projects – Kreisförmige Orbit-Anordnung
-======================================== */
+/* === Projects – Orbit-Layout (Kreise auf großem Kreis) === */
 .projects-gallery {
   text-align: center;
   padding: 6rem 2rem;
-  background: url("assets/images/federkiel.jpg") center/cover no-repeat;
+  background: url("assets/images/federkiel.jpg") center/cover no-repeat; /* Pfad anpassen falls nötig */
   position: relative;
   overflow: hidden;
 }
-
-.projects-gallery::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,0.75);
+.projects-gallery::before{
+  content:""; position:absolute; inset:0;
+  background: rgba(255,255,255,.75);
   backdrop-filter: blur(2px);
-  z-index: 0;
+  z-index:0;
 }
-
 .projects-gallery h1,
 .projects-gallery p,
-.project-circles { position: relative; z-index: 1; }
+.project-circles{ position:relative; z-index:1; }
 
-.project-circles.orbit {
+/* Bühne */
+.project-circles.orbit{
   position: relative;
   width: 420px; height: 420px;
   margin: 4rem auto 0;
   border-radius: 50%;
+  --radius: 180px; /* globaler Orbit-Radius */
 }
-
 /* Kreislinie */
-.orbit-line {
-  position: absolute;
-  inset: 0;
-  border: 2px solid rgba(47,62,70,0.3);
-  border-radius: 50%;
-  z-index: 0;
+.orbit-line{
+  position:absolute; inset:0;
+  border: 2px solid rgba(47,62,70,.3);
+  border-radius:50%;
+  z-index:0;
 }
 
-/* Kreise auf dem Orbit */
-.orbit .circle {
+/* Kreise */
+.orbit .circle{
   position: absolute;
-  top: 50%; left: 50%;
+  top:50%; left:50%;
+  /* Basis-Zentrierung */
+  transform: translate(-50%, -50%) rotate(var(--angle)) translate(var(--radius)) rotate(calc(var(--angle) * -1));
   transform-origin: center;
-  width: 120px; height: 120px;
-  border-radius: 50%;
-  background: rgba(47,62,70,0.85);
-  color: #fff;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 600; line-height: 1.3;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  transition: transform .3s ease, background .3s ease, color .3s ease;
+  width:120px; height:120px; border-radius:50%;
+  background: rgba(47,62,70,.85); color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center; font-weight:600; line-height:1.3;
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  transition: background .25s ease, color .25s ease;
+}
+/* Inhalt separat skalieren (verhindert Positionssprünge) */
+.orbit .circle > span{
+  display:block;
+  transition: transform .25s ease;
+}
+.orbit .circle:hover{
+  background:#ffd166; color:#2f3e46;
+}
+.orbit .circle:hover > span{
+  transform: scale(1.08);
 }
 
-.orbit .circle:hover {
-  transform: scale(1.1) translate(-50%, -50%) !important;
-  background: #ffd166;
-  color: #2f3e46;
-}
+/* Winkel pro Kreis – nth-of-type zählt nur die <a.circle>, nicht die orbit-line */
+.orbit .circle:nth-of-type(1){ --angle:   0deg; }
+.orbit .circle:nth-of-type(2){ --angle:  90deg; }
+.orbit .circle:nth-of-type(3){ --angle: 180deg; }
+.orbit .circle:nth-of-type(4){ --angle: 270deg; }
 
-/* Positionierung der 4 Kreise auf der Umlaufbahn */
-.orbit .circle:nth-child(2) { transform: rotate(0deg)   translate(180px) rotate(0deg); }
-.orbit .circle:nth-child(3) { transform: rotate(90deg)  translate(180px) rotate(-90deg); }
-.orbit .circle:nth-child(4) { transform: rotate(180deg) translate(180px) rotate(-180deg); }
-.orbit .circle:nth-child(5) { transform: rotate(270deg) translate(180px) rotate(-270deg); }
-
-/* Responsiv: kleiner Kreis auf Mobil */
-@media (max-width: 768px) {
-  .project-circles.orbit { width: 300px; height: 300px; }
-  .orbit .circle { width: 90px; height: 90px; font-size: 0.85rem; }
-  .orbit .circle:nth-child(2),
-  .orbit .circle:nth-child(3),
-  .orbit .circle:nth-child(4),
-  .orbit .circle:nth-child(5) {
-    transform: rotate(var(--angle)) translate(130px) rotate(calc(var(--angle) * -1));
-  }
+/* Mobil kleiner */
+@media (max-width: 768px){
+  .project-circles.orbit{ width:300px; height:300px; --radius:130px; }
+  .orbit .circle{ width:90px; height:90px; font-size:.9rem; }
 }
 
 /* ========================================
