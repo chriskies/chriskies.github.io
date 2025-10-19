@@ -349,3 +349,100 @@ footer { text-align: center; padding: 2rem; background: #2f3e46; color: #fff; ma
    object-fit: cover;
    object-position: 50% 10%;
 }
+
+/* ===== Floating Arbeitsweise ===== */
+:root{
+  --fa-bg: #ffffff;
+  --fa-fg: #2f3e46;
+  --fa-accent: #ffd166;
+  --fa-shadow: 0 10px 30px rgba(0,0,0,.15);
+  --fa-radius: 12px;
+}
+
+.floating-arbeitsweise{
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 9999; /* über allem, ohne zu blockieren */
+  display: grid;
+  gap: .5rem;
+}
+
+/* Collapsed Pill */
+.fa-toggle{
+  background: var(--fa-fg);
+  color: #fff;
+  border: none;
+  padding: .6rem 1rem;
+  border-radius: 999px;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(0,0,0,.18);
+  cursor: pointer;
+  transition: transform .15s ease, background .2s ease;
+}
+.fa-toggle:hover{ transform: translateY(-1px); background:#24333a; }
+.fa-toggle:focus{ outline: 2px solid var(--fa-accent); outline-offset: 2px; }
+
+/* Panel */
+.fa-panel{
+  position: fixed;
+  right: 1rem;
+  bottom: 3.5rem;           /* über der Pill */
+  width: 420px;
+  max-height: 70vh;         /* blockiert Sicht nicht */
+  background: var(--fa-bg);
+  color: var(--fa-fg);
+  border-radius: var(--fa-radius);
+  box-shadow: var(--fa-shadow);
+  overflow: hidden;
+  transform: translateY(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+}
+.fa-panel.open{
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.fa-header{
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .9rem 1rem;
+  background: linear-gradient(0deg, #fff, #f7f9fa);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.fa-header h3{
+  margin: 0; font-size: 1.05rem; font-weight: 700; color: var(--fa-fg);
+}
+.fa-header h3:focus{ outline: none; }
+
+.fa-close{
+  background: transparent; border: none; font-size: 1.4rem; line-height: 1;
+  cursor: pointer; color: #6b7b83; padding: .2rem .4rem; border-radius: 8px;
+}
+.fa-close:hover{ background: rgba(0,0,0,.05); color: #2f3e46; }
+.fa-close:focus{ outline: 2px solid var(--fa-accent); outline-offset: 2px; }
+
+.fa-content{
+  padding: 1rem 1.1rem 1.2rem;
+  max-height: calc(70vh - 56px);
+  overflow: auto;
+  line-height: 1.7;
+}
+.fa-content p{ margin: 0 0 .9rem; }
+
+/* Akzent-Details */
+.fa-content strong{ color: #1f2b31; background: linear-gradient(transparent 60%, rgba(255,209,102,.5) 60%); }
+
+/* Mobile Anpassung */
+@media (max-width: 768px){
+  .fa-panel{
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+    bottom: 4.25rem;
+    max-height: 60vh;
+  }
+  .fa-toggle{ padding: .65rem 1rem; font-size: .95rem; }
+}
