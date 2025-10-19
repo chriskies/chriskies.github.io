@@ -193,6 +193,59 @@
   </div>
 </section>
 
+<!-- ===== Floating Highlight: Arbeitsweise ===== -->
+<div class="floating-arbeitsweise" aria-live="polite">
+  <!-- Collapsed Pill -->
+  <button class="fa-toggle" aria-expanded="false" aria-controls="fa-panel" title="Arbeitsweise öffnen">
+    Arbeitsweise
+  </button>
+
+  <!-- Expandable Panel -->
+  <section id="fa-panel" class="fa-panel" role="dialog" aria-label="Arbeitsweise (Über mich)">
+    <header class="fa-header">
+      <h3>Arbeitsweise</h3>
+      <button class="fa-close" aria-label="Schließen">&times;</button>
+    </header>
+    <div class="fa-content">
+      <p>Ich arbeite hochkonzentriert, strukturiert und mit einem gesunden Qualitätsanspruch.</p>
+      <p>In intensiven Phasen erreiche ich eine besondere Tiefe und Fokussiertheit, die mir ermöglicht, Themen ganzheitlich zu verstehen und Aufgaben mit Klarheit und Leidenschaft umzusetzen. Diese Phasen sind für mich keine Belastung, sondern eine Form kreativer und geistiger Abwechslung, die meinen Arbeitsstil lebendig hält.</p>
+      <p>Immer wieder habe ich erlebt, dass genau diese Stärke in manchen Umgebungen missverstanden wurde – besonders dann, wenn Routine in echte Kompetenz überging. Sobald ich flüssig, sicher und eigenständig arbeiten konnte, wurde dies gelegentlich als Distanz oder Überlegenheit fehlinterpretiert.</p>
+      <p>Dabei geht es mir nicht um Wettbewerb, sondern um Wirksamkeit und Wertschätzung. Ich wünsche mir Arbeitsumfelder, in denen fachliche Tiefe, Selbstständigkeit und echtes Interesse als das gesehen werden, was sie sind – <strong>eine Stärke, keine Abweichung</strong>.</p>
+    </div>
+  </section>
+</div>
+
+<script>
+  (function () {
+    const toggle = document.querySelector('.fa-toggle');
+    const panel  = document.getElementById('fa-panel');
+    const close  = document.querySelector('.fa-close');
+
+    function openPanel() {
+      panel.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      // Fokus barrierefrei auf den Header
+      panel.querySelector('.fa-header h3').focus?.();
+    }
+
+    function closePanel() {
+      panel.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.focus();
+    }
+
+    toggle.addEventListener('click', () => {
+      panel.classList.contains('open') ? closePanel() : openPanel();
+    });
+    close.addEventListener('click', closePanel);
+
+    // ESC zum Schließen
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
+    });
+  })();
+</script>
+
 <!-- Persönlichkeit -->
 <section class="personality">
   <h2>Persönlichkeit & Werte</h2>
