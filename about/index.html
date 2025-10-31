@@ -1,271 +1,110 @@
-<!DOCTYPE html>
-<html lang="de">
+<!doctype html>
+<html lang="de-CH">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Über mich - Christine Kieslich</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Über mich – Christine Kieslich</title>
   <link rel="stylesheet" href="../style.css">
-  <a href="personality.html">Persönlichkeit</a>
 </head>
 <body>
 
-<!-- Navigation -->
-<nav>
-  <a href="index.html">Home</a>
-  <a href="about/index.html">Über mich</a>
-  <a href="projects.html">Projekte</a>
-  <a href="contact.html">Kontakt</a>
+<nav class="site-nav">
+  <a href="../">Home</a>
+  <a class="active" href="./">Über mich</a>
+  <a href="../projects.html">Projekte</a>
+  <a href="../contact.html">Kontakt</a>
+  <a href="./personality.html">Persönlichkeit</a>
 </nav>
 
-<!-- Header: zwei Portraits + Kurztexte -->
 <header class="header--about">
-  <h1>Über mich</h1>
+  <div class="container">
+    <h1>Über mich</h1>
 
-  <div class="about-dual container">
-    <div class="about-card">
-      <img class="avatar--round" src="../assets/images/portraits/portrait-12.jpeg" alt="Christine Kieslich im Blazer">
-      <h3>Analytisch & Logisch</h3>
-      <p>
-        Kaufmännische Ausbildung als solide Basis • IT-Grundstudium an der Universität Basel •
-        B.A. Wirtschaftspsychologie (laufend) • Erfahrung in HR, Consulting und Administration.
-      </p>
-    </div>
+    <div class="about-dual">
+      <article class="about-card">
+        <img class="avatar--round" src="../assets/images/portraits/portrait-12.jpeg" alt="Christine Kieslich im Blazer">
+        <h3>Analytisch & Logisch</h3>
+        <p>Kfm. Ausbildung • IT-Grundstudium Uni Basel • B.A. Wirtschaftspsychologie (laufend) • Erfahrung in HR, Consulting & Administration.</p>
+      </article>
 
-    <div class="about-card">
-      <img class="avatar--round" src="../assets/images/portraits/portrait-18.jpeg" alt="Christine Kieslich im schwarzen Pullover">
-      <h3>Kreativ & Künstlerisch</h3>
-      <p>
-        Leidenschaft für Musik und Gestaltung • Web- & Logodesign • Illustration & digitale Projekte wie das Kinderbuch <em>Gipititi</em> • Technik + Kreativität für neue Ideen.
-      </p>
+      <article class="about-card">
+        <img class="avatar--round" src="../assets/images/portraits/portrait-18.jpeg" alt="Christine Kieslich im schwarzen Pullover">
+        <h3>Kreativ & Künstlerisch</h3>
+        <p>Musik, Gestaltung, Web- & Logodesign, Illustration (u. a. <em>Gipititi</em>) – Technik + Kreativität für klare, nutzernahe Lösungen.</p>
+      </article>
     </div>
   </div>
 </header>
 
-<!-- Timeline: Ausbildung & Studium -->
 <section class="container">
+  <h2>Ausbildung & Studium</h2>
   <div class="timeline">
-    <div class="timeline-title">
-      <h2>Ausbildung & Studium</h2>
+    <div class="timeline-item">
+      <h4>2021–2026 · B.A. Wirtschaftspsychologie</h4>
+      <p>PFH Private Hochschule Göttingen</p>
     </div>
-
-    <!-- 2021–2026 -->
-    <div class="timeline-row">
-      <div class="timeline-col timeline-col--left">
-        <span class="timeline-dot"></span>
-        <div class="timeline-box">
-          <h3>2021 – 2026</h3>
-          <p><strong>B.A. Wirtschaftspsychologie</strong><br>PFH Private Hochschule Göttingen</p>
-        </div>
-      </div>
-      <div class="timeline-col"></div>
+    <div class="timeline-item">
+      <h4>2015–2016 · Grundstudium Informatik</h4>
+      <p>Universität Basel</p>
     </div>
-
-    <!-- 2015–2016 -->
-    <div class="timeline-row">
-      <div class="timeline-col"></div>
-      <div class="timeline-col timeline-col--right">
-        <span class="timeline-dot"></span>
-        <div class="timeline-box">
-          <h3>2015 – 2016</h3>
-          <p><strong>Grundstudium Informatik</strong><br>Universität Basel</p>
-        </div>
-      </div>
+    <div class="timeline-item">
+      <h4>2010–2012 · Musikvorbereitungskurs</h4>
+      <p>Lund University (SE)</p>
     </div>
-
-    <!-- 2010–2012 -->
-    <div class="timeline-row">
-      <div class="timeline-col timeline-col--left">
-        <span class="timeline-dot"></span>
-        <div class="timeline-box">
-          <h3>2010 – 2012</h3>
-          <p><strong>Musikvorbereitungskurs</strong><br>Lund University (SE)</p>
-        </div>
-      </div>
-      <div class="timeline-col"></div>
+    <div class="timeline-item">
+      <h4>2007–2010 · Kauffrau für Bürokommunikation</h4>
+      <p>Walter-Eucken-Gymnasium Freiburg</p>
     </div>
-
-    <!-- 2007–2010 -->
-    <div class="timeline-row">
-      <div class="timeline-col"></div>
-      <div class="timeline-col timeline-col--right">
-        <span class="timeline-dot"></span>
-        <div class="timeline-box">
-          <h3>2007 – 2010</h3>
-          <p><strong>Kauffrau für Bürokommunikation</strong><br>Walter-Eucken-Gymnasium Freiburg</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Weiterbildungen -->
-    <div class="timeline-row">
-      <div class="timeline-col timeline-col--left">
-        <span class="timeline-dot"></span>
-        <div class="timeline-box">
-          <h3>Weiterbildungen</h3>
-          <p>Henna Brows • Sugaring • Naildesign (zertifiziert) • UX/UI (Udemy)</p>
-        </div>
-      </div>
-      <div class="timeline-col"></div>
+    <div class="timeline-item">
+      <h4>Weiterbildungen</h4>
+      <p>Henna Brows • Sugaring • Naildesign (zert.) • UX/UI (Udemy)</p>
     </div>
   </div>
 </section>
 
-<!-- Timeline: Berufserfahrung -->
 <section class="container">
+  <h2>Berufserfahrung</h2>
   <div class="timeline">
-    <div class="timeline-title">
-      <h2>Berufserfahrung</h2>
+    <div class="timeline-item">
+      <h4>2025–heute · Administrative Leitung Produktion</h4>
+      <p>Dima Service AG, Schönenbuch (CH)</p>
     </div>
-
-    <!-- 2025–Heute -->
-    <div class="timeline-row">
-      <div class="timeline-col timeline-col--left">
-        <span class="timeline-dot"></span>
-        <div class="timeline-box">
-          <h3>2025 – Heute</h3>
-          <p><strong>Administrative Leitung Produktion</strong><br>Dima Service AG, Schönenbuch (CH)</p>
-        </div>
-      </div>
-      <div class="timeline-col"></div>
+    <div class="timeline-item">
+      <h4>2022–2024 · Selbstständig</h4>
+      <p>Cosmetics & Consulting Kieslich, Lörrach</p>
     </div>
-
-    <!-- 2022–2024 -->
-    <div class="timeline-row">
-      <div class="timeline-col"></div>
-      <div class="timeline-col timeline-col--right">
-        <span class="timeline-dot"></span>
-        <div class="timeline-box">
-          <h3>2022 – 2024</h3>
-          <p><strong>Selbstständig</strong><br>Cosmetics & Consulting Kieslich, Lörrach</p>
-        </div>
-      </div>
+    <div class="timeline-item">
+      <h4>2023–2024 · Assistant Project Management</h4>
+      <p>ownCloud (Remote)</p>
     </div>
-
-    <!-- 2023–2024 -->
-    <div class="timeline-row">
-      <div class="timeline-col timeline-col--left">
-        <span class="timeline-dot"></span>
-        <div class="timeline-box">
-          <h3>2023 – 2024</h3>
-          <p><strong>Assistant Project Management</strong><br>ownCloud (Remote)</p>
-        </div>
-      </div>
-      <div class="timeline-col"></div>
+    <div class="timeline-item">
+      <h4>2018–2023 · Assistenz & Unternehmensberatung</h4>
+      <p>Zahnarztpraxis, Lörrach</p>
     </div>
-
-    <!-- 2018–2023 -->
-    <div class="timeline-row">
-      <div class="timeline-col"></div>
-      <div class="timeline-col timeline-col--right">
-        <span class="timeline-dot"></span>
-        <div class="timeline-box">
-          <h3>2018 – 2023</h3>
-          <p><strong>Assistenz & Unternehmensberatung</strong><br>Zahnarztpraxis, Lörrach</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Frühere Tätigkeiten -->
-    <div class="timeline-row">
-      <div class="timeline-col timeline-col--left">
-        <span class="timeline-dot"></span>
-        <div class="timeline-box">
-          <h3>Frühere Tätigkeiten</h3>
-          <p>Diverse Positionen: Onlineshop Himmelweit • Protzek Biotec GmbH • Ergotherapie Lörrach • Musikverein Hauingen • Gastronomie & Praktika</p>
-        </div>
-      </div>
-      <div class="timeline-col"></div>
+    <div class="timeline-item">
+      <h4>Frühere Tätigkeiten</h4>
+      <p>Onlineshop Himmelweit • Protzek Biotec GmbH • Ergotherapie Lörrach • Musikverein Hauingen • Gastronomie & Praktika</p>
     </div>
   </div>
 </section>
 
-<!-- Arbeitsweise -->
-<section id="arbeitsweise" class="content-block light-bg">
-  <div class="container">
-    <div class="section-title">
-      <h2>Arbeitsweise</h2>
-    </div>
-    <div class="section-content">
-      <p>Ich arbeite hochkonzentriert, strukturiert und mit einem gesunden Qualitätsanspruch.</p>
-      <p>In intensiven Phasen erreiche ich eine besondere Tiefe und Fokussiertheit, die mir ermöglicht, Themen ganzheitlich zu verstehen und Aufgaben mit Klarheit und Leidenschaft umzusetzen. Diese Phasen sind für mich keine Belastung, sondern eine Form kreativer und geistiger Abwechslung, die meinen Arbeitsstil lebendig hält.</p>
-      <p>Immer wieder habe ich erlebt, dass genau diese Stärke in manchen Umgebungen missverstanden wurde – besonders dann, wenn Routine in echte Kompetenz überging. Sobald ich flüssig, sicher und eigenständig arbeiten konnte, wurde dies gelegentlich als Distanz oder Überlegenheit fehlinterpretiert.</p>
-      <p>Dabei geht es mir nicht um Wettbewerb, sondern um Wirksamkeit und Wertschätzung. Ich wünsche mir Arbeitsumfelder, in denen fachliche Tiefe, Selbstständigkeit und echtes Interesse als das gesehen werden, was sie sind – <strong>eine Stärke, keine Abweichung</strong>.</p>
-    </div>
-  </div>
-</section>
+<section class="container">
+  <h2>Arbeitsweise</h2>
+  <p>Ich arbeite hochkonzentriert, strukturiert und mit klarem Qualitätsanspruch. In intensiven Phasen erreiche ich besondere Tiefe und Fokussiertheit – das ist keine Belastung, sondern kreative und geistige Abwechslung. Missverständnisse entstehen, wenn echte Routine mit Distanz verwechselt wird. Mir geht es nicht um Wettbewerb, sondern um Wirksamkeit und Wertschätzung.</p>
 
-<!-- ===== Floating Highlight: Arbeitsweise ===== -->
-<div class="floating-arbeitsweise" aria-live="polite">
-  <!-- Collapsed Pill -->
-  <button class="fa-toggle" aria-expanded="false" aria-controls="fa-panel" title="Arbeitsweise öffnen">
-    Arbeitsweise
-  </button>
-
-  <!-- Expandable Panel -->
-  <section id="fa-panel" class="fa-panel" role="dialog" aria-label="Arbeitsweise (Über mich)">
-    <header class="fa-header">
-      <h3>Arbeitsweise</h3>
-      <button class="fa-close" aria-label="Schließen">&times;</button>
-    </header>
-    <div class="fa-content">
-      <p>Ich arbeite hochkonzentriert, strukturiert und mit einem gesunden Qualitätsanspruch.</p>
-      <p>In intensiven Phasen erreiche ich eine besondere Tiefe und Fokussiertheit, die mir ermöglicht, Themen ganzheitlich zu verstehen und Aufgaben mit Klarheit und Leidenschaft umzusetzen. Diese Phasen sind für mich keine Belastung, sondern eine Form kreativer und geistiger Abwechslung, die meinen Arbeitsstil lebendig hält.</p>
-      <p>Immer wieder habe ich erlebt, dass genau diese Stärke in manchen Umgebungen missverstanden wurde – besonders dann, wenn Routine in echte Kompetenz überging. Sobald ich flüssig, sicher und eigenständig arbeiten konnte, wurde dies gelegentlich als Distanz oder Überlegenheit fehlinterpretiert.</p>
-      <p>Dabei geht es mir nicht um Wettbewerb, sondern um Wirksamkeit und Wertschätzung. Ich wünsche mir Arbeitsumfelder, in denen fachliche Tiefe, Selbstständigkeit und echtes Interesse als das gesehen werden, was sie sind – <strong>eine Stärke, keine Abweichung</strong>.</p>
-    </div>
-  </section>
-</div>
-
-<script>
-  (function () {
-    const toggle = document.querySelector('.fa-toggle');
-    const panel  = document.getElementById('fa-panel');
-    const close  = document.querySelector('.fa-close');
-
-    function openPanel() {
-      panel.classList.add('open');
-      toggle.setAttribute('aria-expanded', 'true');
-      // Fokus barrierefrei auf den Header
-      panel.querySelector('.fa-header h3').focus?.();
-    }
-
-    function closePanel() {
-      panel.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.focus();
-    }
-
-    toggle.addEventListener('click', () => {
-      panel.classList.contains('open') ? closePanel() : openPanel();
-    });
-    close.addEventListener('click', closePanel);
-
-    // ESC zum Schließen
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
-    });
-  })();
-</script>
-
-<!-- Persönlichkeit -->
-<section class="personality">
-  <h2>Persönlichkeit & Werte</h2>
   <div class="traits">
-    <div class="trait">🌱 Nachhaltigkeit & soziale Verantwortung</div>
-    <div class="trait">🧠 Strategisch & durchsetzungsstark</div>
-    <div class="trait">💡 Kreativ & strukturiert</div>
-    <div class="trait">🤝 Empathisch & lösungsorientiert</div>
-    <div class="trait">🔗 Verbindet HR, IT & Psychologie</div>
-    <div class="trait">🚀 Innovationsfreude & Selbstbestimmung</div>
+    <span class="trait">🧠 Strategisch</span>
+    <span class="trait">🤝 Empathisch</span>
+    <span class="trait">📐 Strukturiert</span>
+    <span class="trait">🌱 Nachhaltig</span>
+    <span class="trait">🚀 Innovationsfreude</span>
   </div>
+
+  <p style="margin-top:16px">Mehr Details (inkl. Diagramm): <a href="./personality.html">Meine Persönlichkeit</a></p>
 </section>
 
-<!-- Unterseite Persönlichkeit -->
-<a href="personality.html">Persönlichkeit</a>
-
-<!-- Footer -->
-<footer>
-  <p>© 2025 Christine Kieslich</p>
+<footer class="site-footer">
+  © 2025 Christine Kieslich
 </footer>
 
 </body>
