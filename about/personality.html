@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Meine Persönlichkeit – Christine Kieslich</title>
+  <meta name="description" content="Das Geschenk meiner Persönlichkeit: analytische Stärke, emotionale Tiefe und klare Haltung – meine innere Navigation in Beruf und Leben.">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fff; --fg:#0f172a; --muted:#475569;
+      --accent:#2563eb; --soft:#e2e8f0; --card:#f8fafc;
+      --max: 940px; --radius: 14px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; line-height:1.6; color:var(--fg); background:var(--bg)}
+    header{padding:56px 20px 28px; background:linear-gradient(180deg,#eef2ff 0%, #ffffff 60%); border-bottom:1px solid var(--soft)}
+    .wrap{max-width:var(--max); margin:0 auto}
+    h1{margin:0 0 6px; font-size:clamp(28px,4vw,40px); line-height:1.2; letter-spacing:-0.02em}
+    .lead{color:var(--muted); font-size:clamp(16px,1.6vw,18px); max-width:60ch}
+    main{padding:28px 20px 64px}
+    .grid{display:grid; grid-template-columns: 1.15fr 0.85fr; gap:32px}
+    @media (max-width: 900px){ .grid{grid-template-columns:1fr; gap:20px} }
+    .card{background:var(--card); border:1px solid var(--soft); border-radius:var(--radius); padding:24px}
+    h2{font-size:clamp(22px,2.6vw,28px); margin:0 0 12px; letter-spacing:-0.01em}
+    p{margin:0 0 14px}
+    .muted{color:var(--muted)}
+    .chip{display:inline-block; padding:6px 10px; border:1px solid var(--soft); border-radius:999px; background:#fff; font-size:14px; margin:6px 6px 0 0; color:var(--muted)}
+    .backlink{margin-top:24px; display:inline-block; color:var(--accent); text-decoration:none}
+    .backlink:hover{text-decoration:underline}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Meine Persönlichkeit</h1>
+      <p class="lead">Das Geschenk meiner Persönlichkeit: analytische Stärke, emotionale Tiefe und eine klare, ruhige Haltung – mein inneres Navigationssystem in Beruf und Leben.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="grid">
+      <section class="card">
+        <h2>Das Geschenk meiner Persönlichkeit</h2>
+        <p>
+          Ich verbinde analytische Stärke mit emotionaler Tiefe. Ich nehme Strukturen, Motive und Zwischentöne intuitiv wahr –
+          nicht, um zu kontrollieren, sondern um zu verstehen. Diese Fähigkeit ist mein inneres Navigationssystem:
+          Sie hilft mir, auch in unklaren Situationen ruhig zu bleiben, Muster zu erkennen und Entscheidungen zu treffen,
+          die auf Integrität beruhen.
+        </p>
+        <p>
+          Mein Denken ist strategisch, mein Empfinden fein. Dadurch kann ich Menschen in ihrer Komplexität sehen –
+          mit Mitgefühl, aber ohne mich selbst zu verlieren. Ich reagiere nicht impulsiv, sondern beobachte, reflektiere
+          und handle bewusst.
+        </p>
+        <p>
+          Diese Haltung hat mich gelehrt, dass Stärke nicht Härte bedeutet, sondern Klarheit im Chaos. Mein grösstes Geschenk
+          liegt darin, dass ich trotz Enttäuschungen nicht abstumpfe. Ich behalte die Fähigkeit, fair zu bleiben,
+          Grenzen zu setzen und trotzdem an das Gute im Menschen zu glauben – solange es mir und den Menschen,
+          die ich liebe, nicht schadet.
+        </p>
+        <div aria-hidden="true" class="muted" style="margin-top:10px">
+          <span class="chip">Strategisch</span>
+          <span class="chip">Empathisch</span>
+          <span class="chip">Reflektiert</span>
+          <span class="chip">Resilient</span>
+          <span class="chip">Klar in Krisen</span>
+        </div>
+      </section>
+
+      <aside class="card" aria-labelledby="perso-diagramm-title">
+        <h2 id="perso-diagramm-title">Persönlichkeits-Diagramm</h2>
+
+        <figure style="margin:0">
+          <img
+            src="../assets/img/personality-pie.png"
+            alt="Gesamtprofil – Kommandeur (ENTJ-A): Kreisdiagramm mit farblich gruppierten Anteilen zu Persönlichkeit, beruflicher Laufbahn, persönlicher Entwicklung und Beziehungen."
+            style="max-width:100%; height:auto; display:block; border-radius:12px; border:1px solid #e2e8f0; background:transparent"
+            loading="lazy" decoding="async"
+          />
+          <figcaption class="muted" style="margin-top:10px; font-size:14px">
+            Kreisdiagramm aus meinen 16Personalities-Ergebnissen (Anteile je Cluster farblich gruppiert).
+          </figcaption>
+        </figure>
+
+        <a class="backlink" href="index.html" aria-label="Zurück zur About-Seite">← Zurück zu About</a>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>
