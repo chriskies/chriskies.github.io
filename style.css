@@ -1,286 +1,307 @@
 /* =========================================================
-   0) BASE / RESET
-========================================================= */
-*,*::before,*::after{ box-sizing:border-box; }
+   0) DESIGN-TOKENS / VARIABLEN
+   =======================================================*/
+:root{
+  /* Farben */
+  --clr-bg:        #f7f9fb;
+  --clr-surface:   #ffffff;
+  --clr-text:      #2f3e46;
+  --clr-text-2:    #5d6a72;
+  --clr-line:      #2f3e46;
+  --clr-muted:     #e6eef2;
+  --clr-shadow:    0 10px 24px rgba(0,0,0,.10);
+
+  /* Akzent */
+  --accent:        #ffd166;
+  --accent-600:    #ffce52;
+
+  /* Abstände & Kanten */
+  --rad-6:         6px;
+  --rad-8:         8px;
+  --rad-10:        10px;
+  --rad-12:        12px;
+  --gap:           1rem;
+
+  /* Lesbarkeit */
+  --container:     1100px;
+  --lh:            1.65;
+}
+
+/* =========================================================
+   1) RESET / BASIS
+   =======================================================*/
+*,
+*::before,
+*::after{ box-sizing: border-box; }
+
 html,body{ margin:0; padding:0; }
-img{ display:block; max-width:100%; height:auto; }
+html{ scroll-behavior:smooth; }
+
 body{
-  font-family:"Helvetica Neue", Arial, system-ui, sans-serif;
-  line-height:1.6;
-  color:#333;
-  background:#f7fafb;          /* sehr helles Grau/Blau */
+  font-family: "Helvetica Neue", Arial, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans", sans-serif;
+  line-height: var(--lh);
+  color: var(--clr-text);
+  background: var(--bg, var(--clr-bg));
 }
-.container{ max-width:1100px; margin:0 auto; padding:0 2rem; }
-a{ color:#2f3e46; text-decoration:none; }
-a:hover{ color:#ffd166; }
 
-/* Farb-Palette (als Notiz)
-   Dunkel: #2f3e46
-   Akzent: #ffd166
-   Hellgrau Cards: #ffffff
-   Subtext: #6b7b83
-*/
+img{ display:block; max-width:100%; height:auto; }
 
-/* =========================================================
-   1) NAVIGATION
-========================================================= */
-nav{
-  background:#2f3e46; color:#fff;
-  padding:1rem;
-  display:flex; justify-content:center; gap:2rem;
+/* Links */
+a{ color: var(--clr-text); text-decoration:none; }
+a:hover{ color: var(--accent); }
+
+/* Container-Helper */
+.container{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 2rem;
 }
-nav a{ color:#fff; font-weight:600; }
 
-/* =========================================================
-   2) SEITEN-HEADER (modular)
-========================================================= */
-.header--about,
-.header--projects,
-.header--contact{
-  text-align:center; padding:4rem 2rem;
-}
-.header--about{ background:#eef3f5; }    /* sehr hell, ruhig */
-.header--projects{ background:#fff3e6; }
-.header--contact{ background:#e9ecef; padding:3rem 2rem; }
-
-/* Portraits: global TOP-ausgerichtet */
-.avatar--round{
-  width:200px; height:200px;
-  object-fit:cover; object-position:50% 10%;
-  border-radius:50%;
-  margin:0 auto 1rem;
-  box-shadow:0 4px 12px rgba(0,0,0,.10);
-}
-.avatar--rect{
-  width:280px; aspect-ratio:3/4;
-  object-fit:cover; object-position:50% 10%;
-  border-radius:12px;
-  box-shadow:0 4px 12px rgba(0,0,0,.10);
+/* Bessere Motion für Menschen mit Motion-Preference */
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important; transition:none !important; }
 }
 
 /* =========================================================
-   3) ABOUT: DUAL-PORTRAIT-KARTEN
-========================================================= */
+   2) NAVIGATION
+   =======================================================*/
+.site-nav{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display:flex; gap:2rem;
+  align-items:center; justify-content:center;
+  padding: .9rem 1rem;
+  background:#23323a; /* dunkler Balken */
+  color:#fff;
+  box-shadow: 0 4px 18px rgba(0,0,0,.08);
+}
+.site-nav a{ color:#fff; font-weight:600; }
+.site-nav a.active{
+  position:relative;
+}
+.site-nav a.active::after{
+  content:"";
+  position:absolute; left:0; right:0; bottom:-6px; margin:auto;
+  width: 70%; height:3px; border-radius:2px;
+  background: var(--accent);
+}
+
+/* =========================================================
+   3) SEITEN-HEADER (ABOUT)
+   =======================================================*/
+.header--about{
+  background:#eef3f6;
+  padding: 3.5rem 0 2rem;
+  text-align:center;
+}
+.header--about h1{
+  margin:0 0 1.2rem;
+  letter-spacing:.2px;
+}
+
+/* Portrait-Gruppe */
 .about-dual{
   display:grid;
-  grid-template-columns:repeat(2, minmax(260px,1fr));
-  gap:2rem;
+  grid-template-columns: repeat(2, minmax(260px,1fr));
+  gap: 2.5rem;
   align-items:start;
-  margin:2rem auto;
-  max-width:1100px;
+  margin-top: 1.5rem;
 }
 .about-card{
-  background:#fff;
-  border-radius:12px;
-  padding:1.5rem;
-  box-shadow:0 2px 10px rgba(0,0,0,.06);
-  transition:transform .25s ease, box-shadow .25s ease;
+  background: var(--clr-surface);
+  border-radius: var(--rad-10);
+  padding: 1.25rem 1.25rem 1.4rem;
+  box-shadow: var(--clr-shadow);
 }
-.about-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 10px 22px rgba(0,0,0,.12);
+.about-card h3{ margin:.75rem 0 .4rem; }
+.about-card p{
+  margin:0;
+  color: var(--clr-text-2);
 }
-.about-card h3{ margin:.5rem 0 0; color:#2f3e46; }
-.about-card p{ color:#444; margin:.5rem 0 0; }
+
+/* Portraits – TOP-Fokus */
+.avatar--round{
+  width: 200px; height: 200px;
+  object-fit: cover; object-position: 50% 10%;
+  border-radius: 50%;
+  margin: 0 auto;
+  box-shadow: 0 6px 16px rgba(0,0,0,.14);
+}
 
 /* =========================================================
-   4) TIMELINE – links/rechts alternierend (alte Version)
-   Mittellinie + Punkte exakt auf Linie + Hover-Lift
-========================================================= */
-.timeline{ position:relative; margin:3rem 0; }
+   4) TIMELINE (alternierend, Mittellinie, Dots exakt mittig)
+   =======================================================*/
+/* Block */
+.timeline{
+  position:relative;
+  margin: 2.5rem 0 3.5rem;
+}
+
+/* Mittellinie */
 .timeline::before{
-  content:""; position:absolute; left:50%; top:0; bottom:0;
-  width:4px; background:#2f3e46; transform:translateX(-50%);
+  content:"";
+  position:absolute;
+  left:50%;
+  top: 2rem;
+  bottom: 2rem;
+  width:4px;
+  background: var(--clr-line);
+  transform: translateX(-50%);
+  border-radius: 3px;
 }
 
-/* Abschnitts-Titel (z.B. Ausbildung & Studium / Berufserfahrung) */
-.timeline .timeline-title{ text-align:center; margin:1rem 0 2rem; }
-.timeline .timeline-title h2{
-  display:inline-block; background:#2f3e46; color:#fff;
-  padding:.6rem 1.2rem; border-radius:6px; font-size:1.4rem;
-  box-shadow:0 2px 8px rgba(0,0,0,.15);
-}
-
-/* Zwei-Spalten-Raster */
+/* Zeilen (links/rechts) */
 .timeline-row{
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:2rem; align-items:center; margin:2rem 0;
+  position: relative;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items:center;
+  margin: 1.5rem 0;
 }
-.timeline-col{ position:relative; }
 
-/* Boxen */
+/* Spalten */
+.timeline-col{ /* bewusst kein relative -> Dot richtet sich an .timeline-row aus */ }
+
+/* Karte/Box */
 .timeline-box{
-  background:#fff; border:1px solid rgba(0,0,0,.06);
-  border-radius:10px; padding:1rem 1.25rem;
-  box-shadow:0 2px 10px rgba(0,0,0,.08);
-  transition:transform .25s ease, box-shadow .25s ease;
+  background: var(--clr-surface);
+  border-radius: var(--rad-10);
+  padding: 1rem 1.25rem;
+  box-shadow: 0 8px 18px rgba(0,0,0,.08);
+  transition: transform .2s ease, box-shadow .2s ease;
 }
 .timeline-box:hover{
-  transform:translateY(-4px);
-  box-shadow:0 10px 22px rgba(0,0,0,.15);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,.12);
 }
 
-/* Punkte exakt auf Mittellinie */
-.timeline-dot{
-  position:absolute; top:50%; transform:translateY(-50%);
-  width:18px; height:18px; border-radius:50%;
-  background:#fff; border:4px solid #2f3e46; z-index:2;
-}
-.timeline-col--left  .timeline-dot{ right:-40px; } /* 4px Linie + 36px Offset */
-.timeline-col--right .timeline-dot{ left: -40px; }
-
-/* Aktueller Status – dezente Hervorhebung */
+/* aktuelle/oberste Station */
 .timeline-box.is-current{
-  background:#fffdf4;
-  border-left:4px solid #ffd166;
-  padding-left:1.2rem;
+  outline: 3px solid rgba(255,209,102,.35);
 }
 
-/* Typografie in Timeline-Boxen */
-.timeline-box h3, .timeline-box h4{
-  margin:0 0 .35rem; color:#1f2b31; font-size:1.05rem;
+/* Dot exakt mittig auf der Linie */
+.timeline-dot{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 18px; height: 18px; border-radius:50%;
+  background:#fff;
+  border: 3px solid var(--clr-line);
+  z-index: 2;
 }
-.timeline-box p{ margin:.15rem 0; color:#444; line-height:1.6; }
 
-/* =========================================================
-   5) ARBEITSWEISE – Floating Panel (Button unten rechts)
-========================================================= */
-:root{
-  --fa-bg:#ffffff;
-  --fa-fg:#2f3e46;
-  --fa-accent:#ffd166;
-  --fa-shadow:0 10px 30px rgba(0,0,0,.15);
-  --fa-radius:12px;
+/* Überschriften innerhalb der Timeline */
+.timeline-box h4{
+  margin: 0 0 .35rem;
+  font-size: 1.02rem;
 }
-.floating-arbeitsweise{
-  position:fixed; right:1rem; bottom:1rem; z-index:9999;
-  display:grid; gap:.5rem;
+.timeline-box p{
+  margin: .15rem 0;
+  color: var(--clr-text-2);
 }
-.fa-toggle{
-  background:var(--fa-fg); color:#fff; border:none;
-  padding:.6rem 1rem; border-radius:999px; font-weight:600;
-  box-shadow:0 6px 16px rgba(0,0,0,.18);
-  cursor:pointer; transition:transform .15s ease, background .2s ease;
-}
-.fa-toggle:hover{ transform:translateY(-1px); background:#24333a; }
-.fa-toggle:focus{ outline:2px solid var(--fa-accent); outline-offset:2px; }
-.fa-panel{
-  position:fixed; right:1rem; bottom:3.5rem; width:420px; max-height:70vh;
-  background:var(--fa-bg); color:var(--fa-fg); border-radius:var(--fa-radius);
-  box-shadow:var(--fa-shadow); overflow:hidden;
-  transform:translateY(10px); opacity:0; pointer-events:none;
-  transition:opacity .25s ease, transform .25s ease;
-}
-.fa-panel.open{ opacity:1; transform:translateY(0); pointer-events:auto; }
-.fa-header{
-  display:flex; align-items:center; justify-content:space-between;
-  padding:.9rem 1rem; background:linear-gradient(0deg,#fff,#f7f9fa);
-  border-bottom:1px solid rgba(0,0,0,.06);
-}
-.fa-header h3{ margin:0; font-size:1.05rem; font-weight:700; color:var(--fa-fg); }
-.fa-header h3:focus{ outline:none; }
-.fa-close{
-  background:transparent; border:none; font-size:1.4rem; line-height:1;
-  cursor:pointer; color:#6b7b83; padding:.2rem .4rem; border-radius:8px;
-}
-.fa-close:hover{ background:rgba(0,0,0,.05); color:#2f3e46; }
-.fa-close:focus{ outline:2px solid var(--fa-accent); outline-offset:2px; }
-.fa-content{
-  padding:1rem 1.1rem 1.2rem; max-height:calc(70vh - 56px); overflow:auto; line-height:1.7;
-}
-.fa-content strong{ color:#1f2b31; background:linear-gradient(transparent 60%, rgba(255,209,102,.5) 60%); }
 
 /* =========================================================
-   6) PERSONALITY – Chip-Liste
-========================================================= */
-.personality{ background:#f8f9fa; padding:3rem 2rem; text-align:center; }
-.personality h2{ margin-bottom:2rem; color:#2f3e46; }
+   5) TRAITS / BADGES
+   =======================================================*/
 .traits{
-  display:flex; flex-wrap:wrap; justify-content:center; gap:1rem;
+  display:flex; flex-wrap:wrap; gap:.75rem;
+  margin-top:.75rem;
 }
 .trait{
-  background:#fff; border-radius:8px; padding:1rem 1.5rem;
-  box-shadow:0 2px 6px rgba(0,0,0,.08); font-weight:500;
+  background: var(--clr-surface);
+  border-radius: var(--rad-8);
+  padding: .55rem .9rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,.06);
+  font-weight:600;
+  color: var(--clr-text);
 }
 
 /* =========================================================
-   7) PROJECTS – Orbit (optional, falls genutzt)
-========================================================= */
-.projects-gallery{
-  text-align:center; padding:6rem 2rem;
-  background: url("assets/images/backgrounds/federkiel.jpg") center/cover no-repeat;
-  position:relative; overflow:hidden;
+   6) FOOTER
+   =======================================================*/
+.site-footer{
+  margin-top: 3rem;
+  text-align:center;
+  padding: 1.6rem 1rem;
+  color:#fff;
+  background:#23323a;
 }
-.projects-gallery::before{
-  content:""; position:absolute; inset:0;
-  background:rgba(255,255,255,.75); backdrop-filter:blur(2px); z-index:0;
-}
-.projects-gallery h1, .projects-gallery p, .project-circles{ position:relative; z-index:1; }
-.project-circles.orbit{
-  position:relative; width:420px; height:420px; margin:4rem auto 0; border-radius:50%;
-  --orbit:210px; --circle:120px; --circleR:calc(var(--circle)/2); --radius:calc(var(--orbit) - var(--circleR));
-}
-.orbit-line{ position:absolute; inset:0; border:2px solid rgba(47,62,70,.3); border-radius:50%; z-index:0; }
-.orbit .circle{
-  position:absolute; top:50%; left:50%;
-  transform:translate(-50%,-50%) rotate(var(--angle)) translate(var(--radius)) rotate(calc(var(--angle) * -1));
-  transform-origin:center; width:var(--circle); height:var(--circle); border-radius:50%;
-  background:rgba(47,62,70,.85); color:#fff; display:flex; align-items:center; justify-content:center;
-  text-align:center; font-weight:600; box-shadow:0 4px 10px rgba(0,0,0,.15); overflow:hidden; padding:.6rem;
-}
-.orbit .circle>span{ display:block; line-height:1.2; font-size:.95rem; word-break:break-word; hyphens:auto; transition:transform .25s ease; }
-.orbit .circle:hover{ background:#ffd166; color:#2f3e46; }
-.orbit .circle:hover>span{ transform:scale(1.06); }
-.orbit .circle:nth-of-type(1){ --angle:-90deg; }
-.orbit .circle:nth-of-type(2){ --angle:-18deg; }
-.orbit .circle:nth-of-type(3){ --angle:54deg; }
-.orbit .circle:nth-of-type(4){ --angle:126deg; }
-.orbit .circle:nth-of-type(5){ --angle:198deg; }
 
 /* =========================================================
-   8) CONTACT
-========================================================= */
-.contact{ text-align:center; padding:3rem 2rem; background:#f8f9fa; }
-.contact h2{ margin:0 0 1.5rem; color:#2f3e46; font-weight:700; }
-.contact-lead{ max-width:700px; margin:0 auto; }
-.contact-links{
-  display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
-  gap:1.5rem; max-width:700px; margin:0 auto;
+   7) FLOATING ACTION BUTTON – PERSÖNLICHKEIT
+   (mitwandernder, auffälliger Button)
+   =======================================================*/
+.fab-personality{
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2000;
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding: .78rem 1.05rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #1f2b31;
+  font-weight: 800;
+  box-shadow: 0 12px 28px rgba(0,0,0,.18);
+  text-decoration:none;
+  letter-spacing:.2px;
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
 }
-.contact-links a{
-  display:flex; align-items:center; justify-content:center; gap:.5rem;
-  background:#fff; padding:.8rem 1.4rem; border-radius:8px;
-  box-shadow:0 2px 6px rgba(0,0,0,.08); color:#2f3e46; font-weight:500;
-  transition:all .3s ease; min-width:150px;
+.fab-personality::before{
+  content:"🧩";
 }
-.contact-links a:hover{ background:#2f3e46; color:#fff; transform:translateY(-3px); }
+.fab-personality:hover{
+  transform: translateY(-2px);
+  background: var(--accent-600);
+  box-shadow: 0 16px 36px rgba(0,0,0,.22);
+}
+@media print{ .fab-personality{ display:none; } }
 
 /* =========================================================
-   9) FOOTER
-========================================================= */
-footer{ text-align:center; padding:2rem; background:#2f3e46; color:#fff; margin-top:2rem; }
+   8) RESPONSIVE
+   =======================================================*/
+@media (max-width: 1024px){
+  .about-dual{ gap: 2rem; }
+}
 
-/* =========================================================
-   10) RESPONSIVE
-========================================================= */
 @media (max-width: 900px){
-  /* Zentriere Hero-Layouts auf anderen Seiten, falls vorhanden */
-  .hero-inner{ display:flex; flex-direction:column; text-align:center; gap:2rem; }
+  .about-dual{ grid-template-columns: 1fr; }
 }
-@media (max-width: 768px){
-  .about-dual{ grid-template-columns:1fr; gap:2rem; }
-  .timeline-row{ grid-template-columns:1fr; }
-  .timeline::before{ left:24px; }                       /* Mittellinie leicht nach links */
-  .timeline-dot{ left:-28px !important; right:auto !important; }
-  .projects-gallery .project-circles.orbit{ width:300px; height:300px; --orbit:150px; --circle:90px; }
-  .orbit .circle>span{ font-size:.85rem; }
+
+@media (max-width: 780px){
+  /* Timeline einkolumnig, Linie nach links */
+  .timeline-row{
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .timeline::before{
+    left: 24px; transform:none;
+  }
+  .timeline-dot{
+    left: 24px; transform: translate(-50%,-50%);
+  }
+  .timeline-box{
+    margin-left: 48px; /* Abstand zur Linie */
+  }
+  .site-nav{ gap:1rem; flex-wrap:wrap; }
+}
+
+@media (max-width: 480px){
+  .fab-personality{
+    right:.75rem; bottom:.75rem; padding:.6rem .8rem; font-weight:700;
+  }
 }
 
 /* =========================================================
-   11) FALLBACK – sichere Bildausrichtung in About
-========================================================= */
-.header--about img,
-.about-dual img,
-.about-card img{
-  object-fit:cover; object-position:50% 10%;
-}
+   9) UTILITIES (kleine Helfer)
+   =======================================================*/
+.text-muted{ color: var(--clr-text-2); }
+.center{ text-align:center; }
+.mt-0{ margin-top:0 !important; }
+.mt-1{ margin-top:.5rem !important; }
+.mt-2{ margin-top:1rem !important; }
+.mt-3{ margin-top:1.5rem !important; }
