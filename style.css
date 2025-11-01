@@ -305,3 +305,47 @@ a:hover{ color: var(--accent); }
 .mt-1{ margin-top:.5rem !important; }
 .mt-2{ margin-top:1rem !important; }
 .mt-3{ margin-top:1.5rem !important; }
+
+/* ===== GLOBAL NAV / LAYOUT REPAIR ======================================= */
+:root{
+  --ink:#2f3e46; --bg:#f7f9fb; --accent:#ffd166;
+}
+html,body{background:var(--bg); color:#333;}
+
+/* Top-Navi */
+.site-nav{
+  position: sticky; top:0; z-index:1000;
+  display:flex; gap:1.5rem; justify-content:center; align-items:center;
+  padding: .9rem 1rem;
+  background:#2f3e46; color:#fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
+.site-nav a{
+  color:#fff; font-weight:600; text-decoration:none; padding:.4rem .2rem;
+  border-bottom: 2px solid transparent;
+}
+.site-nav a:hover{ border-color: var(--accent); }
+.site-nav a.active{ border-color: var(--accent); }
+
+/* Standard-Abstände für Seitentitel & Sektionen */
+h1{ text-align:center; margin:2.5rem 0 1.25rem; color:var(--ink); }
+section.container{ max-width:1100px; margin: 0 auto 3rem; padding:0 2rem; }
+
+/* Karten/Absätze auf Projects & Contact minimal lesbarer machen */
+.lead{ max-width: 760px; margin: .75rem auto 1.5rem; }
+.card{
+  background:#fff; border-radius:10px; padding:1.25rem 1.5rem;
+  box-shadow:0 6px 18px rgba(0,0,0,.08); margin:.75rem 0;
+}
+
+/* ===== TIMELINE DOTS FEINTUNE (bleibt!) ================================= */
+.timeline-dot{
+  left:50%; top:50%; transform:translate(-50%,-50%);
+  width:18px; height:18px; border-radius:50%;
+  background:#fff; border:3px solid var(--ink); z-index:2;
+}
+@media (max-width:780px){
+  .timeline::before{ left:24px; transform:none; }
+  .timeline-dot{ left:24px; transform:translate(-50%,-50%); }
+  .timeline-box{ margin-left:48px; }
+}
