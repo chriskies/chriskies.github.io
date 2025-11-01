@@ -349,3 +349,44 @@ section.container{ max-width:1100px; margin: 0 auto 3rem; padding:0 2rem; }
   .timeline-dot{ left:24px; transform:translate(-50%,-50%); }
   .timeline-box{ margin-left:48px; }
 }
+
+/* ===== Page headers (je Seite eigener Look) ===== */
+.header--about   { background:#f8f9fa; padding:3.5rem 0 2.25rem; text-align:center; }
+.header--projects{ background:#fff3e6; padding:3rem 0 2rem;   text-align:center; }
+.header--contact { background:#e9ecef; padding:3rem 0 2rem;   text-align:center; }
+.hero            { background:#e9ecef; padding:4rem 2rem; } /* Startseite */
+
+/* ===== About: zwei Portraits direkt im Header (ohne Karten) ===== */
+.about-portraits{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 2.5rem;
+  align-items:start;
+  justify-items:center;
+  margin: 1.25rem auto 0;
+  max-width: 820px;
+}
+.portrait{ margin:0; text-align:center; }
+.portrait figcaption{ margin-top:.6rem; font-weight:700; color:#2f3e46; }
+
+/* Kein Card-Look im About-Header */
+.header--about .about-card{ background:transparent; box-shadow:none; padding:0; border-radius:0; }
+
+/* Portraits – Top-Fokus bleibt */
+.header--about .avatar--round{
+  width:200px; height:200px; object-fit:cover; object-position:50% 10%;
+  border-radius:50%;
+  box-shadow:0 6px 16px rgba(0,0,0,.14);
+}
+
+.about-sublead{
+  max-width: 900px;
+  margin: 1.25rem auto 0;
+  color:#5d6a72;
+  padding: 0 1rem;
+}
+
+/* Mobile Anpassung */
+@media (max-width: 780px){
+  .about-portraits{ grid-template-columns: 1fr; gap: 1.5rem; }
+}
