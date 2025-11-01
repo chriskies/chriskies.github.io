@@ -1,358 +1,286 @@
 /* =========================================================
-   0) DESIGN-TOKENS (Variablen / Theme)
-   ========================================================= */
-:root{
-  /* Farben */
-  --bg: #fdfdfd;
-  --fg: #333333;
-  --muted: #475569;
-  --brand: #2f3e46;
-  --brand-600: #24333a;
-  --accent: #ffd166;
-
-  --surface: #ffffff;
-  --surface-soft: #f8f9fa;
-  --surface-hero: #e9ecef;
-
-  --border: #e5e7eb;
-  --shadow-1: 0 2px 8px rgba(0,0,0,.08);
-  --shadow-2: 0 6px 16px rgba(0,0,0,.12);
-  --shadow-3: 0 8px 24px rgba(0,0,0,.15);
-
-  /* Typo & Layout */
-  --font: "Helvetica Neue", Arial, sans-serif;
-  --radius: 12px;
-  --radius-lg: 14px;
-  --container: 1100px;
-  --pad-x: 2rem;
-
-  /* Breakpoints */
-  --bp-md: 900px;
-  --bp-sm: 768px;
-}
-
-/* Weniger Animationen, wenn vom System gewünscht */
-@media (prefers-reduced-motion: reduce) {
-  *{ animation: none !important; transition: none !important; }
-}
-
-/* =========================================================
-   1) BASE / RESET / TYPO
-   ========================================================= */
-*,
-*::before,
-*::after { box-sizing: border-box; }
-
-html, body { margin: 0; padding: 0; }
-
+   0) BASE / RESET
+========================================================= */
+*,*::before,*::after{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+img{ display:block; max-width:100%; height:auto; }
 body{
-  font-family: var(--font);
-  line-height: 1.6;
-  background: var(--bg);
-  color: var(--fg);
+  font-family:"Helvetica Neue", Arial, system-ui, sans-serif;
+  line-height:1.6;
+  color:#333;
+  background:#f7fafb;          /* sehr helles Grau/Blau */
 }
+.container{ max-width:1100px; margin:0 auto; padding:0 2rem; }
+a{ color:#2f3e46; text-decoration:none; }
+a:hover{ color:#ffd166; }
 
-img{ display: block; max-width: 100%; height: auto; }
-
-/* Links */
-a{ color: var(--brand); text-decoration: none; }
-a:hover{ color: var(--accent); }
-
-/* Containers */
-.container{ max-width: var(--container); margin: 0 auto; padding: 0 var(--pad-x); }
-
-/* Utility */
-.muted{ color: var(--muted); }
+/* Farb-Palette (als Notiz)
+   Dunkel: #2f3e46
+   Akzent: #ffd166
+   Hellgrau Cards: #ffffff
+   Subtext: #6b7b83
+*/
 
 /* =========================================================
-   2) NAVIGATION
-   ========================================================= */
-nav,
-.site-nav{
-  background: var(--brand);
-  color: #fff;
-  padding: 1rem;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
+   1) NAVIGATION
+========================================================= */
+nav{
+  background:#2f3e46; color:#fff;
+  padding:1rem;
+  display:flex; justify-content:center; gap:2rem;
 }
-nav a,
-.site-nav a{ color:#fff; font-weight: 600; }
-.site-nav a.active{ text-decoration: underline; text-underline-offset: 2px; }
+nav a{ color:#fff; font-weight:600; }
 
 /* =========================================================
-   3) HERO / LANDING
-   ========================================================= */
-.hero{
-  background: var(--surface-hero);
-  padding: 4rem 2rem;
-  margin-bottom: 2rem;
-}
-.hero-inner{
-  display:flex; gap:2rem; align-items:center;
-  max-width: var(--container);
-  margin:0 auto; padding:0 var(--pad-x);
-}
-.hero-text{ max-width: 620px; }
-.hero-text h1{ margin:0; font-size:2.2rem; color: var(--brand); }
-.hero-text .subtitle{ font-style: italic; color:#666; margin:.5rem 0 1rem; }
-
-/* Portrait global – TOP-Ausrichtung */
-.hero-image img,
-.avatar--round,
-.avatar--rect{
-  object-fit: cover;
-  object-position: 50% 10%;
-  box-shadow: 0 4px 12px rgba(0,0,0,.1);
-}
-.hero-image img{
-  width:220px; height:220px; border-radius:50%;
-  transform: translateX(-1cm);
-}
-
-/* Statements unter dem Hero */
-.statements{
-  max-width: var(--container);
-  margin: 2rem auto 4rem;
-  padding: 0 var(--pad-x);
-  display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem; text-align:center;
-}
-.statement{
-  flex:1 1 250px;
-  background: var(--surface);
-  padding:1.5rem; border-radius: 8px; box-shadow: var(--shadow-1);
-  color: var(--brand);
-  transition: transform .3s ease, box-shadow .3s ease;
-}
-.statement:hover{ transform: translateY(-4px); box-shadow: var(--shadow-2); }
-
-/* =========================================================
-   4) SEITEN-HEADER
-   ========================================================= */
+   2) SEITEN-HEADER (modular)
+========================================================= */
 .header--about,
 .header--projects,
 .header--contact{
   text-align:center; padding:4rem 2rem;
 }
-.header--about{ background: var(--surface-soft); }
-.header--projects{ background: #fff3e6; }
-.header--contact{ background: var(--surface-hero); padding:3rem 2rem; }
+.header--about{ background:#eef3f5; }    /* sehr hell, ruhig */
+.header--projects{ background:#fff3e6; }
+.header--contact{ background:#e9ecef; padding:3rem 2rem; }
 
-/* =========================================================
-   5) PORTRAIT-KOMPONENTEN
-   ========================================================= */
+/* Portraits: global TOP-ausgerichtet */
 .avatar--round{
-  width:200px; height:200px; border-radius:50%; margin:0 auto 1rem;
+  width:200px; height:200px;
+  object-fit:cover; object-position:50% 10%;
+  border-radius:50%;
+  margin:0 auto 1rem;
+  box-shadow:0 4px 12px rgba(0,0,0,.10);
 }
 .avatar--rect{
-  width:280px; aspect-ratio:3/4; border-radius:12px;
+  width:280px; aspect-ratio:3/4;
+  object-fit:cover; object-position:50% 10%;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,.10);
 }
 
-/* Dual-Portrait-Karten */
+/* =========================================================
+   3) ABOUT: DUAL-PORTRAIT-KARTEN
+========================================================= */
 .about-dual{
   display:grid;
-  grid-template-columns: repeat(2, minmax(260px, 1fr));
-  gap: 4rem; align-items:start;
-  margin: 2rem auto;
+  grid-template-columns:repeat(2, minmax(260px,1fr));
+  gap:2rem;
+  align-items:start;
+  margin:2rem auto;
+  max-width:1100px;
 }
 .about-card{
-  background: var(--surface);
-  border-radius: var(--radius-lg);
-  padding: 18px; border: 1px solid var(--border);
+  background:#fff;
+  border-radius:12px;
+  padding:1.5rem;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
+  transition:transform .25s ease, box-shadow .25s ease;
 }
-.about-card h3{ margin-top:.5rem; color: var(--brand); }
-.about-card p{ margin:.5rem 0 0; }
+.about-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 22px rgba(0,0,0,.12);
+}
+.about-card h3{ margin:.5rem 0 0; color:#2f3e46; }
+.about-card p{ color:#444; margin:.5rem 0 0; }
 
 /* =========================================================
-   6) TIMELINE (schlank & robust)
-   ========================================================= */
-.timeline{ position:relative; margin: 3rem 0; }
+   4) TIMELINE – links/rechts alternierend (alte Version)
+   Mittellinie + Punkte exakt auf Linie + Hover-Lift
+========================================================= */
+.timeline{ position:relative; margin:3rem 0; }
 .timeline::before{
-  content:""; position:absolute; left:50%; top:3rem; bottom:3rem;
-  width:4px; background: var(--brand); transform: translateX(-50%);
+  content:""; position:absolute; left:50%; top:0; bottom:0;
+  width:4px; background:#2f3e46; transform:translateX(-50%);
 }
-.timeline-title{ text-align:center; margin:1rem 0 2rem; }
-.timeline-title h2{
-  display:inline-block; background: var(--brand); color:#fff;
-  padding:.6rem 1.2rem; border-radius:6px; font-size:1.4rem; box-shadow: var(--shadow-3);
+
+/* Abschnitts-Titel (z.B. Ausbildung & Studium / Berufserfahrung) */
+.timeline .timeline-title{ text-align:center; margin:1rem 0 2rem; }
+.timeline .timeline-title h2{
+  display:inline-block; background:#2f3e46; color:#fff;
+  padding:.6rem 1.2rem; border-radius:6px; font-size:1.4rem;
+  box-shadow:0 2px 8px rgba(0,0,0,.15);
 }
+
+/* Zwei-Spalten-Raster */
 .timeline-row{
-  display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:center; margin:2rem 0;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:2rem; align-items:center; margin:2rem 0;
 }
 .timeline-col{ position:relative; }
+
+/* Boxen */
 .timeline-box{
-  background: var(--surface);
-  padding:1rem 1.5rem; border-radius:8px; box-shadow: var(--shadow-1);
-  transition: transform .3s ease, box-shadow .3s ease;
+  background:#fff; border:1px solid rgba(0,0,0,.06);
+  border-radius:10px; padding:1rem 1.25rem;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
+  transition:transform .25s ease, box-shadow .25s ease;
 }
-.timeline-box:hover{ transform: scale(1.03); box-shadow: var(--shadow-2); }
+.timeline-box:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 22px rgba(0,0,0,.15);
+}
 
-/* Punkte */
+/* Punkte exakt auf Mittellinie */
 .timeline-dot{
-  position:absolute; top:50%; width:18px; height:18px; margin-top:-9px;
-  border-radius:50%; background:#fff; border:3px solid var(--brand); z-index:2;
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:18px; height:18px; border-radius:50%;
+  background:#fff; border:4px solid #2f3e46; z-index:2;
 }
-.timeline-col--left  .timeline-dot{ right:-35px; }
-.timeline-col--right .timeline-dot{ left: -35px; }
+.timeline-col--left  .timeline-dot{ right:-40px; } /* 4px Linie + 36px Offset */
+.timeline-col--right .timeline-dot{ left: -40px; }
 
-/* Minimal-Variante (Kartenliste) */
-.timeline .timeline-item{
-  padding:14px; border:1px dashed var(--border); border-radius: var(--radius); background:#fff;
+/* Aktueller Status – dezente Hervorhebung */
+.timeline-box.is-current{
+  background:#fffdf4;
+  border-left:4px solid #ffd166;
+  padding-left:1.2rem;
 }
-.timeline .timeline-item h4{ margin:0 0 6px; }
+
+/* Typografie in Timeline-Boxen */
+.timeline-box h3, .timeline-box h4{
+  margin:0 0 .35rem; color:#1f2b31; font-size:1.05rem;
+}
+.timeline-box p{ margin:.15rem 0; color:#444; line-height:1.6; }
 
 /* =========================================================
-   7) ARBEITSWEISE (Textblock + Float Panel)
-   ========================================================= */
-#arbeitsweise{
-  position:relative; z-index:1; background:#fff; color:var(--fg);
-  max-width:800px; margin:4rem auto; padding:2rem;
-  border-radius:10px; box-shadow: 0 8px 24px rgba(0,0,0,.08);
-  line-height:1.7;
-}
-#arbeitsweise h2{
-  text-align:center; font-weight:600; margin:0 0 1.5rem; color: var(--brand);
-}
-/* kleines Reveal */
-.fade-in{ opacity:0; transform: translateY(10px); animation: fadeInUp .8s ease forwards; }
-@keyframes fadeInUp{ to{ opacity:1; transform: translateY(0); } }
-
-/* Floating Arbeitsweise */
+   5) ARBEITSWEISE – Floating Panel (Button unten rechts)
+========================================================= */
 :root{
-  --fa-bg:#ffffff; --fa-fg:#2f3e46; --fa-accent:#ffd166; --fa-shadow:0 10px 30px rgba(0,0,0,.15); --fa-radius:12px;
+  --fa-bg:#ffffff;
+  --fa-fg:#2f3e46;
+  --fa-accent:#ffd166;
+  --fa-shadow:0 10px 30px rgba(0,0,0,.15);
+  --fa-radius:12px;
 }
-.floating-arbeitsweise{ position:fixed; right:1rem; bottom:1rem; z-index:9999; display:grid; gap:.5rem; }
+.floating-arbeitsweise{
+  position:fixed; right:1rem; bottom:1rem; z-index:9999;
+  display:grid; gap:.5rem;
+}
 .fa-toggle{
-  background:var(--fa-fg); color:#fff; border:none; padding:.6rem 1rem; border-radius:999px; font-weight:600;
-  box-shadow:0 6px 16px rgba(0,0,0,.18); cursor:pointer; transition: transform .15s ease, background .2s ease;
+  background:var(--fa-fg); color:#fff; border:none;
+  padding:.6rem 1rem; border-radius:999px; font-weight:600;
+  box-shadow:0 6px 16px rgba(0,0,0,.18);
+  cursor:pointer; transition:transform .15s ease, background .2s ease;
 }
-.fa-toggle:hover{ transform: translateY(-1px); background: var(--brand-600); }
+.fa-toggle:hover{ transform:translateY(-1px); background:#24333a; }
 .fa-toggle:focus{ outline:2px solid var(--fa-accent); outline-offset:2px; }
-
 .fa-panel{
   position:fixed; right:1rem; bottom:3.5rem; width:420px; max-height:70vh;
-  background:var(--fa-bg); color:var(--fa-fg); border-radius:var(--fa-radius); box-shadow:var(--fa-shadow);
-  overflow:hidden; transform: translateY(10px); opacity:0; pointer-events:none;
-  transition: opacity .25s ease, transform .25s ease;
+  background:var(--fa-bg); color:var(--fa-fg); border-radius:var(--fa-radius);
+  box-shadow:var(--fa-shadow); overflow:hidden;
+  transform:translateY(10px); opacity:0; pointer-events:none;
+  transition:opacity .25s ease, transform .25s ease;
 }
-.fa-panel.open{ opacity:1; transform: translateY(0); pointer-events:auto; }
+.fa-panel.open{ opacity:1; transform:translateY(0); pointer-events:auto; }
 .fa-header{
-  display:flex; align-items:center; justify-content:space-between; padding:.9rem 1rem;
-  background:linear-gradient(0deg,#fff,#f7f9fa); border-bottom:1px solid rgba(0,0,0,.06);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:.9rem 1rem; background:linear-gradient(0deg,#fff,#f7f9fa);
+  border-bottom:1px solid rgba(0,0,0,.06);
 }
 .fa-header h3{ margin:0; font-size:1.05rem; font-weight:700; color:var(--fa-fg); }
 .fa-header h3:focus{ outline:none; }
-.fa-close{ background:transparent; border:none; font-size:1.4rem; line-height:1; cursor:pointer; color:#6b7b83; padding:.2rem .4rem; border-radius:8px; }
-.fa-close:hover{ background:rgba(0,0,0,.05); color:var(--fa-fg); }
+.fa-close{
+  background:transparent; border:none; font-size:1.4rem; line-height:1;
+  cursor:pointer; color:#6b7b83; padding:.2rem .4rem; border-radius:8px;
+}
+.fa-close:hover{ background:rgba(0,0,0,.05); color:#2f3e46; }
 .fa-close:focus{ outline:2px solid var(--fa-accent); outline-offset:2px; }
-.fa-content{ padding:1rem 1.1rem 1.2rem; max-height:calc(70vh - 56px); overflow:auto; line-height:1.7; }
-.fa-content p{ margin:0 0 .9rem; }
-.fa-content strong{ color:#1f2b31; background: linear-gradient(transparent 60%, rgba(255,209,102,.5) 60%); }
-
-/* Mobile Anpassung Floating Panel */
-@media (max-width: 768px){
-  .fa-panel{ left:1rem; right:1rem; width:auto; bottom:4.25rem; max-height:60vh; }
-  .fa-toggle{ padding:.65rem 1rem; font-size:.95rem; }
+.fa-content{
+  padding:1rem 1.1rem 1.2rem; max-height:calc(70vh - 56px); overflow:auto; line-height:1.7;
 }
+.fa-content strong{ color:#1f2b31; background:linear-gradient(transparent 60%, rgba(255,209,102,.5) 60%); }
 
 /* =========================================================
-   8) PERSÖNLICHKEIT / TRAITS
-   ========================================================= */
-.personality{ background: var(--surface-soft); padding:3rem 2rem; text-align:center; }
-.personality h2{ margin-bottom:2rem; color: var(--brand); }
-
-.traits{ display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin-top:10px; }
+   6) PERSONALITY – Chip-Liste
+========================================================= */
+.personality{ background:#f8f9fa; padding:3rem 2rem; text-align:center; }
+.personality h2{ margin-bottom:2rem; color:#2f3e46; }
+.traits{
+  display:flex; flex-wrap:wrap; justify-content:center; gap:1rem;
+}
 .trait{
-  display:inline-block; background:#fff; border:1px solid var(--border); border-radius:999px;
-  padding: .6rem 1rem; font-weight:500; color: var(--fg);
+  background:#fff; border-radius:8px; padding:1rem 1.5rem;
+  box-shadow:0 2px 6px rgba(0,0,0,.08); font-weight:500;
 }
 
 /* =========================================================
-   9) PROJECTS – ORBIT-GALERIE
-   ========================================================= */
+   7) PROJECTS – Orbit (optional, falls genutzt)
+========================================================= */
 .projects-gallery{
   text-align:center; padding:6rem 2rem;
   background: url("assets/images/backgrounds/federkiel.jpg") center/cover no-repeat;
   position:relative; overflow:hidden;
 }
 .projects-gallery::before{
-  content:""; position:absolute; inset:0; background: rgba(255,255,255,.75); backdrop-filter: blur(2px); z-index:0;
+  content:""; position:absolute; inset:0;
+  background:rgba(255,255,255,.75); backdrop-filter:blur(2px); z-index:0;
 }
-.projects-gallery h1,
-.projects-gallery p,
-.project-circles{ position:relative; z-index:1; }
-
+.projects-gallery h1, .projects-gallery p, .project-circles{ position:relative; z-index:1; }
 .project-circles.orbit{
   position:relative; width:420px; height:420px; margin:4rem auto 0; border-radius:50%;
-  --orbit:210px; --circle:120px; --circleR: calc(var(--circle)/2); --radius: calc(var(--orbit) - var(--circleR));
+  --orbit:210px; --circle:120px; --circleR:calc(var(--circle)/2); --radius:calc(var(--orbit) - var(--circleR));
 }
 .orbit-line{ position:absolute; inset:0; border:2px solid rgba(47,62,70,.3); border-radius:50%; z-index:0; }
-
 .orbit .circle{
   position:absolute; top:50%; left:50%;
-  transform: translate(-50%,-50%) rotate(var(--angle)) translate(var(--radius)) rotate(calc(var(--angle) * -1));
-  transform-origin:center;
-  width:var(--circle); height:var(--circle); border-radius:50%;
-  background: rgba(47,62,70,.85); color:#fff; display:flex; align-items:center; justify-content:center;
-  text-align:center; font-weight:600; box-shadow:0 4px 10px rgba(0,0,0,0.15); overflow:hidden; padding:.6rem;
+  transform:translate(-50%,-50%) rotate(var(--angle)) translate(var(--radius)) rotate(calc(var(--angle) * -1));
+  transform-origin:center; width:var(--circle); height:var(--circle); border-radius:50%;
+  background:rgba(47,62,70,.85); color:#fff; display:flex; align-items:center; justify-content:center;
+  text-align:center; font-weight:600; box-shadow:0 4px 10px rgba(0,0,0,.15); overflow:hidden; padding:.6rem;
 }
-.orbit .circle > span{ display:block; line-height:1.2; font-size:.95rem; word-break:break-word; hyphens:auto; transition: transform .25s ease; }
-.orbit .circle:hover{ background: var(--accent); color: var(--brand); }
-.orbit .circle:hover > span{ transform: scale(1.06); }
-
-.orbit .circle:nth-of-type(1){ --angle: -90deg; }
-.orbit .circle:nth-of-type(2){ --angle: -18deg; }
-.orbit .circle:nth-of-type(3){ --angle: 54deg; }
-.orbit .circle:nth-of-type(4){ --angle: 126deg; }
-.orbit .circle:nth-of-type(5){ --angle: 198deg; }
+.orbit .circle>span{ display:block; line-height:1.2; font-size:.95rem; word-break:break-word; hyphens:auto; transition:transform .25s ease; }
+.orbit .circle:hover{ background:#ffd166; color:#2f3e46; }
+.orbit .circle:hover>span{ transform:scale(1.06); }
+.orbit .circle:nth-of-type(1){ --angle:-90deg; }
+.orbit .circle:nth-of-type(2){ --angle:-18deg; }
+.orbit .circle:nth-of-type(3){ --angle:54deg; }
+.orbit .circle:nth-of-type(4){ --angle:126deg; }
+.orbit .circle:nth-of-type(5){ --angle:198deg; }
 
 /* =========================================================
-   10) CONTACT
-   ========================================================= */
-.contact{ text-align:center; padding:3rem 2rem; background: var(--surface-soft); }
-.contact h2{ margin:0 0 1.5rem; color: var(--brand); font-weight:700; }
+   8) CONTACT
+========================================================= */
+.contact{ text-align:center; padding:3rem 2rem; background:#f8f9fa; }
+.contact h2{ margin:0 0 1.5rem; color:#2f3e46; font-weight:700; }
 .contact-lead{ max-width:700px; margin:0 auto; }
 .contact-links{
-  display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:1.5rem; max-width:700px; margin:0 auto;
+  display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
+  gap:1.5rem; max-width:700px; margin:0 auto;
 }
 .contact-links a{
   display:flex; align-items:center; justify-content:center; gap:.5rem;
-  background:#fff; padding:.8rem 1.4rem; border-radius:8px; box-shadow: var(--shadow-1);
-  color: var(--brand); font-weight:500; transition: all .3s ease; min-width:150px;
+  background:#fff; padding:.8rem 1.4rem; border-radius:8px;
+  box-shadow:0 2px 6px rgba(0,0,0,.08); color:#2f3e46; font-weight:500;
+  transition:all .3s ease; min-width:150px;
 }
-.contact-links a:hover{ background: var(--brand); color:#fff; transform: translateY(-3px); }
+.contact-links a:hover{ background:#2f3e46; color:#fff; transform:translateY(-3px); }
 
 /* =========================================================
-   11) FOOTER
-   ========================================================= */
-footer,
-.site-footer{
-  text-align:center; padding:2rem; background: var(--brand); color:#fff; margin-top:2rem;
-}
+   9) FOOTER
+========================================================= */
+footer{ text-align:center; padding:2rem; background:#2f3e46; color:#fff; margin-top:2rem; }
 
 /* =========================================================
-   12) RESPONSIVE
-   ========================================================= */
+   10) RESPONSIVE
+========================================================= */
 @media (max-width: 900px){
-  .hero-inner{ flex-direction:column; text-align:center; }
+  /* Zentriere Hero-Layouts auf anderen Seiten, falls vorhanden */
+  .hero-inner{ display:flex; flex-direction:column; text-align:center; gap:2rem; }
 }
 @media (max-width: 768px){
   .about-dual{ grid-template-columns:1fr; gap:2rem; }
   .timeline-row{ grid-template-columns:1fr; }
-  .timeline::before{ left:20px; }
-  .timeline-dot{ left:-30px; right:auto; }
-
-  .project-circles.orbit{ width:300px; height:300px; --orbit:150px; --circle:90px; }
-  .orbit .circle > span{ font-size:.85rem; }
+  .timeline::before{ left:24px; }                       /* Mittellinie leicht nach links */
+  .timeline-dot{ left:-28px !important; right:auto !important; }
+  .projects-gallery .project-circles.orbit{ width:300px; height:300px; --orbit:150px; --circle:90px; }
+  .orbit .circle>span{ font-size:.85rem; }
 }
 
 /* =========================================================
-   13) FALLBACKS / SICHERHEIT
-   ========================================================= */
-/* Sicherstellen, dass Bilder in Cards/Headers top-justiert bleiben */
+   11) FALLBACK – sichere Bildausrichtung in About
+========================================================= */
 .header--about img,
 .about-dual img,
 .about-card img{
-  object-fit: cover;
-  object-position: 50% 10%;
+  object-fit:cover; object-position:50% 10%;
 }
