@@ -390,3 +390,67 @@ section.container{ max-width:1100px; margin: 0 auto 3rem; padding:0 2rem; }
 @media (max-width: 780px){
   .about-portraits{ grid-template-columns: 1fr; gap: 1.5rem; }
 }
+
+/* ================================
+   Projects – Orbit-Galerie (scoped)
+===================================*/
+.page-projects .projects-gallery{
+  text-align:center;
+  padding:6rem 2rem;
+  background: url("assets/images/backgrounds/federkiel.jpg") center/cover no-repeat;
+  position:relative; overflow:hidden;
+}
+.page-projects .projects-gallery::before{
+  content:""; position:absolute; inset:0;
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(2px); z-index:0;
+}
+.page-projects .projects-gallery .container,
+.page-projects .projects-gallery h2,
+.page-projects .project-circles{ position:relative; z-index:1; }
+
+.page-projects .project-circles.orbit{
+  position:relative;
+  width:420px; height:420px; margin:4rem auto 0;
+  border-radius:50%;
+  --orbit:210px; --circle:120px; --circleR: calc(var(--circle)/2);
+  --radius: calc(var(--orbit) - var(--circleR));
+}
+.page-projects .orbit-line{
+  position:absolute; inset:0;
+  border:2px solid rgba(47,62,70,.3);
+  border-radius:50%; z-index:0;
+}
+
+.page-projects .orbit .circle{
+  position:absolute; top:50%; left:50%;
+  transform: translate(-50%,-50%) rotate(var(--angle)) translate(var(--radius)) rotate(calc(var(--angle) * -1));
+  transform-origin:center;
+  width:var(--circle); height:var(--circle);
+  border-radius:50%;
+  background: rgba(47,62,70,.85); color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center; font-weight:600;
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  overflow:hidden; padding:.6rem;
+}
+.page-projects .orbit .circle > span{
+  display:block; line-height:1.2; font-size:.95rem;
+  word-break:break-word; hyphens:auto; transition: transform .25s ease;
+}
+.page-projects .orbit .circle:hover{ background:#ffd166; color:#2f3e46; }
+.page-projects .orbit .circle:hover > span{ transform: scale(1.06); }
+
+/* 5 gleichmäßige Positionen */
+.page-projects .orbit .circle:nth-of-type(1){ --angle:  -90deg; } /* oben */
+.page-projects .orbit .circle:nth-of-type(2){ --angle:  -18deg; } /* rechts oben */
+.page-projects .orbit .circle:nth-of-type(3){ --angle:   54deg; } /* rechts unten */
+.page-projects .orbit .circle:nth-of-type(4){ --angle:  126deg; } /* links unten */
+.page-projects .orbit .circle:nth-of-type(5){ --angle:  198deg; } /* links oben */
+
+@media (max-width: 768px){
+  .page-projects .project-circles.orbit{
+    width:300px; height:300px; --orbit:150px; --circle:90px;
+  }
+  .page-projects .orbit .circle > span{ font-size:.85rem; }
+}
