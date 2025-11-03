@@ -163,7 +163,43 @@ nav a,
 .about-card h3{ margin-top:.5rem; color: var(--brand); }
 .about-card p{ margin:.5rem 0 0; }
 
+/* =========================================================
+   6) TIMELINE (schlank & robust)
+   ========================================================= */
+.timeline{ position:relative; margin: 3rem 0; }
+.timeline::before{
+  content:""; position:absolute; left:50%; top:3rem; bottom:3rem;
+  width:4px; background: var(--brand); transform: translateX(-50%);
+}
+.timeline-title{ text-align:center; margin:1rem 0 2rem; }
+.timeline-title h2{
+  display:inline-block; background: var(--brand); color:#fff;
+  padding:.6rem 1.2rem; border-radius:6px; font-size:1.4rem; box-shadow: var(--shadow-3);
+}
+.timeline-row{
+  display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:center; margin:2rem 0;
+}
+.timeline-col{ position:relative; }
+.timeline-box{
+  background: var(--surface);
+  padding:1rem 1.5rem; border-radius:8px; box-shadow: var(--shadow-1);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.timeline-box:hover{ transform: scale(1.03); box-shadow: var(--shadow-2); }
 
+/* Punkte */
+.timeline-dot{
+  position:absolute; top:50%; width:18px; height:18px; margin-top:-9px;
+  border-radius:50%; background:#fff; border:3px solid var(--brand); z-index:2;
+}
+.timeline-col--left  .timeline-dot{ right:-35px; }
+.timeline-col--right .timeline-dot{ left: -35px; }
+
+/* Minimal-Variante (Kartenliste) */
+.timeline .timeline-item{
+  padding:14px; border:1px dashed var(--border); border-radius: var(--radius); background:#fff;
+}
+.timeline .timeline-item h4{ margin:0 0 6px; }
 
 /* =========================================================
    7) ARBEITSWEISE (Textblock + Float Panel)
