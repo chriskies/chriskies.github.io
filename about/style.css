@@ -390,3 +390,84 @@ section.container{ max-width:1100px; margin: 0 auto 3rem; padding:0 2rem; }
 @media (max-width: 780px){
   .about-portraits{ grid-template-columns: 1fr; gap: 1.5rem; }
 }
+
+/* =========================================================
+   10) PERSÖNLICHKEITS-SEITE / KREISDIAGRAMM
+   =======================================================*/
+
+/* Seitencontainer */
+.personality-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+  text-align: center;
+}
+
+/* Überschrift */
+.personality-page h1 {
+  margin-bottom: 2rem;
+  letter-spacing: .3px;
+  color: var(--clr-text);
+}
+
+/* Kreisdiagramm selbst */
+.personality-chart {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto 2rem;
+  border-radius: 50%;
+  background: conic-gradient(
+    #5d8dee 0deg 100deg,     /* blau  */
+    #34a853 100deg 190deg,   /* grün  */
+    #f4b400 190deg 270deg,   /* gelb  */
+    #ea4335 270deg 360deg    /* rot   */
+  );
+  position: relative;
+  box-shadow: 0 8px 18px rgba(0,0,0,.12);
+}
+
+/* Innerer Kreis für Donut-Optik */
+.personality-chart::after {
+  content: "";
+  position: absolute;
+  inset: 18%;
+  background: var(--clr-surface);
+  border-radius: 50%;
+}
+
+/* Legende */
+.personality-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 2rem;
+}
+
+.personality-legend-item {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .95rem;
+  color: var(--clr-text-2);
+}
+
+.personality-legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+/* Farbzuordnung */
+.personality-legend-color.blue   { background: #5d8dee; }
+.personality-legend-color.green  { background: #34a853; }
+.personality-legend-color.yellow { background: #f4b400; }
+.personality-legend-color.red    { background: #ea4335; }
+
+/* Responsiv */
+@media (max-width: 600px) {
+  .personality-chart {
+    width: 220px;
+    height: 220px;
+  }
+}
+
