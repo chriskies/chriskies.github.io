@@ -38,41 +38,7 @@
   box-shadow: 0 6px 16px rgba(0,0,0,.14);
 }
 
-/* =========================================================
-   4) TIMELINE
-   =======================================================*/
-.timeline {
-  position:relative;
-  margin: 2.5rem 0 3.5rem;
-}
-.timeline::before {
-  content:"";
-  position:absolute;
-  left:50%; top:2rem; bottom:2rem;
-  width:4px;
-  background: var(--clr-line);
-  transform:translateX(-50%);
-  border-radius:3px;
-}
-.timeline-row {
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  align-items:center;
-}
-.timeline-box {
-  background: var(--clr-surface);
-  border-radius: var(--rad-10);
-  padding: 1rem 1.25rem;
-  box-shadow: 0 8px 18px rgba(0,0,0,.08);
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-.timeline-dot {
-  position:absolute; top:50%; left:50%;
-  transform:translate(-50%,-50%);
-  width:18px; height:18px; border-radius:50%;
-  background:#fff; border:3px solid var(--clr-line);
-}
+
 
 /* =========================================================
    5) TRAITS
