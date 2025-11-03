@@ -1,456 +1,358 @@
 /* =========================================================
-   0) DESIGN-TOKENS / VARIABLEN
-   =======================================================*/
+   0) DESIGN-TOKENS (Variablen / Theme)
+   ========================================================= */
 :root{
   /* Farben */
-  --clr-bg:        #f7f9fb;
-  --clr-surface:   #ffffff;
-  --clr-text:      #2f3e46;
-  --clr-text-2:    #5d6a72;
-  --clr-line:      #2f3e46;
-  --clr-muted:     #e6eef2;
-  --clr-shadow:    0 10px 24px rgba(0,0,0,.10);
+  --bg: #fdfdfd;
+  --fg: #333333;
+  --muted: #475569;
+  --brand: #2f3e46;
+  --brand-600: #24333a;
+  --accent: #ffd166;
 
-  /* Akzent */
-  --accent:        #ffd166;
-  --accent-600:    #ffce52;
+  --surface: #ffffff;
+  --surface-soft: #f8f9fa;
+  --surface-hero: #e9ecef;
 
-  /* Abstände & Kanten */
-  --rad-6:         6px;
-  --rad-8:         8px;
-  --rad-10:        10px;
-  --rad-12:        12px;
-  --gap:           1rem;
+  --border: #e5e7eb;
+  --shadow-1: 0 2px 8px rgba(0,0,0,.08);
+  --shadow-2: 0 6px 16px rgba(0,0,0,.12);
+  --shadow-3: 0 8px 24px rgba(0,0,0,.15);
 
-  /* Lesbarkeit */
-  --container:     1100px;
-  --lh:            1.65;
+  /* Typo & Layout */
+  --font: "Helvetica Neue", Arial, sans-serif;
+  --radius: 12px;
+  --radius-lg: 14px;
+  --container: 1100px;
+  --pad-x: 2rem;
+
+  /* Breakpoints */
+  --bp-md: 900px;
+  --bp-sm: 768px;
+}
+
+/* Weniger Animationen, wenn vom System gewünscht */
+@media (prefers-reduced-motion: reduce) {
+  *{ animation: none !important; transition: none !important; }
 }
 
 /* =========================================================
-   1) RESET / BASIS
-   =======================================================*/
+   1) BASE / RESET / TYPO
+   ========================================================= */
 *,
 *::before,
-*::after{ box-sizing: border-box; }
+*::after { box-sizing: border-box; }
 
-html,body{ margin:0; padding:0; }
-html{ scroll-behavior:smooth; }
+html, body { margin: 0; padding: 0; }
 
 body{
-  font-family: "Helvetica Neue", Arial, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans", sans-serif;
-  line-height: var(--lh);
-  color: var(--clr-text);
-  background: var(--bg, var(--clr-bg));
+  font-family: var(--font);
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--fg);
 }
 
-img{ display:block; max-width:100%; height:auto; }
+img{ display: block; max-width: 100%; height: auto; }
 
 /* Links */
-a{ color: var(--clr-text); text-decoration:none; }
+a{ color: var(--brand); text-decoration: none; }
 a:hover{ color: var(--accent); }
 
-/* Container-Helper */
-.container{
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 0 2rem;
-}
+/* Containers */
+.container{ max-width: var(--container); margin: 0 auto; padding: 0 var(--pad-x); }
 
-/* Bessere Motion für Menschen mit Motion-Preference */
-@media (prefers-reduced-motion: reduce){
-  *{ animation:none !important; transition:none !important; }
-}
+/* Utility */
+.muted{ color: var(--muted); }
 
 /* =========================================================
    2) NAVIGATION
-   =======================================================*/
+   ========================================================= */
+nav,
 .site-nav{
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  display:flex; gap:2rem;
-  align-items:center; justify-content:center;
-  padding: .9rem 1rem;
-  background:#23323a; /* dunkler Balken */
-  color:#fff;
-  box-shadow: 0 4px 18px rgba(0,0,0,.08);
+  background: var(--brand);
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
 }
-.site-nav a{ color:#fff; font-weight:600; }
-.site-nav a.active{
-  position:relative;
-}
-.site-nav a.active::after{
-  content:"";
-  position:absolute; left:0; right:0; bottom:-6px; margin:auto;
-  width: 70%; height:3px; border-radius:2px;
-  background: var(--accent);
-}
+nav a,
+.site-nav a{ color:#fff; font-weight: 600; }
+.site-nav a.active{ text-decoration: underline; text-underline-offset: 2px; }
 
 /* =========================================================
-   3) SEITEN-HEADER (ABOUT)
-   =======================================================*/
-.header--about{
-  background:#eef3f6;
-  padding: 3.5rem 0 2rem;
-  text-align:center;
+   3) HERO / LANDING
+   ========================================================= */
+.hero{
+  background: var(--surface-hero);
+  padding: 4rem 2rem;
+  margin-bottom: 2rem;
 }
-.header--about h1{
-  margin:0 0 1.2rem;
-  letter-spacing:.2px;
+.hero-inner{
+  display:flex; gap:2rem; align-items:center;
+  max-width: var(--container);
+  margin:0 auto; padding:0 var(--pad-x);
+}
+.hero-text{ max-width: 620px; }
+.hero-text h1{ margin:0; font-size:2.2rem; color: var(--brand); }
+.hero-text .subtitle{ font-style: italic; color:#666; margin:.5rem 0 1rem; }
+
+/* Portrait global – TOP-Ausrichtung */
+.hero-image img,
+.avatar--round,
+.avatar--rect{
+  object-fit: cover;
+  object-position: 50% 10%;
+  box-shadow: 0 4px 12px rgba(0,0,0,.1);
+}
+.hero-image img{
+  width:220px; height:220px; border-radius:50%;
+  transform: translateX(-1cm);
 }
 
-/* Portrait-Gruppe */
+/* Statements unter dem Hero */
+.statements{
+  max-width: var(--container);
+  margin: 2rem auto 4rem;
+  padding: 0 var(--pad-x);
+  display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem; text-align:center;
+}
+.statement{
+  flex:1 1 250px;
+  background: var(--surface);
+  padding:1.5rem; border-radius: 8px; box-shadow: var(--shadow-1);
+  color: var(--brand);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.statement:hover{ transform: translateY(-4px); box-shadow: var(--shadow-2); }
+
+/* =========================================================
+   4) SEITEN-HEADER
+   ========================================================= */
+.header--about,
+.header--projects,
+.header--contact{
+  text-align:center; padding:4rem 2rem;
+}
+.header--about{ background: var(--surface-soft); }
+.header--projects{ background: #fff3e6; }
+.header--contact{ background: var(--surface-hero); padding:3rem 2rem; }
+
+/* =========================================================
+   5) PORTRAIT-KOMPONENTEN
+   ========================================================= */
+.avatar--round{
+  width:200px; height:200px; border-radius:50%; margin:0 auto 1rem;
+}
+.avatar--rect{
+  width:280px; aspect-ratio:3/4; border-radius:12px;
+}
+
+/* Dual-Portrait-Karten */
 .about-dual{
   display:grid;
-  grid-template-columns: repeat(2, minmax(260px,1fr));
-  gap: 2.5rem;
-  align-items:start;
-  margin-top: 1.5rem;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 4rem; align-items:start;
+  margin: 2rem auto;
 }
 .about-card{
-  background: var(--clr-surface);
-  border-radius: var(--rad-10);
-  padding: 1.25rem 1.25rem 1.4rem;
-  box-shadow: var(--clr-shadow);
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 18px; border: 1px solid var(--border);
 }
-.about-card h3{ margin:.75rem 0 .4rem; }
-.about-card p{
-  margin:0;
-  color: var(--clr-text-2);
-}
-
-/* Portraits – TOP-Fokus */
-.avatar--round{
-  width: 200px; height: 200px;
-  object-fit: cover; object-position: 50% 10%;
-  border-radius: 50%;
-  margin: 0 auto;
-  box-shadow: 0 6px 16px rgba(0,0,0,.14);
-}
+.about-card h3{ margin-top:.5rem; color: var(--brand); }
+.about-card p{ margin:.5rem 0 0; }
 
 /* =========================================================
-   4) TIMELINE (alternierend, Mittellinie, Dots exakt mittig)
-   =======================================================*/
-/* Block */
-.timeline{
-  position:relative;
-  margin: 2.5rem 0 3.5rem;
-}
-
-/* Mittellinie */
+   6) TIMELINE (schlank & robust)
+   ========================================================= */
+.timeline{ position:relative; margin: 3rem 0; }
 .timeline::before{
-  content:"";
-  position:absolute;
-  left:50%;
-  top: 2rem;
-  bottom: 2rem;
-  width:4px;
-  background: var(--clr-line);
-  transform: translateX(-50%);
-  border-radius: 3px;
+  content:""; position:absolute; left:50%; top:3rem; bottom:3rem;
+  width:4px; background: var(--brand); transform: translateX(-50%);
 }
-
-/* Zeilen (links/rechts) */
+.timeline-title{ text-align:center; margin:1rem 0 2rem; }
+.timeline-title h2{
+  display:inline-block; background: var(--brand); color:#fff;
+  padding:.6rem 1.2rem; border-radius:6px; font-size:1.4rem; box-shadow: var(--shadow-3);
+}
 .timeline-row{
-  position: relative;
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  align-items:center;
-  margin: 1.5rem 0;
+  display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:center; margin:2rem 0;
 }
-
-/* Spalten */
-.timeline-col{ /* bewusst kein relative -> Dot richtet sich an .timeline-row aus */ }
-
-/* Karte/Box */
+.timeline-col{ position:relative; }
 .timeline-box{
-  background: var(--clr-surface);
-  border-radius: var(--rad-10);
-  padding: 1rem 1.25rem;
-  box-shadow: 0 8px 18px rgba(0,0,0,.08);
-  transition: transform .2s ease, box-shadow .2s ease;
+  background: var(--surface);
+  padding:1rem 1.5rem; border-radius:8px; box-shadow: var(--shadow-1);
+  transition: transform .3s ease, box-shadow .3s ease;
 }
-.timeline-box:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(0,0,0,.12);
-}
+.timeline-box:hover{ transform: scale(1.03); box-shadow: var(--shadow-2); }
 
-/* aktuelle/oberste Station */
-.timeline-box.is-current{
-  outline: 3px solid rgba(255,209,102,.35);
-}
-
-/* Dot exakt mittig auf der Linie */
+/* Punkte */
 .timeline-dot{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  width: 18px; height: 18px; border-radius:50%;
-  background:#fff;
-  border: 3px solid var(--clr-line);
-  z-index: 2;
+  position:absolute; top:50%; width:18px; height:18px; margin-top:-9px;
+  border-radius:50%; background:#fff; border:3px solid var(--brand); z-index:2;
 }
+.timeline-col--left  .timeline-dot{ right:-35px; }
+.timeline-col--right .timeline-dot{ left: -35px; }
 
-/* Überschriften innerhalb der Timeline */
-.timeline-box h4{
-  margin: 0 0 .35rem;
-  font-size: 1.02rem;
+/* Minimal-Variante (Kartenliste) */
+.timeline .timeline-item{
+  padding:14px; border:1px dashed var(--border); border-radius: var(--radius); background:#fff;
 }
-.timeline-box p{
-  margin: .15rem 0;
-  color: var(--clr-text-2);
-}
+.timeline .timeline-item h4{ margin:0 0 6px; }
 
 /* =========================================================
-   5) TRAITS / BADGES
-   =======================================================*/
-.traits{
-  display:flex; flex-wrap:wrap; gap:.75rem;
-  margin-top:.75rem;
+   7) ARBEITSWEISE (Textblock + Float Panel)
+   ========================================================= */
+#arbeitsweise{
+  position:relative; z-index:1; background:#fff; color:var(--fg);
+  max-width:800px; margin:4rem auto; padding:2rem;
+  border-radius:10px; box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  line-height:1.7;
 }
-.trait{
-  background: var(--clr-surface);
-  border-radius: var(--rad-8);
-  padding: .55rem .9rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,.06);
-  font-weight:600;
-  color: var(--clr-text);
+#arbeitsweise h2{
+  text-align:center; font-weight:600; margin:0 0 1.5rem; color: var(--brand);
 }
+/* kleines Reveal */
+.fade-in{ opacity:0; transform: translateY(10px); animation: fadeInUp .8s ease forwards; }
+@keyframes fadeInUp{ to{ opacity:1; transform: translateY(0); } }
 
-/* =========================================================
-   6) FOOTER
-   =======================================================*/
-.site-footer{
-  margin-top: 3rem;
-  text-align:center;
-  padding: 1.6rem 1rem;
-  color:#fff;
-  background:#23323a;
-}
-
-/* =========================================================
-   7) FLOATING ACTION BUTTON – PERSÖNLICHKEIT
-   (mitwandernder, auffälliger Button)
-   =======================================================*/
-.fab-personality{
-  position: fixed;
-  right: 1rem;
-  bottom: 1rem;
-  z-index: 2000;
-  display:inline-flex; align-items:center; gap:.5rem;
-  padding: .78rem 1.05rem;
-  border-radius: 999px;
-  background: var(--accent);
-  color: #1f2b31;
-  font-weight: 800;
-  box-shadow: 0 12px 28px rgba(0,0,0,.18);
-  text-decoration:none;
-  letter-spacing:.2px;
-  transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
-}
-.fab-personality::before{
-  content:"🧩";
-}
-.fab-personality:hover{
-  transform: translateY(-2px);
-  background: var(--accent-600);
-  box-shadow: 0 16px 36px rgba(0,0,0,.22);
-}
-@media print{ .fab-personality{ display:none; } }
-
-/* =========================================================
-   8) RESPONSIVE
-   =======================================================*/
-@media (max-width: 1024px){
-  .about-dual{ gap: 2rem; }
-}
-
-@media (max-width: 900px){
-  .about-dual{ grid-template-columns: 1fr; }
-}
-
-@media (max-width: 780px){
-  /* Timeline einkolumnig, Linie nach links */
-  .timeline-row{
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  .timeline::before{
-    left: 24px; transform:none;
-  }
-  .timeline-dot{
-    left: 24px; transform: translate(-50%,-50%);
-  }
-  .timeline-box{
-    margin-left: 48px; /* Abstand zur Linie */
-  }
-  .site-nav{ gap:1rem; flex-wrap:wrap; }
-}
-
-@media (max-width: 480px){
-  .fab-personality{
-    right:.75rem; bottom:.75rem; padding:.6rem .8rem; font-weight:700;
-  }
-}
-
-/* =========================================================
-   9) UTILITIES (kleine Helfer)
-   =======================================================*/
-.text-muted{ color: var(--clr-text-2); }
-.center{ text-align:center; }
-.mt-0{ margin-top:0 !important; }
-.mt-1{ margin-top:.5rem !important; }
-.mt-2{ margin-top:1rem !important; }
-.mt-3{ margin-top:1.5rem !important; }
-
-/* ===== GLOBAL NAV / LAYOUT REPAIR ======================================= */
+/* Floating Arbeitsweise */
 :root{
-  --ink:#2f3e46; --bg:#f7f9fb; --accent:#ffd166;
+  --fa-bg:#ffffff; --fa-fg:#2f3e46; --fa-accent:#ffd166; --fa-shadow:0 10px 30px rgba(0,0,0,.15); --fa-radius:12px;
 }
-html,body{background:var(--bg); color:#333;}
+.floating-arbeitsweise{ position:fixed; right:1rem; bottom:1rem; z-index:9999; display:grid; gap:.5rem; }
+.fa-toggle{
+  background:var(--fa-fg); color:#fff; border:none; padding:.6rem 1rem; border-radius:999px; font-weight:600;
+  box-shadow:0 6px 16px rgba(0,0,0,.18); cursor:pointer; transition: transform .15s ease, background .2s ease;
+}
+.fa-toggle:hover{ transform: translateY(-1px); background: var(--brand-600); }
+.fa-toggle:focus{ outline:2px solid var(--fa-accent); outline-offset:2px; }
 
-/* Top-Navi */
-.site-nav{
-  position: sticky; top:0; z-index:1000;
-  display:flex; gap:1.5rem; justify-content:center; align-items:center;
-  padding: .9rem 1rem;
-  background:#2f3e46; color:#fff;
-  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+.fa-panel{
+  position:fixed; right:1rem; bottom:3.5rem; width:420px; max-height:70vh;
+  background:var(--fa-bg); color:var(--fa-fg); border-radius:var(--fa-radius); box-shadow:var(--fa-shadow);
+  overflow:hidden; transform: translateY(10px); opacity:0; pointer-events:none;
+  transition: opacity .25s ease, transform .25s ease;
 }
-.site-nav a{
-  color:#fff; font-weight:600; text-decoration:none; padding:.4rem .2rem;
-  border-bottom: 2px solid transparent;
+.fa-panel.open{ opacity:1; transform: translateY(0); pointer-events:auto; }
+.fa-header{
+  display:flex; align-items:center; justify-content:space-between; padding:.9rem 1rem;
+  background:linear-gradient(0deg,#fff,#f7f9fa); border-bottom:1px solid rgba(0,0,0,.06);
 }
-.site-nav a:hover{ border-color: var(--accent); }
-.site-nav a.active{ border-color: var(--accent); }
+.fa-header h3{ margin:0; font-size:1.05rem; font-weight:700; color:var(--fa-fg); }
+.fa-header h3:focus{ outline:none; }
+.fa-close{ background:transparent; border:none; font-size:1.4rem; line-height:1; cursor:pointer; color:#6b7b83; padding:.2rem .4rem; border-radius:8px; }
+.fa-close:hover{ background:rgba(0,0,0,.05); color:var(--fa-fg); }
+.fa-close:focus{ outline:2px solid var(--fa-accent); outline-offset:2px; }
+.fa-content{ padding:1rem 1.1rem 1.2rem; max-height:calc(70vh - 56px); overflow:auto; line-height:1.7; }
+.fa-content p{ margin:0 0 .9rem; }
+.fa-content strong{ color:#1f2b31; background: linear-gradient(transparent 60%, rgba(255,209,102,.5) 60%); }
 
-/* Standard-Abstände für Seitentitel & Sektionen */
-h1{ text-align:center; margin:2.5rem 0 1.25rem; color:var(--ink); }
-section.container{ max-width:1100px; margin: 0 auto 3rem; padding:0 2rem; }
-
-/* Karten/Absätze auf Projects & Contact minimal lesbarer machen */
-.lead{ max-width: 760px; margin: .75rem auto 1.5rem; }
-.card{
-  background:#fff; border-radius:10px; padding:1.25rem 1.5rem;
-  box-shadow:0 6px 18px rgba(0,0,0,.08); margin:.75rem 0;
-}
-
-/* ===== TIMELINE DOTS FEINTUNE (bleibt!) ================================= */
-.timeline-dot{
-  left:50%; top:50%; transform:translate(-50%,-50%);
-  width:18px; height:18px; border-radius:50%;
-  background:#fff; border:3px solid var(--ink); z-index:2;
-}
-@media (max-width:780px){
-  .timeline::before{ left:24px; transform:none; }
-  .timeline-dot{ left:24px; transform:translate(-50%,-50%); }
-  .timeline-box{ margin-left:48px; }
+/* Mobile Anpassung Floating Panel */
+@media (max-width: 768px){
+  .fa-panel{ left:1rem; right:1rem; width:auto; bottom:4.25rem; max-height:60vh; }
+  .fa-toggle{ padding:.65rem 1rem; font-size:.95rem; }
 }
 
-/* ===== Page headers (je Seite eigener Look) ===== */
-.header--about   { background:#f8f9fa; padding:3.5rem 0 2.25rem; text-align:center; }
-.header--projects{ background:#fff3e6; padding:3rem 0 2rem;   text-align:center; }
-.header--contact { background:#e9ecef; padding:3rem 0 2rem;   text-align:center; }
-.hero            { background:#e9ecef; padding:4rem 2rem; } /* Startseite */
+/* =========================================================
+   8) PERSÖNLICHKEIT / TRAITS
+   ========================================================= */
+.personality{ background: var(--surface-soft); padding:3rem 2rem; text-align:center; }
+.personality h2{ margin-bottom:2rem; color: var(--brand); }
 
-/* ===== About: zwei Portraits direkt im Header (ohne Karten) ===== */
-.about-portraits{
-  display:grid;
-  grid-template-columns: repeat(2, minmax(220px, 1fr));
-  gap: 2.5rem;
-  align-items:start;
-  justify-items:center;
-  margin: 1.25rem auto 0;
-  max-width: 820px;
-}
-.portrait{ margin:0; text-align:center; }
-.portrait figcaption{ margin-top:.6rem; font-weight:700; color:#2f3e46; }
-
-/* Kein Card-Look im About-Header */
-.header--about .about-card{ background:transparent; box-shadow:none; padding:0; border-radius:0; }
-
-/* Portraits – Top-Fokus bleibt */
-.header--about .avatar--round{
-  width:200px; height:200px; object-fit:cover; object-position:50% 10%;
-  border-radius:50%;
-  box-shadow:0 6px 16px rgba(0,0,0,.14);
+.traits{ display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin-top:10px; }
+.trait{
+  display:inline-block; background:#fff; border:1px solid var(--border); border-radius:999px;
+  padding: .6rem 1rem; font-weight:500; color: var(--fg);
 }
 
-.about-sublead{
-  max-width: 900px;
-  margin: 1.25rem auto 0;
-  color:#5d6a72;
-  padding: 0 1rem;
-}
-
-/* Mobile Anpassung */
-@media (max-width: 780px){
-  .about-portraits{ grid-template-columns: 1fr; gap: 1.5rem; }
-}
-
-/* ================================
-   Projects – Orbit-Galerie (scoped)
-===================================*/
-.page-projects .projects-gallery{
-  text-align:center;
-  padding:6rem 2rem;
+/* =========================================================
+   9) PROJECTS – ORBIT-GALERIE
+   ========================================================= */
+.projects-gallery{
+  text-align:center; padding:6rem 2rem;
   background: url("assets/images/backgrounds/federkiel.jpg") center/cover no-repeat;
   position:relative; overflow:hidden;
 }
-.page-projects .projects-gallery::before{
-  content:""; position:absolute; inset:0;
-  background: rgba(255,255,255,.75);
-  backdrop-filter: blur(2px); z-index:0;
+.projects-gallery::before{
+  content:""; position:absolute; inset:0; background: rgba(255,255,255,.75); backdrop-filter: blur(2px); z-index:0;
 }
-.page-projects .projects-gallery .container,
-.page-projects .projects-gallery h2,
-.page-projects .project-circles{ position:relative; z-index:1; }
+.projects-gallery h1,
+.projects-gallery p,
+.project-circles{ position:relative; z-index:1; }
 
-.page-projects .project-circles.orbit{
-  position:relative;
-  width:420px; height:420px; margin:4rem auto 0;
-  border-radius:50%;
-  --orbit:210px; --circle:120px; --circleR: calc(var(--circle)/2);
-  --radius: calc(var(--orbit) - var(--circleR));
+.project-circles.orbit{
+  position:relative; width:420px; height:420px; margin:4rem auto 0; border-radius:50%;
+  --orbit:210px; --circle:120px; --circleR: calc(var(--circle)/2); --radius: calc(var(--orbit) - var(--circleR));
 }
-.page-projects .orbit-line{
-  position:absolute; inset:0;
-  border:2px solid rgba(47,62,70,.3);
-  border-radius:50%; z-index:0;
-}
+.orbit-line{ position:absolute; inset:0; border:2px solid rgba(47,62,70,.3); border-radius:50%; z-index:0; }
 
-.page-projects .orbit .circle{
+.orbit .circle{
   position:absolute; top:50%; left:50%;
   transform: translate(-50%,-50%) rotate(var(--angle)) translate(var(--radius)) rotate(calc(var(--angle) * -1));
   transform-origin:center;
-  width:var(--circle); height:var(--circle);
-  border-radius:50%;
-  background: rgba(47,62,70,.85); color:#fff;
-  display:flex; align-items:center; justify-content:center;
-  text-align:center; font-weight:600;
-  box-shadow:0 4px 10px rgba(0,0,0,0.15);
-  overflow:hidden; padding:.6rem;
+  width:var(--circle); height:var(--circle); border-radius:50%;
+  background: rgba(47,62,70,.85); color:#fff; display:flex; align-items:center; justify-content:center;
+  text-align:center; font-weight:600; box-shadow:0 4px 10px rgba(0,0,0,0.15); overflow:hidden; padding:.6rem;
 }
-.page-projects .orbit .circle > span{
-  display:block; line-height:1.2; font-size:.95rem;
-  word-break:break-word; hyphens:auto; transition: transform .25s ease;
+.orbit .circle > span{ display:block; line-height:1.2; font-size:.95rem; word-break:break-word; hyphens:auto; transition: transform .25s ease; }
+.orbit .circle:hover{ background: var(--accent); color: var(--brand); }
+.orbit .circle:hover > span{ transform: scale(1.06); }
+
+.orbit .circle:nth-of-type(1){ --angle: -90deg; }
+.orbit .circle:nth-of-type(2){ --angle: -18deg; }
+.orbit .circle:nth-of-type(3){ --angle: 54deg; }
+.orbit .circle:nth-of-type(4){ --angle: 126deg; }
+.orbit .circle:nth-of-type(5){ --angle: 198deg; }
+
+/* =========================================================
+   10) CONTACT
+   ========================================================= */
+.contact{ text-align:center; padding:3rem 2rem; background: var(--surface-soft); }
+.contact h2{ margin:0 0 1.5rem; color: var(--brand); font-weight:700; }
+.contact-lead{ max-width:700px; margin:0 auto; }
+.contact-links{
+  display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:1.5rem; max-width:700px; margin:0 auto;
 }
-.page-projects .orbit .circle:hover{ background:#ffd166; color:#2f3e46; }
-.page-projects .orbit .circle:hover > span{ transform: scale(1.06); }
+.contact-links a{
+  display:flex; align-items:center; justify-content:center; gap:.5rem;
+  background:#fff; padding:.8rem 1.4rem; border-radius:8px; box-shadow: var(--shadow-1);
+  color: var(--brand); font-weight:500; transition: all .3s ease; min-width:150px;
+}
+.contact-links a:hover{ background: var(--brand); color:#fff; transform: translateY(-3px); }
 
-/* 5 gleichmäßige Positionen */
-.page-projects .orbit .circle:nth-of-type(1){ --angle:  -90deg; } /* oben */
-.page-projects .orbit .circle:nth-of-type(2){ --angle:  -18deg; } /* rechts oben */
-.page-projects .orbit .circle:nth-of-type(3){ --angle:   54deg; } /* rechts unten */
-.page-projects .orbit .circle:nth-of-type(4){ --angle:  126deg; } /* links unten */
-.page-projects .orbit .circle:nth-of-type(5){ --angle:  198deg; } /* links oben */
+/* =========================================================
+   11) FOOTER
+   ========================================================= */
+footer,
+.site-footer{
+  text-align:center; padding:2rem; background: var(--brand); color:#fff; margin-top:2rem;
+}
 
+/* =========================================================
+   12) RESPONSIVE
+   ========================================================= */
+@media (max-width: 900px){
+  .hero-inner{ flex-direction:column; text-align:center; }
+}
 @media (max-width: 768px){
-  .page-projects .project-circles.orbit{
-    width:300px; height:300px; --orbit:150px; --circle:90px;
-  }
-  .page-projects .orbit .circle > span{ font-size:.85rem; }
+  .about-dual{ grid-template-columns:1fr; gap:2rem; }
+  .timeline-row{ grid-template-columns:1fr; }
+  .timeline::before{ left:20px; }
+  .timeline-dot{ left:-30px; right:auto; }
+
+  .project-circles.orbit{ width:300px; height:300px; --orbit:150px; --circle:90px; }
+  .orbit .circle > span{ font-size:.85rem; }
+}
+
+/* =========================================================
+   13) FALLBACKS / SICHERHEIT
+   ========================================================= */
+/* Sicherstellen, dass Bilder in Cards/Headers top-justiert bleiben */
+.header--about img,
+.about-dual img,
+.about-card img{
+  object-fit: cover;
+  object-position: 50% 10%;
 }
