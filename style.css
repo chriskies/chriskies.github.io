@@ -344,3 +344,21 @@ footer,
   object-fit: cover;
   object-position: 50% 10%;
 }
+
+.image-block {
+  text-align: center;
+  margin: 2em 0;
+}
+
+.image-block img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.image-block figcaption {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+  margin-top: 0.8em;
+}
