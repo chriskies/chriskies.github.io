@@ -5,17 +5,21 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" sizes="32x32">
   <title>Über mich – Christine Kieslich</title>
-  <link rel="stylesheet" href="/style.css">      <!-- globale -->
-  <link rel="stylesheet" href="/about/about.css"> <!-- nur lokale Ergänzung -->
+  <!-- globale CSS immer ab Root holen, wie auf index.html -->
+  <link rel="stylesheet" href="/style.css">
+  <!-- lokale About-CSS, NUR wenn du wirklich extra brauchst -->
+  <link rel="stylesheet" href="/about/about.css">
 </head>
-  <a class="fab-personality" href="./personality.html">Persönlichkeit</a>
-
 <body class="page-about">
+
+<a class="fab-personality" href="./personality.html">Persönlichkeit</a>
+
 <nav class="site-nav">
-  <a href="../">Home</a>
-  <a class="active" href="./">Über mich</a>
-  <a href="../projects.html">Projekte</a>
-  <a href="../contact.html">Kontakt</a>
+  <a href="/index.html">Home</a>
+  <a class="active" href="/about/">Über mich</a>
+  <a href="/projects.html">Projekte</a>
+  <a href="/vision.html">Visionen</a>
+  <a href="/contact.html">Kontakt</a>
 </nav>
 
 <header class="header--about">
@@ -24,185 +28,32 @@
 
     <div class="about-portraits">
       <figure class="portrait">
-        <img class="avatar--round" src="../assets/images/portraits/portrait-12.jpeg" alt="Christine Kieslich im Blazer">
-        <figcaption>Analytisch & Logisch</figcaption>
+        <img class="avatar--round" src="/assets/images/portraits/portrait-12.jpeg" alt="Christine Kieslich im Blazer">
+        <figcaption>Analytisch &amp; Logisch</figcaption>
       </figure>
 
       <figure class="portrait">
-        <img class="avatar--round" src="../assets/images/portraits/portrait-18.jpeg" alt="Christine Kieslich im schwarzen Pullover">
-        <figcaption>Kreativ & Künstlerisch</figcaption>
+        <img class="avatar--round" src="/assets/images/portraits/portrait-18.jpeg" alt="Christine Kieslich im schwarzen Pullover">
+        <figcaption>Kreativ &amp; Künstlerisch</figcaption>
       </figure>
     </div>
 
     <p class="about-sublead">
       Kfm. Ausbildung • IT-Grundstudium (Uni Basel) • B.A. Wirtschaftspsychologie (laufend) •
-      Erfahrung in HR, Consulting & Administration • Musik & Gestaltung.
+      Erfahrung in HR, Consulting &amp; Administration • Musik &amp; Gestaltung.
     </p>
   </div>
 </header>
 
 <section class="container">
-  <h2>Ausbildung & Studium</h2>
+  <h2>Ausbildung &amp; Studium</h2>
   <div class="timeline">
-
-    <!-- LINKS -->
-    <div class="timeline-row">
-      <div class="timeline-col timeline-col--left">
-        <span class="timeline-dot"></span>
-        <div class="timeline-box">
-          <h4>2021–2026 · B.A. Wirtschaftspsychologie</h4>
-          <p>PFH Private Hochschule Göttingen</p>
-        </div>
-      </div>
-      <div class="timeline-col"></div>
-    </div>
-
-    <!-- RECHTS -->
-    <div class="timeline-row">
-      <div class="timeline-col"></div>
-      <div class="timeline-col timeline-col--right">
-        <span class="timeline-dot"></span>
-        <div class="timeline-box">
-          <h4>2015–2016 · Grundstudium Informatik</h4>
-          <p>Universität Basel</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- LINKS -->
-    <div class="timeline-row">
-      <div class="timeline-col timeline-col--left">
-        <span class="timeline-dot"></span>
-        <div class="timeline-box">
-          <h4>2010–2012 · Musikvorbereitungskurs</h4>
-          <p>Lund University (SE)</p>
-        </div>
-      </div>
-      <div class="timeline-col"></div>
-    </div>
-
-    <!-- RECHTS -->
-    <div class="timeline-row">
-      <div class="timeline-col"></div>
-      <div class="timeline-col timeline-col--right">
-        <span class="timeline-dot"></span>
-        <div class="timeline-box">
-          <h4>2007–2010 · Kauffrau für Bürokommunikation</h4>
-          <p>Walter-Eucken-Gymnasium Freiburg</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- LINKS -->
-    <div class="timeline-row">
-      <div class="timeline-col timeline-col--left">
-        <span class="timeline-dot"></span>
-        <div class="timeline-box">
-          <h4>Weiterbildungen</h4>
-          <p>Henna Brows • Sugaring • Naildesign (zert.) • UX/UI (Udemy)</p>
-        </div>
-      </div>
-      <div class="timeline-col"></div>
-    </div>
-
+    <!-- dein Timeline-Content bleibt wie er ist -->
+    ...
   </div>
 </section>
 
-<section class="container">
-  <h2>Berufserfahrung</h2>
-  <div class="timeline">
-
-    <!-- RECHTS (aktueller Status, hervorgehoben) -->
-    <div class="timeline-row">
-      <div class="timeline-col"></div>
-      <div class="timeline-col timeline-col--right">
-        <span class="timeline-dot"></span>
-        <div class="timeline-box is-current">
-          <h4>Seit Oktober 2025 · Auf der Suche nach einer neuen Herausforderung im Bereich HR-Assistenz</h4>
-          <p>Festanstellung (80–100 %) · Parallel Fortsetzung des B.A. Wirtschaftspsychologie (Fernstudium)</p>
-          <p>Meine laufenden Freelance-Tätigkeiten im Bereich HR, Design und Organisation dienen der praxisnahen Weiterentwicklung
-             und können bei einer 100 %-Position jederzeit vollständig zurückgestellt werden.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- LINKS -->
-    <div class="timeline-row">
-      <div class="timeline-col timeline-col--left">
-        <span class="timeline-dot"></span>
-        <div class="timeline-box">
-          <h4>Dez 2024 – Sep 2025 · Administrative Leitung Produktion</h4>
-          <p>Dima Service AG, Schönenbuch (CH)</p>
-        </div>
-      </div>
-      <div class="timeline-col"></div>
-    </div>
-
-    <!-- RECHTS -->
-    <div class="timeline-row">
-      <div class="timeline-col"></div>
-      <div class="timeline-col timeline-col--right">
-        <span class="timeline-dot"></span>
-        <div class="timeline-box">
-          <h4>2022–2024 · Selbstständig</h4>
-          <p>Cosmetics & Consulting Kieslich, Lörrach</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- LINKS -->
-    <div class="timeline-row">
-      <div class="timeline-col timeline-col--left">
-        <span class="timeline-dot"></span>
-        <div class="timeline-box">
-          <h4>2023–2024 · Assistant Project Management</h4>
-          <p>ownCloud (Remote)</p>
-        </div>
-      </div>
-      <div class="timeline-col"></div>
-    </div>
-
-    <!-- RECHTS -->
-    <div class="timeline-row">
-      <div class="timeline-col"></div>
-      <div class="timeline-col timeline-col--right">
-        <span class="timeline-dot"></span>
-        <div class="timeline-box">
-          <h4>2018–2023 · Assistenz & Unternehmensberatung</h4>
-          <p>Zahnarztpraxis, Lörrach</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- LINKS -->
-    <div class="timeline-row">
-      <div class="timeline-col timeline-col--left">
-        <span class="timeline-dot"></span>
-        <div class="timeline-box">
-          <h4>Frühere Tätigkeiten</h4>
-          <p>Onlineshop Himmelweit • Protzek Biotec GmbH • Ergotherapie Lörrach • Musikverein Hauingen • Gastronomie & Praktika</p>
-        </div>
-      </div>
-      <div class="timeline-col"></div>
-    </div>
-
-  </div>
-</section>
-
-<section class="container">
-  <h2>Arbeitsweise</h2>
-  <p>Ich arbeite hochkonzentriert, strukturiert und mit klarem Qualitätsanspruch. In intensiven Phasen erreiche ich besondere Tiefe und Fokussiertheit – das ist keine Belastung, sondern kreative und geistige Abwechslung. Missverständnisse entstehen, wenn echte Routine mit Distanz verwechselt wird. Mir geht es nicht um Wettbewerb, sondern um Wirksamkeit und Wertschätzung.</p>
-
-  <div class="traits">
-    <span class="trait">🧠 Strategisch</span>
-    <span class="trait">🤝 Empathisch</span>
-    <span class="trait">📐 Strukturiert</span>
-    <span class="trait">🌱 Nachhaltig</span>
-    <span class="trait">🚀 Innovationsfreude</span>
-  </div>
-
-  <p style="margin-top:16px">Mehr Details (inkl. Diagramm): <a href="./personality.html">Meine Persönlichkeit</a></p>
-</section>
+<!-- Rest deines Inhalts bleibt unverändert -->
 
 <footer class="site-footer">
   © 2025 Christine Kieslich
