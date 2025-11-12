@@ -68,7 +68,7 @@ a:hover{ color: var(--accent); }
    2) NAVIGATION
    ========================================================= */
 nav,
-.site-nav{
+.site-nav {
   background: var(--brand);
   color: #fff;
   padding: 1rem;
@@ -76,9 +76,24 @@ nav,
   justify-content: center;
   gap: 2rem;
 }
+
 nav a,
-.site-nav a{ color:#fff; font-weight: 600; }
-.site-nav a.active{ text-decoration: underline; text-underline-offset: 2px; }
+.site-nav a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* HIER fehlte die geschweifte Klammer */
+.site-nav a.active {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.site-nav a:hover {
+  opacity: 0.85;
+  transition: opacity 0.2s ease-in-out;
+}
 
 /* =========================================================
    3) HERO / LANDING
