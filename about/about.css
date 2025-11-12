@@ -1,22 +1,15 @@
-/* ================================================================
-   ABOUT-SEITE (zusätzlich zur globalen style.css)
-==================================================================*/
-
+/* About: eigener Hintergrund */
 .page-about {
   background: #e9eef1;
 }
 
-/* -----------------------------------------
-   Portrait-Bereich
------------------------------------------ */
+/* Portraits nebeneinander */
 .page-about .about-portraits {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  gap: 2rem;
+  gap: 3rem;
   flex-wrap: wrap;
   margin-top: 2rem;
-  margin-bottom: 1.5rem;
 }
 
 .page-about .portrait {
@@ -29,104 +22,59 @@
   border-radius: 50%;
   object-fit: cover;
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 0.5rem;
 }
 
 .page-about .about-sublead {
   text-align: center;
-  max-width: 50rem;
-  margin: 0 auto 2rem;
+  max-width: 56rem;
+  margin: 1.5rem auto 0;
 }
 
-/* -----------------------------------------
-   Timeline-Bereich
------------------------------------------ */
+/* einfache, unkaputtbare Timeline */
 .page-about .timeline {
-  position: relative;
-  margin: 3rem auto;
-  max-width: 800px;
-  padding: 0 1rem;
-}
-
-.page-about .timeline-row {
+  margin: 2.5rem auto 0;
+  max-width: 900px;
   display: flex;
-  justify-content: space-between;
-  position: relative;
-  margin-bottom: 2.5rem;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.page-about .timeline-col {
-  flex: 1;
-  position: relative;
-}
-
-/* die vertikale Linie in der Mitte */
-.page-about .timeline::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 2px;
-  background: #ccc;
-  transform: translateX(-50%);
-}
-
-/* Punkte entlang der Linie */
-.page-about .timeline-dot {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 14px;
-  height: 14px;
-  background: var(--brand, #333);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Boxen mit Text */
-.page-about .timeline-box {
+.page-about .timeline-item {
   background: #fff;
-  border-radius: 6px;
-  padding: 1rem 1.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-radius: 8px;
+  padding: 1.1rem 1.4rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-left: 4px solid transparent;
 }
 
-.page-about .timeline-box h4 {
-  margin-top: 0;
+.page-about .timeline-item h4 {
+  margin: 0 0 0.3rem;
   font-size: 1rem;
 }
 
-.page-about .timeline-box p {
-  font-size: 0.9rem;
+.page-about .timeline-item p {
+  margin: 0;
   color: #444;
 }
 
-/* Aktuelle Position etwas hervorgehoben */
-.page-about .timeline-box.is-current {
-  border: 2px solid var(--brand, #0088cc);
-  background: #f6fbff;
+.page-about .timeline-item.is-current {
+  border-left-color: var(--brand, #003366);
+  background: #f2f6ff;
 }
 
-/* Abstände links/rechts */
-.page-about .timeline-col--left .timeline-box {
-  margin-right: 3rem;
-}
-
-.page-about .timeline-col--right .timeline-box {
-  margin-left: 3rem;
-}
-
-/* Mobile Ansicht: alles untereinander */
-@media (max-width: 700px) {
-  .page-about .timeline::before {
-    left: 8px;
-  }
-  .page-about .timeline-row {
-    flex-direction: column;
-  }
-  .page-about .timeline-col--left .timeline-box,
-  .page-about .timeline-col--right .timeline-box {
-    margin: 0 0 2rem 2rem;
-  }
+/* Button Persönlichkeit rechts unten */
+.fab-personality {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  padding: 0.4rem 1.2rem;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 100;
 }
