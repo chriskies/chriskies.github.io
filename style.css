@@ -191,6 +191,14 @@ nav a,
 
 
 /* Rechte Spalte: Text */
+
+/* Zitat im rechten Vision-Block: nicht mittig, sondern spaltenbündig */
+.vision-text-block blockquote,
+.vision-text-block .vision-quote {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .vision-text-block {
   flex: 1;
 }
