@@ -414,7 +414,34 @@ nav a,
 .contact-links a:hover{ background: var(--brand); color:#fff; transform: translateY(-3px); }
 
 /* =========================================================
-   11) FOOTER
+   11) PERSONALITY
+   ========================================================= */
+/* === Einheitliche Abstände für Personality-Seite === */
+
+/* Abstand unter H1 */
+.personality-hero h1 {
+  margin-bottom: 0.4rem;
+}
+
+/* Abstand unter Subline */
+.personality-hero .muted {
+  margin-top: 0.2rem;
+  margin-bottom: 0;
+}
+
+/* Abstand oberhalb H2 in Cards */
+.container.grid-2 h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* Abstand unter Textabsätzen */
+.container.grid-2 p {
+  margin-bottom: 1.1rem;
+}
+
+/* =========================================================
+   12) FOOTER
    ========================================================= */
 footer,
 .site-footer{
@@ -422,7 +449,7 @@ footer,
 }
 
 /* =========================================================
-   12) RESPONSIVE
+   13) RESPONSIVE
    ========================================================= */
 @media (max-width: 900px){
   .hero-inner{ flex-direction:column; text-align:center; }
@@ -438,7 +465,7 @@ footer,
 }
 
 /* =========================================================
-   13) FALLBACKS / SICHERHEIT
+   14) FALLBACKS / SICHERHEIT
    ========================================================= */
 /* Sicherstellen, dass Bilder in Cards/Headers top-justiert bleiben */
 .header--about img,
