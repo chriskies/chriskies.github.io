@@ -45,24 +45,123 @@
   </div>
 </header>
 
-<!-- ==== Timeline: Ausbildung (links) / Berufserfahrung (rechts) ==== -->
+<!--  
+  ============================================================
+  TIMELINE-BEREICH
+  Struktur-Grundregel (sehr wichtig):
+
+  PRO ABSCHNITT (Berufserfahrung / Ausbildung & Studium):
+  - Überschrift (h2.timeline-heading)
+  - <div class="timeline-wrapper">
+      <section class="timeline">
+        <!-- eine Zeile: -->
+        <div class="timeline-row">
+          <div class="timeline-col timeline-col--left">
+            <!-- optional: Textblock links (Analytisch & Logisch) -->
+          </div>
+          <div class="timeline-col timeline-col--right">
+            <!-- optional: Textblock rechts (Kreativ & Künstlerisch) -->
+          </div>
+          <div class="timeline-dot"></div> <!-- Punkt auf der Mittellinie -->
+        </div>
+        <!-- nächste Zeile usw. -->
+      </section>
+    </div>
+
+  Wichtig:
+  - Jede Zeile hat IMMER:
+      .timeline-row
+        .timeline-col--left
+        .timeline-col--right
+        .timeline-dot
+  - Du füllst pro Zeile nur EINE Seite (links ODER rechts),
+    die andere bleibt leer (oder Kommentar).
+  - Die vertikale Linie kommt aus CSS: .page-about .timeline::before
+  ============================================================
+-->
+
+<!-- ===== Abschnitt 1: Berufserfahrung ===== -->
+
+<h2 class="timeline-heading">Berufserfahrung</h2>
 
 <div class="timeline-wrapper">
-
-  <div class="timeline-wrapper">
-
-  <div class="timeline-header">
-    <h2>Ausbildung &amp; Studium</h2>
-    <h2>Berufserfahrung</h2>
-  </div>
-
   <section class="timeline">
-    <!-- deine timeline-row Blöcke -->
-  </section>
 
+    <!-- Zeile 1: aktuelle Suche HR-Assistenz
+         -> Eintrag auf der "analytisch/logischen" Seite (links) -->
+    <div class="timeline-row">
+      <div class="timeline-col timeline-col--left">
+        <div class="timeline-box is-current">
+          <h4>Seit Oktober 2025 · Auf der Suche nach einer neuen Herausforderung im Bereich HR-Assistenz</h4>
+          <p>Festanstellung (80–100&nbsp;%) · parallele Fortsetzung des B.A. Wirtschaftspsychologie</p>
+        </div>
+      </div>
+      <div class="timeline-col timeline-col--right">
+        <!-- hier könntest du später ggf. einen kreativen Bezug zu dieser Phase ergänzen -->
+      </div>
+      <div class="timeline-dot"></div>
+    </div>
+
+    <!-- Zeile 2: Dima Service AG
+         -> ebenfalls links, beruflich/analytisch -->
+    <div class="timeline-row">
+      <div class="timeline-col timeline-col--left">
+        <div class="timeline-box">
+          <h4>Dez 2024 – Sep 2025 · Administrative Leitung Produktion</h4>
+          <p>Dima Service AG, Schönenbuch (CH)</p>
+        </div>
+      </div>
+      <div class="timeline-col timeline-col--right">
+        <!-- frei für später: kreativer Anteil während dieser Zeit -->
+      </div>
+      <div class="timeline-dot"></div>
+    </div>
+
+    <!-- Zeile 3: weitere Praxiserfahrung
+         -> wieder links, klassisch beruflich -->
+    <div class="timeline-row">
+      <div class="timeline-col timeline-col--left">
+        <div class="timeline-box">
+          <h4>Weitere Praxiserfahrung</h4>
+          <p>Assistenz GL &amp; HR, Buchhaltung, Consulting (u. a. OwnCloud, Zahnarztpraxis)</p>
+        </div>
+      </div>
+      <div class="timeline-col timeline-col--right">
+        <!-- frei für spätere Ergänzung -->
+      </div>
+      <div class="timeline-dot"></div>
+    </div>
+
+    <!-- Beispiel-Zeile für zukünftigen "kreativen Werdegang":
+         -> nur rechts gefüllt, links bewusst leer lassen
+
+    <div class="timeline-row">
+      <div class="timeline-col timeline-col--left">
+        <!-- bewusst leer: analytischer Slot -->
+      </div>
+      <div class="timeline-col timeline-col--right">
+        <div class="timeline-box">
+          <h4>Kreativer Werdegang</h4>
+          <p>Musikproduktion, Gesang, Web- &amp; Grafikdesign, UX/UI-Gestaltung</p>
+        </div>
+      </div>
+      <div class="timeline-dot"></div>
+    </div>
+
+    -->
+
+  </section>
 </div>
 
-    <!-- Zeile 1: aktuelle Situation -->
+<!-- ===== Abschnitt 2: Ausbildung & Studium ===== -->
+
+<h2 class="timeline-heading">Ausbildung &amp; Studium</h2>
+
+<div class="timeline-wrapper">
+  <section class="timeline">
+
+    <!-- Zeile 1: aktuelles Studium Wirtschaftspsychologie
+         -> links = analytisch/logisch (passt zu Portrait links) -->
     <div class="timeline-row">
       <div class="timeline-col timeline-col--left">
         <div class="timeline-box is-current">
@@ -70,37 +169,13 @@
           <p>PFH Private Hochschule Göttingen (Fernstudium)</p>
         </div>
       </div>
-
       <div class="timeline-col timeline-col--right">
-        <div class="timeline-box is-current">
-          <h4>Seit Oktober 2025 · Auf der Suche nach einer neuen Herausforderung im Bereich HR-Assistenz</h4>
-          <p>Festanstellung (80–100&nbsp;%) · parallele Fortsetzung des B.A. Wirtschaftspsychologie</p>
-        </div>
+        <!-- frei: z. B. kreative Projekte während des Studiums -->
       </div>
-
       <div class="timeline-dot"></div>
     </div>
 
-    <!-- Zeile 2 -->
-    <div class="timeline-row">
-      <div class="timeline-col timeline-col--left">
-        <div class="timeline-box">
-          <h4>2007–2010 · Kauffrau für Bürokommunikation</h4>
-          <p>Walter-Eucken-Gymnasium Freiburg</p>
-        </div>
-      </div>
-
-      <div class="timeline-col timeline-col--right">
-        <div class="timeline-box">
-          <h4>Dez 2024 – Sep 2025 · Administrative Leitung Produktion</h4>
-          <p>Dima Service AG, Schönenbuch (CH)</p>
-        </div>
-      </div>
-
-      <div class="timeline-dot"></div>
-    </div>
-
-    <!-- Zeile 3 -->
+    <!-- Zeile 2: Grundstudium Informatik -->
     <div class="timeline-row">
       <div class="timeline-col timeline-col--left">
         <div class="timeline-box">
@@ -108,14 +183,23 @@
           <p>Universität Basel</p>
         </div>
       </div>
-
       <div class="timeline-col timeline-col--right">
+        <!-- frei für kreative/technische Projekte aus dieser Phase -->
+      </div>
+      <div class="timeline-dot"></div>
+    </div>
+
+    <!-- Zeile 3: Kauffrau für Bürokommunikation -->
+    <div class="timeline-row">
+      <div class="timeline-col timeline-col--left">
         <div class="timeline-box">
-          <h4>Weitere Praxiserfahrung</h4>
-          <p>Assistenz GL &amp; HR, Buchhaltung, Consulting (u. a. OwnCloud, Zahnarztpraxis)</p>
+          <h4>2007–2010 · Kauffrau für Bürokommunikation</h4>
+          <p>Walter-Eucken-Gymnasium Freiburg</p>
         </div>
       </div>
-
+      <div class="timeline-col timeline-col--right">
+        <!-- frei -->
+      </div>
       <div class="timeline-dot"></div>
     </div>
 
