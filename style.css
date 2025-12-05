@@ -151,7 +151,7 @@ nav a,
   padding: 0 1rem;
   display: flex;
   gap: 2rem;
-  align-items: flex-start;
+  align-items: /*flex-start;*/ center;
 }
 
 /* Linke Spalte: Bild + Bildunterschrift */
