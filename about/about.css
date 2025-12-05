@@ -34,6 +34,19 @@
 /* ============================================================
    TIMELINE  –  Finale Version
    ============================================================ */
+.timeline-section {
+  max-width: 960px;        /* Breite begrenzen */
+  margin: 4rem auto;       /* zentriert + Abstand nach oben/unten */
+  padding: 0 1.5rem;       /* links/rechts Luft geben, v.a. auf iPad/Mobile */
+}
+
+/* Optional, falls der graue Kasten selbst noch eingerahmt werden soll */
+.timeline {
+  background: #f4f5f7;
+  padding: 2rem 2rem 3rem;
+  border-radius: 16px;
+}
+
 /* Überschriften */
 .page-about .timeline-heading {
   font-size: 1.4rem;
