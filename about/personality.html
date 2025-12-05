@@ -3,18 +3,37 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="icon" type="image/png" href="../assets/images/favicon.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" sizes="32x32">
   <title>Persönlichkeit – Christine Kieslich</title>
 
-  <link rel="stylesheet" href="./style.css">
+  <!-- globale Styles (wie auf allen Seiten) -->
+  <link rel="stylesheet" href="/style.css">
+
+  <!-- About-spezifische Styles (wie auf /about/index.html) -->
+  <link rel="stylesheet" href="/about/about.css">
+
+  <!-- kleine Zusatznoten nur für diese Seite (kann später in about.css umziehen) -->
   <style>
-    /* dezente Seitennote */
-    .personality-hero{background:linear-gradient(180deg,#eef2ff 0,#fff 60%); padding:48px 0; margin-bottom:8px}
-    .personality-figure img{max-width:100%; height:auto; border-radius:12px; border:1px solid var(--border,#e5e7eb)}
-    .chips{margin-top:8px}
-    .chips .trait{margin:6px 6px 0 0}
+    .personality-hero {
+      background: linear-gradient(180deg,#eef2ff 0,#fff 60%);
+      padding: 48px 0;
+      margin-bottom: 8px;
+    }
+    .personality-figure img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border,#e5e7eb);
+    }
+    .chips {
+      margin-top: 8px;
+    }
+    .chips .trait {
+      margin: 6px 6px 0 0;
+    }
   </style>
 </head>
+
 <body>
 
 <nav class="site-nav">
