@@ -169,10 +169,13 @@ nav a,
 }
 
 .vision-image-block figcaption {
-  margin-top: 0.75rem;
-  font-size: 0.9rem;
-  color: #555;
-  line-height: 1.5;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;         /* deutlich kleiner */
+  color: #666;
+  line-height: 1.3;          /* engerer Zeilenabstand */
+  max-width: 90%;            /* optisch schmaler */
+  margin-left: auto;         /* leicht nach innen gezogen */
+  margin-right: auto;
 }
 
 /* Rechte Spalte: Text */
