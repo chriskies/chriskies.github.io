@@ -142,66 +142,58 @@ nav a,
 .statement:hover{ transform: translateY(-4px); box-shadow: var(--shadow-2); }
 
 /* ==============================================
-4) VISION / INHALT
-================================================= */
+   4) Visionen – Layout: Bild links, Text rechts
+   ============================================== */
 
-.page-content {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-  line-height: 1.7;
-  color: var(--text, #222);
+.vision-section {
+  max-width: 1000px;        /* gleiche Breite wie page-content */
+  margin: 3rem auto;
+  padding: 0 1rem;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
 }
 
-.page-content h1 {
-  text-align: center;
-  margin-bottom: 0.5em;
+/* Linke Spalte: Bild + Bildunterschrift */
+.vision-image-block {
+  flex: 1;
+  margin: 0;
 }
 
-.page-content .subtitle {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #444;
-  margin-bottom: 2rem;
-}
-
-.image-block {
-  text-align: center;
-  margin: 3rem 0;
-}
-
-.image-block img {
-  max-width: 100%;
+.vision-image-block img {
+  display: block;
+  width: 100%;
   height: auto;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
 
-.image-block figcaption {
-  margin-top: 0.8em;
+.vision-image-block figcaption {
+  margin-top: 0.75rem;
   font-size: 0.9rem;
   color: #555;
   line-height: 1.5;
 }
 
-.page-content section {
-  margin-top: 3rem;
+/* Rechte Spalte: Text */
+.vision-text-block {
+  flex: 1;
 }
 
-blockquote {
-  font-style: italic;
-  text-align: center;
-  max-width: 700px;
-  margin: 3rem auto;
-  border-left: 3px solid var(--brand, #ccc);
-  padding-left: 1rem;
-  color: #333;
+.vision-text-block h2 {
+  margin-top: 0;
 }
 
-blockquote footer {
-  margin-top: 0.5rem;
-  font-size: 0.85rem;
-  color: #666;
+.vision-text-block p {
+  line-height: 1.6;
+}
+
+/* Mobile Ansicht */
+@media (max-width: 800px) {
+  .vision-section {
+    flex-direction: column;   /* Bild oben, Text unten */
+    gap: 1.5rem;
+  }
 }
 
 /* =========================================================
