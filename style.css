@@ -375,7 +375,7 @@ nav a,
 
 .project-circles.orbit{
   position:relative; width:420px; height:420px; margin:4rem auto 0; border-radius:50%;
-  --orbit:210px; --circle:120px; --circleR: calc(var(--circle)/2); --radius: calc(var(--orbit) - var(--circleR));
+  --orbit:210px; --circle:120px; --circleR: calc(var(--circle)/2); --radius: var(--orbit);
 }
 .orbit-line{ position:absolute; inset:0; border:2px solid rgba(47,62,70,.3); border-radius:50%; z-index:0; }
 
