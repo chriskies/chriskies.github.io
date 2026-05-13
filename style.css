@@ -449,17 +449,6 @@ nav a,
   transform:rotate(-25deg);
 }
 
-.orbit .circle > span{
-  display:block;
-  position:relative;
-  z-index:1;
-  line-height:1.2;
-  font-size:.95rem;
-  word-break:break-word;
-  hyphens:auto;
-  transition: transform .25s ease;
-}
-
 .orbit .circle:hover{
   transform: translate(-50%,-50%) rotate(var(--angle)) translate(var(--radius)) rotate(calc(var(--angle) * -1)) scale(1.04);
 }
