@@ -380,10 +380,16 @@ nav a,
 .orbit-line{ position:absolute; inset:0; border:2px solid rgba(47,62,70,.3); border-radius:50%; z-index:0; }
 
 .orbit .circle{
-  position:relative; top:50%; left:50%;
+  position:absolute;
+  top:50%;
+  left:50%;
+
   transform: translate(-50%,-50%) rotate(var(--angle)) translate(var(--radius)) rotate(calc(var(--angle) * -1));
   transform-origin:center;
-  width:var(--circle); height:var(--circle); border-radius:50%;
+
+  width:var(--circle);
+  height:var(--circle);
+  border-radius:50%;
 
   background:
     radial-gradient(circle at 30% 22%, rgba(255,255,255,.95), rgba(255,255,255,.42) 24%, rgba(47,62,70,.22) 70%, rgba(47,62,70,.34));
