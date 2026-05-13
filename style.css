@@ -384,6 +384,8 @@ nav a,
   top:50%;
   left:50%;
 
+  transition: transform .25s ease, box-shadow .25s ease;
+
   transform: translate(-50%,-50%) rotate(var(--angle)) translate(var(--radius)) rotate(calc(var(--angle) * -1));
   transform-origin:center;
 
@@ -425,7 +427,11 @@ nav a,
   opacity:.055;
   color:#263238;
 
+  filter: blur(0.3px);
+
   z-index:0;
+
+  user-select:none;
   pointer-events:none;
 }
 
@@ -450,7 +456,17 @@ nav a,
 }
 
 .orbit .circle:hover{
-  transform: translate(-50%,-50%) rotate(var(--angle)) translate(var(--radius)) rotate(calc(var(--angle) * -1)) scale(1.04);
+  transform:
+    translate(-50%,-50%)
+    rotate(var(--angle))
+    translate(var(--radius))
+    rotate(calc(var(--angle) * -1))
+    scale(1.05);
+
+  box-shadow:
+    0 20px 40px rgba(0,0,0,.18),
+    inset 0 2px 8px rgba(255,255,255,.8),
+    inset 0 -10px 22px rgba(47,62,70,.22);
 }
 
 .orbit .circle:hover > span{
