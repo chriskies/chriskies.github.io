@@ -409,12 +409,20 @@ nav a,
 
 .circle-icon{
   position:absolute;
-  font-size:4.8rem;
+
+  top:50%;
+  left:50%;
+
+  transform:translate(-50%, -50%);
+
+  font-size:7rem;
   line-height:1;
-  opacity:.09;
+
+  opacity:.12;
   color:#263238;
+
   z-index:0;
-  transform: translateY(-8px);
+  pointer-events:none;
 }
 
 .circle-label{
