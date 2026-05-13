@@ -71,35 +71,30 @@ body {
 
 .back-button{
   position:fixed;
-  top:14px;
-  left:14px;
+  right:18px;
+  bottom:18px;
   z-index:9999;
 
-  display:inline-flex;
-  align-items:center;
-  gap:.4rem;
+  padding:.7rem 1.05rem;
 
-  padding:.55rem .9rem;
-
-  background:rgba(0,0,0,.42);
-  color:#fff;
-  text-decoration:none;
+  background:rgba(255,255,255,.92);
+  color:#111;
 
   border-radius:999px;
 
+  text-decoration:none;
+  font-weight:700;
   font-size:.95rem;
-  font-weight:600;
+
+  box-shadow:0 6px 20px rgba(0,0,0,.28);
+
+  transition:all .22s ease;
 
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-
-  box-shadow:0 4px 14px rgba(0,0,0,.18);
-
-  transition:all .22s ease;
 }
 
 .back-button:hover{
-  background:rgba(255,255,255,.92);
-  color:#111;
-  transform:translateY(-1px);
+  transform:translateY(-2px);
+  background:#fff;
 }
