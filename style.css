@@ -384,12 +384,52 @@ nav a,
   transform: translate(-50%,-50%) rotate(var(--angle)) translate(var(--radius)) rotate(calc(var(--angle) * -1));
   transform-origin:center;
   width:var(--circle); height:var(--circle); border-radius:50%;
-  background: rgba(47,62,70,.85); color:#fff; display:flex; align-items:center; justify-content:center;
-  text-align:center; font-weight:600; box-shadow:0 4px 10px rgba(0,0,0,0.15); overflow:hidden; padding:.6rem;
+
+  background:
+    radial-gradient(circle at 30% 22%, rgba(255,255,255,.95), rgba(255,255,255,.42) 24%, rgba(47,62,70,.28) 70%, rgba(47,62,70,.42));
+  color:#263238;
+
+  display:flex; align-items:center; justify-content:center;
+  text-align:center; font-weight:700;
+  box-shadow:
+    0 14px 32px rgba(0,0,0,.16),
+    inset 0 2px 6px rgba(255,255,255,.75),
+    inset 0 -10px 20px rgba(47,62,70,.18);
+
+  border:1px solid rgba(255,255,255,.65);
+  overflow:hidden; padding:.6rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
-.orbit .circle > span{ display:block; line-height:1.2; font-size:.95rem; word-break:break-word; hyphens:auto; transition: transform .25s ease; }
-.orbit .circle:hover{ background: var(--accent); color: var(--brand); }
-.orbit .circle:hover > span{ transform: scale(1.06); }
+
+.orbit .circle::before{
+  content:"";
+  position:absolute;
+  top:14px; left:22px;
+  width:36px; height:20px;
+  border-radius:50%;
+  background:rgba(255,255,255,.55);
+  transform:rotate(-25deg);
+}
+
+.orbit .circle > span{
+  display:block;
+  position:relative;
+  z-index:1;
+  line-height:1.2;
+  font-size:.95rem;
+  word-break:break-word;
+  hyphens:auto;
+  transition: transform .25s ease;
+}
+
+.orbit .circle:hover{
+  transform: translate(-50%,-50%) rotate(var(--angle)) translate(var(--radius)) rotate(calc(var(--angle) * -1)) scale(1.04);
+}
+
+.orbit .circle:hover > span{
+  transform: scale(1.04);
+}
 
 .orbit .circle:nth-of-type(1){ --angle: -90deg; }
 .orbit .circle:nth-of-type(2){ --angle: -18deg; }
