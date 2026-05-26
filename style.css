@@ -483,6 +483,10 @@ nav a,
    9.1) App-Development
    ========================================================= */
 
+h1 {
+    padding-top: 2rem;
+}
+
 .project-detail {
     max-width: 900px;
     margin: 0 auto;
@@ -507,6 +511,12 @@ nav a,
     margin-top: 1.5rem;
     margin-bottom: 3rem;
     color: #666;
+}
+
+.project-video {
+    border-radius: 14px;
+    width: 85%;
+    max-width: 1000px;
 }
 
 /* =========================================================
