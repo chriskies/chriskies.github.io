@@ -480,43 +480,359 @@ nav a,
 .orbit .circle:nth-of-type(5){ --angle: 198deg; }
 
 /* =========================================================
-   9.1) App-Development
+   9.1) APP DEVELOPMENT
    ========================================================= */
 
-h1 {
-    padding-top: 2rem;
+.app-development-header {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4.5rem 2rem 2.5rem;
+  text-align: center;
 }
 
-.project-detail {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-    text-align: center;
+.app-development-header h1 {
+  margin: 0.4rem 0 1rem;
+  padding: 0;
+  color: var(--brand);
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  line-height: 1.08;
 }
 
-.project-detail h2 {
-    font-size: 2.2rem;
-    margin-bottom: 1.2rem;
+.app-eyebrow,
+.app-project-category {
+  margin: 0 0 0.6rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
-.project-lead {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    color: #555;
-    max-width: 700px;
-    margin: 0 auto 3rem auto;
+.app-development-intro {
+  max-width: 680px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 1.12rem;
+  line-height: 1.7;
 }
 
-.project-description {
-    margin-top: 1.5rem;
-    margin-bottom: 3rem;
-    color: #666;
+.app-project-list {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 1.5rem auto 5rem;
+  display: grid;
+  gap: 3rem;
 }
 
-.project-video {
-    border-radius: 14px;
-    width: 85%;
-    max-width: 1000px;
+.app-project-card {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(310px, 0.92fr);
+
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+
+  padding: clamp(1.6rem, 4vw, 3.4rem);
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: var(--shadow-1);
+}
+
+.app-project-card--letterformer {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 209, 102, 0.14),
+      rgba(255, 255, 255, 1) 45%,
+      rgba(233, 236, 239, 0.55)
+    );
+}
+
+.app-project-card--pantry {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(233, 236, 239, 0.42),
+      rgba(255, 255, 255, 1)
+    );
+}
+
+.app-project-content h2 {
+  margin: 0 0 1rem;
+  color: var(--brand);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.15;
+}
+
+.app-project-lead {
+  margin: 0 0 1rem;
+  color: var(--fg);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.app-project-description {
+  margin: 0 0 1.4rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.app-project-features {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--fg);
+}
+
+.app-project-features li {
+  margin-bottom: 0.45rem;
+  padding-left: 0.2rem;
+}
+
+.app-project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.8rem;
+}
+
+.app-project-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.85rem 1.3rem;
+
+  background: var(--brand);
+  color: #ffffff;
+  border-radius: 9px;
+
+  font-weight: 700;
+  text-decoration: none;
+
+  box-shadow: 0 5px 14px rgba(47, 62, 70, 0.2);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.app-project-button:hover {
+  background: var(--brand-600);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(47, 62, 70, 0.26);
+}
+
+
+/* LetterFormer-Vorschaugrafik */
+
+.app-project-visual {
+  min-height: 380px;
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+}
+
+.app-project-visual--letterformer {
+  background:
+    linear-gradient(
+      145deg,
+      #f4f0e8,
+      #ffffff 52%,
+      #e2e8eb
+    );
+
+  border: 1px solid rgba(47, 62, 70, 0.12);
+
+  box-shadow:
+    inset 0 0 0 10px rgba(255, 255, 255, 0.45),
+    0 14px 32px rgba(0, 0, 0, 0.1);
+}
+
+.letterformer-preview-window {
+  width: min(100%, 430px);
+  overflow: hidden;
+
+  background: #ffffff;
+  border: 1px solid rgba(47, 62, 70, 0.15);
+  border-radius: 12px;
+
+  box-shadow: 0 12px 28px rgba(47, 62, 70, 0.16);
+}
+
+.letterformer-preview-toolbar {
+  height: 34px;
+  padding: 0 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  background: #eef1f2;
+  border-bottom: 1px solid rgba(47, 62, 70, 0.1);
+}
+
+.letterformer-preview-toolbar span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(47, 62, 70, 0.35);
+}
+
+.letterformer-preview-content {
+  display: grid;
+  grid-template-columns: 0.72fr 1fr;
+  gap: 12px;
+  padding: 14px;
+}
+
+.letterformer-preview-form {
+  display: grid;
+  align-content: start;
+  gap: 9px;
+}
+
+.letterformer-preview-form span {
+  display: block;
+  height: 24px;
+
+  background: #eef1f2;
+  border: 1px solid rgba(47, 62, 70, 0.08);
+  border-radius: 5px;
+}
+
+.letterformer-preview-letter {
+  min-height: 215px;
+  padding: 18px;
+
+  background: #ffffff;
+  border: 1px solid rgba(47, 62, 70, 0.12);
+
+  box-shadow: 0 4px 12px rgba(47, 62, 70, 0.08);
+}
+
+.letterformer-preview-address {
+  width: 48%;
+  height: 22px;
+  margin-bottom: 32px;
+  background: #dfe5e7;
+}
+
+.letterformer-preview-subject {
+  width: 68%;
+  height: 8px;
+  margin-bottom: 18px;
+  background: #78868c;
+}
+
+.letterformer-preview-line {
+  width: 100%;
+  height: 5px;
+  margin-bottom: 9px;
+  background: #d6dcde;
+}
+
+.letterformer-preview-line.short {
+  width: 68%;
+}
+
+.letterformer-preview-signature {
+  width: 35%;
+  height: 16px;
+  margin-top: 28px;
+  border-bottom: 2px solid #7c898f;
+}
+
+.app-project-visual-label {
+  margin: 1.4rem 0 0.2rem;
+  color: var(--brand);
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.app-project-visual-subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+
+/* Pantry-&-Plan-Video */
+
+.app-project-media {
+  width: 100%;
+}
+
+.app-project-media .project-video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+
+  background: #111111;
+  border-radius: 18px;
+
+  box-shadow: var(--shadow-2);
+}
+
+
+/* Tablet und Mobilgeräte */
+
+@media (max-width: 850px) {
+
+  .app-project-card {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .app-project-visual {
+    min-height: 320px;
+  }
+
+}
+
+@media (max-width: 560px) {
+
+  .app-development-header {
+    padding: 3.5rem 1.2rem 2rem;
+  }
+
+  .app-project-list {
+    width: min(100% - 1rem, 1120px);
+  }
+
+  .app-project-card {
+    padding: 1.35rem;
+    border-radius: 16px;
+  }
+
+  .app-project-visual {
+    min-height: 280px;
+    padding: 1rem;
+  }
+
+  .letterformer-preview-content {
+    grid-template-columns: 1fr;
+  }
+
+  .letterformer-preview-form {
+    display: none;
+  }
+
+  .letterformer-preview-letter {
+    min-height: 220px;
+  }
+
 }
 
 /* =========================================================
