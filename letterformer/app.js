@@ -439,11 +439,17 @@ function canUseOutput() {
 }
 
 function registerOutputUse() {
-  if (state.entitlement.isUnlocked) return;
+  const isLocalTest =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1";
+
+  if (isLocalTest || state.entitlement.isUnlocked) return;
+
   state.entitlement.usedThisWeek = Math.min(
     state.entitlement.weeklyLimit,
     state.entitlement.usedThisWeek + 1,
   );
+
   saveEntitlement();
   refreshEntitlementUI();
 }
