@@ -874,78 +874,43 @@ select:focus {
 }
 
 @media print {
-  html,
   body {
-    width: auto;
-    min-height: 0;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: #ffffff !important;
+    background: #ffffff;
   }
 
-  body::before,
-  body::after {
-    display: none !important;
+  body * {
+    visibility: hidden;
   }
 
-  body.print-letter,
-  body.print-labels {
-    width: 210mm !important;
-    height: 296mm !important;
-    overflow: hidden !important;
-  }
-
-  body.print-envelope {
-    width: 220mm !important;
-    height: 109mm !important;
-    overflow: hidden !important;
-  }
-
-  body > :not(.print-stage) {
-    display: none !important;
+  .print-stage,
+  .print-stage * {
+    visibility: visible;
   }
 
   .print-stage {
-    display: block !important;
-    position: static !important;
-    inset: auto !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: #ffffff !important;
+    display: block;
   }
 
   .print-stage > div {
-    display: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  body.print-letter #print-letter-stage,
-  body.print-labels #print-label-stage {
-    width: 210mm !important;
-    height: 296mm !important;
-  }
-
-  body.print-envelope #print-envelope-stage {
-    width: 220mm !important;
-    height: 109mm !important;
+    display: none;
   }
 
   body.print-letter #print-letter-stage,
   body.print-envelope #print-envelope-stage,
   body.print-labels #print-label-stage {
-    display: block !important;
-    overflow: hidden !important;
+    display: block;
+  }
+
+  .print-stage {
+    position: absolute;
+    inset: 0;
   }
 
   .paper-preview,
   .envelope-preview,
   .label-preview {
-    box-shadow: none !important;
-    border: 0 !important;
-    break-after: avoid;
-    page-break-after: avoid;
+    box-shadow: none;
+    border: 0;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -958,11 +923,9 @@ select:focus {
   }
 
   .letter-page {
-    width: 210mm !important;
-    height: 296mm !important;
-    max-width: none !important;
+    width: 210mm;
+    height: 297mm;
     aspect-ratio: auto;
-    overflow: hidden;
   }
 
   body.print-envelope {
@@ -972,28 +935,23 @@ select:focus {
 
   body.print-envelope .envelope-preview {
     page: envelope;
-    width: 220mm !important;
-    height: 110mm !important;
-    max-width: none !important;
+    width: 220mm;
+    height: 110mm;
     aspect-ratio: auto;
-    overflow: hidden;
   }
 
   body.print-labels .label-preview {
     page: labels;
-    width: 210mm !important;
-    height: 296mm !important;
-    max-width: none !important;
+    width: 210mm;
+    height: 297mm;
     aspect-ratio: auto;
-    margin: 0 !important;
     padding: 10mm;
-    overflow: hidden;
   }
 
   body.print-labels .label-cell {
-    border: 0 !important;
-    color: #111111 !important;
-    background: transparent !important;
+    border: 0;
+    color: #111111;
+    background: transparent;
     appearance: none;
     -webkit-appearance: none;
   }
