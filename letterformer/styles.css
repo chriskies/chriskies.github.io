@@ -878,14 +878,47 @@ select:focus {
     background: #ffffff;
   }
 
-  body * {
-    visibility: hidden;
+  @media print {
+  html,
+  body {
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    padding: 0;
   }
 
-  .print-stage,
-  .print-stage * {
-    visibility: visible;
+  .app-shell,
+  .signature-dialog {
+    display: none !important;
   }
+
+  .print-stage {
+    display: block;
+    position: static;
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    padding: 0;
+  }
+
+  .print-stage > div {
+    display: none;
+  }
+
+  body.print-letter #print-letter-stage,
+  body.print-envelope #print-envelope-stage,
+  body.print-labels #print-label-stage {
+    display: block;
+  }
+
+  .letter-page {
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    border: 0;
+    box-shadow: none;
+  }
+}
 
   .print-stage {
     display: block;
