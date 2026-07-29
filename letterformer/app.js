@@ -851,9 +851,8 @@ function printMode(mode) {
   registerOutputUse();
   document.body.classList.remove("print-letter", "print-envelope", "print-labels");
   document.body.classList.add(mode);
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => window.print());
-  });
+  document.body.offsetHeight;
+  window.print();
 }
 
 window.addEventListener("afterprint", () => {
