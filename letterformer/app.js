@@ -30,8 +30,8 @@ const entitlementStorageKey = "letterformer-entitlement-v2";
 const translations = {
   de: {
     metaDescription:
-      "LetterFormer ist ein simpler, aber wirkungsvoller Briefgenerator fÃ¼r Brief, Umschlag und Adressetiketten.",
-    languageLabel: "Sprache wÃ¤hlen",
+      "LetterFormer ist ein simpler, aber wirkungsvoller Briefgenerator für Brief, Umschlag und Adressetiketten.",
+    languageLabel: "Sprache wählen",
     claim: 'Text rein <span aria-label="wird zu">&#8605;</span> Brief raus',
     intro: "Ein simpler, aber wirkungsvoller Briefgenerator, der in Sekunden erstellt, was er soll.",
     workspaceLabel: "LetterFormer Arbeitsbereich",
@@ -48,7 +48,7 @@ const translations = {
     cityPlaceholder: "Musterort",
     subjectLabel: "Betreff",
     optional: "Optional",
-    sourceLabel: "Text einfÃ¼gen",
+    sourceLabel: "Text einfügen",
     sourcePlaceholder: "Kopiere hier deinen Inhalt hinein. LetterFormer formatiert daraus einen Brief.",
     generate: "Brief erstellen",
     outputTitle: "Ausgabe",
@@ -56,17 +56,17 @@ const translations = {
     copied: "Kopiert",
     reset: "Reset",
     usageFreeTitle: "Kostenlos nutzbar",
-    usageFreeText: "{remaining} von {limit} kostenlosen Ausgaben diese Woche Ã¼brig.",
+    usageFreeText: "{remaining} von {limit} kostenlosen Ausgaben diese Woche übrig.",
     usageUnlockedTitle: "Freigeschaltet",
     usageUnlockedText: "Die Wochenbegrenzung ist aufgehoben.",
     limitTitle: "Deine kostenlosen Ausgaben sind genutzt.",
     limitText:
       "LetterFormer ist aktuell auf 2 Ausgaben pro Woche begrenzt. Vorschau und Bearbeitung bleiben weiterhin frei.",
-    tabsLabel: "Ausgabe wÃ¤hlen",
+    tabsLabel: "Ausgabe wählen",
     letterTab: "Brief",
     labelsTab: "Etiketten",
     emptyTitle: "Noch kein Brief erstellt.",
-    emptyText: "FÃ¼ge Text und EmpfÃ¤nger ein, dann erscheint hier die Vorschau.",
+    emptyText: "Füge Text und Empfänger ein, dann erscheint hier die Vorschau.",
     printLetter: "Brief drucken",
     letterPreviewLabel: "Briefvorschau",
     printEnvelope: "Umschlag drucken",
@@ -75,33 +75,33 @@ const translations = {
     labelAmount: "Anzahl",
     labelAll: "Alle",
     labelAddress: "Adresse",
-    labelRecipient: "EmpfÃ¤nger",
+    labelRecipient: "Empfänger",
     labelSender: "Absender",
     labelStart: "Startposition",
     printLabels: "Etiketten drucken",
     labelPreviewLabel: "Etikettenvorschau",
     trustEyebrow: "Kurz wichtig",
-    trustTitle: "Schnell helfen, ohne neue HÃ¼rden.",
+    trustTitle: "Schnell helfen, ohne neue Hürden.",
     trustLead:
-      "LetterFormer ist fÃ¼r Menschen gedacht, die einfach einen brauchbaren Brief brauchen: spÃ¤t abends, zwischen Terminen, mit wenig Kraft oder wenig Zeit. Text rein, Brief raus.",
+      "LetterFormer ist für Menschen gedacht, die einfach einen brauchbaren Brief brauchen: spät abends, zwischen Terminen, mit wenig Kraft oder wenig Zeit. Text rein, Brief raus.",
     trustLocalTitle: "Bleibt lokal",
     trustLocalText:
       "Deine Briefinhalte werden im Browser verarbeitet. Sie werden nicht an einen Server gesendet und von LetterFormer nicht gespeichert.",
     trustAccountTitle: "Ohne Konto",
-    trustAccountText: "Keine Anmeldung, keine Installation, kein App Store. Ã–ffnen, ausfÃ¼llen, prÃ¼fen, drucken oder kopieren.",
+    trustAccountText: "Keine Anmeldung, keine Installation, kein App Store. Öffnen, ausfüllen, prüfen, drucken oder kopieren.",
     trustLimitTitle: "Fair begrenzt",
     trustLimitText:
-      "Aktuell sind 2 Ausgaben pro Woche kostenlos. Vorschau und Bearbeitung bleiben frei. Der WochenzÃ¤hler wird lokal in deinem Browser gespeichert.",
-    trustCheckTitle: "Bitte prÃ¼fen",
+      "Aktuell sind 2 Ausgaben pro Woche kostenlos. Vorschau und Bearbeitung bleiben frei. Der Wochenzähler wird lokal in deinem Browser gespeichert.",
+    trustCheckTitle: "Bitte prüfen",
     trustCheckText:
-      "LetterFormer ist eine Formatierungs- und Schreibhilfe. Du bist fÃ¼r Inhalt, Richtigkeit und RechtmÃ¤ssigkeit deines Briefes verantwortlich.",
+      "LetterFormer ist eine Formatierungs- und Schreibhilfe. Du bist für Inhalt, Richtigkeit und Rechtmässigkeit deines Briefes verantwortlich.",
     finePrint:
-      "Hinweis: LetterFormer ersetzt keine Rechtsberatung. FÃ¼r rechtlich wichtige Schreiben solltest du den Inhalt vor dem Versand besonders sorgfÃ¤ltig prÃ¼fen und gegebenenfalls anwaltlichen Rat einholen.",
+      "Hinweis: LetterFormer ersetzt keine Rechtsberatung. Für rechtlich wichtige Schreiben solltest du den Inhalt vor dem Versand besonders sorgfältig prüfen und gegebenenfalls anwaltlichen Rat einholen.",
     signatureDialogTitle: "Signatur zeichnen",
-    signatureDialogHint: "Ein Klick startet die Linie, der nÃ¤chste beendet sie.",
+    signatureDialogHint: "Ein Klick startet die Linie, der nächste beendet sie.",
     undo: "Undo",
     clear: "Leeren",
-    apply: "Ãœbernehmen",
+    apply: "Übernehmen",
     close: "Schliessen",
     salutationEditLabel: "Anrede bearbeiten",
     closingEditLabel: "Grusszeile bearbeiten",
@@ -455,8 +455,22 @@ function ensureOutputAllowed() {
   return false;
 }
 
+function normalizeText(value) {
+  return String(value)
+    .replaceAll("\u00c3\u00a4", "\u00e4")
+    .replaceAll("\u00c3\u00b6", "\u00f6")
+    .replaceAll("\u00c3\u00bc", "\u00fc")
+    .replaceAll("\u00c3\u0084", "\u00c4")
+    .replaceAll("\u00c3\u0096", "\u00d6")
+    .replaceAll("\u00c3\u009c", "\u00dc")
+    .replaceAll("\u00c3\u00a9", "\u00e9")
+    .replaceAll("\u00c3\u00a8", "\u00e8")
+    .replaceAll("\u00c3\u00a0", "\u00e0")
+    .replaceAll("\u00c2\u00a0", " ");
+}
+
 function escapeHtml(value) {
-  return value
+  return normalizeText(value)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
@@ -471,7 +485,7 @@ function makeParagraphs(text) {
   if (!compact) return [];
 
   return compact
-    .split(/(?<=[.!?])\s+(?=[A-ZÃ„Ã–Ãœ])/)
+    .split(/(?<=[.!?])\s+(?=[A-Z\u00c4\u00d6\u00dc])/)
     .map((part) => part.trim())
     .filter(Boolean);
 }
@@ -620,8 +634,8 @@ function makeSalutation(recipientLines, body) {
 function closingFor(salutation) {
   if (state.language === "en") return "Kind regards";
   return salutation.startsWith("Liebe ") || salutation.startsWith("Lieber ") || salutation.startsWith("Hallo ")
-    ? "Liebe GrÃ¼sse"
-    : "Mit freundlichen GrÃ¼ssen";
+    ? "Liebe Gr\u00fcsse"
+    : "Mit freundlichen Gr\u00fcssen";
 }
 
 function makeDocument() {
@@ -773,7 +787,7 @@ function plainText(documentData) {
   if (documentData.subject) parts.push(documentData.subject);
   parts.push([documentData.salutation, ...documentData.paragraphs, documentData.closing].join("\n\n"));
   if (documentData.signatureName) parts[parts.length - 1] += `\n\n\n${documentData.signatureName}`;
-  return parts.join("\n\n");
+  return normalizeText(parts.join("\n\n"));
 }
 
 function syncStateFromInputs() {
