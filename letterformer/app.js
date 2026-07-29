@@ -25,7 +25,7 @@ const state = {
 };
 
 const languageStorageKey = "letterformer-language-v1";
-const entitlementStorageKey = "letterformer-entitlement-v1";
+const entitlementStorageKey = "letterformer-entitlement-v2";
 
 const translations = {
   de: {
@@ -847,8 +847,6 @@ function setPreview(image, dataUrl) {
 }
 
 function printMode(mode) {
-  if (!ensureOutputAllowed()) return;
-  registerOutputUse();
   document.body.classList.remove("print-letter", "print-envelope", "print-labels");
   document.body.classList.add(mode);
   document.body.offsetHeight;
